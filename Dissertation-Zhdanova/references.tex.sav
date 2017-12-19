@@ -1,0 +1,167 @@
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}	% Добавляем список литературы в оглавление
+\bibliography{biblio}	
+\begin{thebibliography}{99}					% Подключаем BibTeX-базы
+\bibitem{Nurutdinov}\emph{Нурутдинов Ш. Р.} Моделирование цепей Маркова в полях Галуа. // Дискретная математика. -- 2004. -- Выпуск 2 (16). --  С.136-147.
+
+\bibitem{Bukharaev}\emph{Бухараев Р.Г.}  Основы теории вероятностных автоматов. -- М.: Наука. -- 1985. -- 287~с.
+
+\bibitem{Prokis}\emph{Прокис Дж.}  Цифровая связь. -- М.: Радио и Связь. -- 2000. -- 797~с.
+
+\bibitem{Pospelov}\emph{Поспелов Д.А.}  Вероятностные автоматы. -- М.: Энергия. -- 1970. -- 89~с.
+
+\bibitem{Prasolov}\emph{Прасолов В. В.} Задачи и теоремы линейной алгебры. -- М. -- 2008. -- 536~с.
+
+\bibitem{ZahNurShal}\emph{Захаров В.М., Нурутдинов Ш. Р., Шалагин С.В.} Синтез автономных вероятностных автоматов на основе полей Галуа. // В кн. Исследование по информатике. -- Отечество, Казань. -- 2000. -- с. 107-116.
+
+\bibitem{ZahNurSokShal}\emph{Захаров В.М., Нурутдинов Ш. Р., Соколов С.В., Шалагин С.В.} Полиномиальное представление автоматных моделей марковских функций над полем Галуа. //Исслед. по информ. -- Отечество, Казань. -- 2003. --№5. --c. 45–56.
+
+\bibitem{ZahAmin}\emph{Захаров В.М., Эминов Б. Ф.} Об асимпротитеских свойствах укрупняемых и укрупненных цепей Маркова. //Вестник технологического университета. 2015. Т.18, №10 --С. 167-173.
+
+\bibitem{Rabiner}\emph{Рабинер Л.Р.} Скрытые марковкие модели и их применение в избранных приложениях при распознавании речи: обзор // ТИИЭР. -- 1989. -- т. 77. \No~2. С. 86-120.
+
+\bibitem{Yu} \emph{Yu. Shun-Zheg.} Hidden semi-Markov models. // Artificial Intelligence. -- 2010. -- V. 174, n. 2. -- P. 215-243.
+
+\bibitem{YuKobayashi} \emph{Shun-Zheng Yu, Hisashi Kobayashi} An Efficient Forward–Backward Algorithm for an
+Explicit-Duration Hidden Markov Model. // IEEE Signal Processing Letters, v. 10, N. 1, January 2003
+
+\bibitem{Levinson}\emph{Levinson S.E.} Continuously variable duration hidden Markov models for automatic speech recognition// Computer Speech and Language. -- 1986. --1 (1).-- P. 29–45.
+
+\bibitem{Levinson83}\emph{ S.E. Levinson, L.R. Rabiner, M.M. Sondhi} An introduction to the application of the theory of probabilistic functions of a Markov process in automatic speech recognition// B.S.T.J. -- 1983. --62.-- P. 1035–1074.
+
+\bibitem{Cohen97}\emph{Y.Cohen, A. Erell, Y. Bistritz} Enhancement of connected words in an extremely noisy environment// IEEE Transactions on Speech and Audio Processing. -- 1997. --5(2).-- P. 141–148.
+
+\bibitem{Ferguson}\emph{Ferguson J. D.} Variable Duration Models for Speech// Proc. Symp. on the Application of Hidden Markov Models to Text and Speech. NJ. -- 1980.-- P. 143-179.
+
+\bibitem{DeZhdaIvan}\emph{Деундяк В.М., Жданова М.А.} Обобщенная марковская модель источника ошибок q-ичного цифрового канала нескольких физических состояний. // Математика и ее приложения: ЖИМО. -- Иваново: ИвГУ. -- 2010. -- Выпуск 1 (7). --  С.34-40.
+ \bibitem{DeZhdaObozr11}\emph{Деундяк В.М., Жданова М.А.} О применении скрытых марковских моделей в моделировании источников ошибок. // Обозрение  прикладной и промышленной математики. -- 2011. --Выпуск 3. --С. 488.
+
+ \bibitem{DeZhdaObozr10}\emph{Деундяк В.М., Жданова М.А.} О некотором обобщении  марковской математической модели источника ошибок. // Обозрение  прикладной и промышленной математики. -- 2010, т.17, №5, c.713-714.
+
+\bibitem{DeZhdaIzvestia2015}\emph{Деундяк В.М., Жданова М.А.} О решении задачи оценивания скрытых полумарковских моде-лей фергюсоновского типа. // Известия вузов. Сев.-Кавк. Регион. Естественные науки. 2015. N 3,  с. 19-24.
+
+\bibitem{DeZhdDSTU}\emph{Деундяк В.М., Жданова М.А.} Решение задачи оценивания  скрытых полумарковских QP-моделей. // Вестник ДГТУ, Т.14, № 4(79), 2014, с.5-16.
+
+\bibitem{DeMoMet1}\emph{Деундяк В.М., Могилевская Н.С.}  Математическое моделирование источников ошибок цифровых каналов передачи данных. -- Ростов-на-Дону: ДГТУ. -- 2006. -- 69~с.
+
+\bibitem{DeMoMet2} \emph{Деундяк В.М., Могилевская Н.С. } Методы оценки применимости помехоустойчивого кодирования в каналах связи.  -- Ростов-на-Дону: ДГТУ. -- 2007. -- 85~с.
+
+\bibitem{DeMoRGUPS}
+\emph{Деундяк В.М., Могилевская Н.С.} О математическом моделировании источника ошибок канала нескольких состояний.
+// Вестник Ростовского государственного университета путей сообщения. -- 2007. -- \No~1. -- С.~41-45.
+
+\bibitem{MoCh} \emph{Могилевская Н.С., Чугунный К.А. }
+ Свидетельство о государственной регистрации программ для ЭВМ № 2008614602 «Информационная система «Канал». Дата регистрации 24.09.2008г.
+
+\bibitem{Murphy}\emph{Murphy K.P.} Hidden semi-Markov models (HSMMs), http://www.cs.ubc.ca/~murphyk/, Nov. 2002. (дата обращения 10.01.2013).
+
+\bibitem{Ostendorf}\emph{Ostendorf M., Digalakis V.V., Kimball O.A.} From HMM’s to segment models: A unified view of stochastic modeling for speech recognition// IEEE Transactions on Speech and Audio Processing. --1996. -- 4 (5). --P. 360–378.
+
+\bibitem{Shiryaev} \emph{Ширяев А.Н.} Вероятность. // Artificial Intelligence. -- 2010. -- V. 174, n. 2. -- P. 215-243.
+
+ \bibitem{DeMoSevKav}
+\emph{Деундяк В.М., Могилевская Н.С. } Математическое моделирование источника ошибок q-ичного канала передачи данных.
+// Известия высших учебных заведений. Северо-Кавказский регион.Технические науки -- 2008. -- \No~1. -- С.~3-7.
+
+\bibitem{SerBel} \emph{Сердюков~П.~Н., Бельчиков~А.~В.} Защищенные радиосистемы цифровой передачи информации --
+М.: АСТ, 2006. -- 312~с.
+
+\bibitem{MogOVlozh} \emph{Могилевская~Н.~С.} О вложении ряда математических моделей источников ошибок
+бинарного канала связи в общую $QPn$-модель // Интегро-дифференциальные операторы и их приложения.
+-- 2008. -- \No~8. -- С.~117--122.
+
+\bibitem{Turin71} \emph{Блох~Э.~Л., Турин~В.~Я., Попов~О.~В. } Модели источника ошибок в каналах
+передачи цифровой информации. -- М.: Связь, 1971. -- 312~с.
+
+\bibitem{Bellman} \emph{Беллман~Р.} Введение в теорию матриц. -- М.: Наука, 1969. -- 368~с.
+
+ \bibitem{BibZhd_2009}
+\emph{Бибов А.Ю. , Жданова М. А.} Экспериментальное исследование аналога списочного декодера Сидельникова с использованием обобщенной марковской модели источника ошибок.
+// Информационное противодействие угрозам  терроризма -- 2009. -- \No~13. -- С.~151-153.
+
+ \bibitem{BibZhd_2010}
+\emph{Бибов А.Ю. , Жданова М. А.} Экспериментальное исследование аналога списочного декодера Сидельникова с использованием обобщенной марковской модели источника ошибок. // Материалы XI Международной научно-практической конференции «Информационная безопасность», часть 1, Таганрог: Изд-во ТТИ ЮФУ, 2010, с. 221-225.
+
+ \bibitem{DeZhdaVGU_13}\emph{Деундяк В.М., Жданова М.А.} Полиномиальное представление скрытой полумарковской модели
+фергюсоновского типа. // Вестник ВГУ, Серия: Системный анализ и информационные технологии -- 2013, №2, c.71-78.
+
+\bibitem{Dymarski_11}\emph{Dymarski P.} Hidden Markov Models: Theory and Applications. -- InTech, 2011. --314p.
+
+\bibitem{Drake}\emph{A. W. Drake} Fundamentals of Applied Probability Theory. -- NY: McGraw-Hill. -- 1967. -- 283~p.
+
+\bibitem{Gultyaeva}
+\emph{Гультяева Т.А.} Распознавание  лиц  с использованием  скрытых марковских моделей
+//Наука.  Технологии.  Инновации//  Материалы всероссийской научной конференции молодых
+ученых.  Новосибирск. -- Новосибирск: НГТУ. --2004. –- Т.1. -– С.159-160.
+
+\bibitem{Djosan} \emph{О.В. Джосан } Использование Скрытых Марковских Моделей для детектирования
+радужки на изображении лица
+// Computer Graphics and Applications (GraphiCon'2006), International Conference, Novosibirsk. -- 2006.
+
+\bibitem{Fonzo}
+%\selectlanguageifdefined{russian}
+\emph{V. de Fonzo, F. Aluffi-Pentini, V. Parisi} Hidden Markov Models in Bioinformatics // Current Bioinformatics. -- 2007. -- 2, pp. 49-61.
+
+\bibitem{Grinstead}
+\emph{Ch. M. Grinstead, J.L. Snell} Introduction to Probability. -- NY: McGraw-Hill. -- 1997. -- 509~p.
+
+
+\bibitem{Karlof}
+\emph{Ch. Karlof, D. Wagner} Hidden Markov Model Cryptanalysis // Proceedings of the 2003 Workshop on Cryptographic Hardware and Embedded Systems. -- 2003. -- pp. 17-30.
+
+
+\bibitem{Khanna}
+\emph{R. Khanna, H. Liu} System Approach to Intrusion Detection Using Hidden Markov Model // Proc. 2006 Int’l. Conf. Commun. and Mobile Comp., July 2006. -- 2006. -- pp. 349–54.
+
+\bibitem{Turin98}
+\emph{W. Turin, R. van Nobelen} Hidden Markov Modeling of Flat Fading Channels // IEEE Journal on selected areas in communications. -- 1998. -- Vol. 16, No. 9.
+
+\bibitem{Guedon2003}
+\emph{Y. Gu{\'e}don} Estimating hidden semi-Markov chains from discrete sequences // Journal of Computational and Graphical Statistics. -- 2003. -- Vol. 12, No. 3. -- pp.604--639.
+
+\bibitem{Guedon1990}
+\emph{Y. Gu{\'e}don, C. Cocozza-Thivent} Explicit state occupancy modelling by hidden semi-Markov models: application of Derin's scheme // Computer Speech \& Language. -- 1990. -- Vol. 4, No. 2. -- pp.167--192.
+
+\bibitem{SansomThomson2001}
+\emph{J. Sansom, P. J. Thomson} Fitting hidden semi-Markov models to breakpoint rainfall data //  J. Appl. Probab., Part A. -- 2001. -- No. 38. -- pp. 142–157.
+
+\bibitem{RussellMoore1985}
+\emph{M. J. Russell, R. K. Moore} Explicit modelling of state occupancy in hidden Markov models for automatic speech recognition //  Proc. IEEE Int. Conf. Acoust. Speech Signal Processing. -- 1985. -- Vol. 10 -- pp. 5-8.
+
+\bibitem{Mitchel1993}
+\emph{C.D. Mitchell, L.H. Jamienson} Modeling duration in a hidden Markov model with the exponential family //  Proc. IEEE Int. Conf. Acoust. Speech Signal Processing. ICASSP-93. -- 1993. -- pp. 331-334.
+
+\bibitem{Kulp1996}
+\emph{D. Kulp, D. Haussler, M.G. Reese, F.H. Eeckman} A generalized hidden Markov model for the recognition of human genes in DNA //  Proc. 4th Int. Conf. Intell. Syst. Molecular Bio. -- 1996. -- pp. 134-142.
+
+\bibitem{Amara1996}
+\emph{N.B. Amara, A. Belaid} Printed PAW recognition based on planar hidden Markov models //  Proc. 13th Int. Conf. Pattern Recognition. Molecular Bio. -- 1996. -- vol. 2. -- pp. 220-224.
+
+\bibitem{Kundu1997}
+\emph{A. Kundu, Y. He, M.-Y. Chen} Efficient utilization of variable duration information in HMM based HWR systems //  Proc. 13th Int. Conf. Image Processing. -- 1997. -- vol. 3. -- pp. 304-307.
+
+\bibitem{Schmidler2000}
+\emph{S.C. Schmidler, J.S. Liu, D.L. Brutlag} Bayesian segmentation of protein secondary structure // Journal of Computational Biology. -- 2000. -- vol. 7. -- pp. 233-248.
+
+\bibitem{Yu2005}
+\emph{S.-Z. Yu} Multiple tracking based anomaly detection of mobile nodes // 2nd International Conference on Mobile Technology, Applications and Systems. -- 2005. -- pp. 5-9.
+
+\bibitem{Bulla2006}
+\emph{J. Bulla, I. Bulla} Styled facts of financial time series and hidden semi-Markov models // Computational Statistics and Data Analysis. -- 2006.-- vol. 51. -- № 4 -- pp. 2192-2209.
+
+\bibitem{Kulkarni1995}
+\emph{V. Kulkarni} Modeling and analysis of stochastic systems. -- Chapman and Hall, London. --1995. --542p.
+
+\bibitem{Korolyuk1976}
+\emph{В.С. Королюк, А.Ф. Турбин} Полумарковские процессы и их приложения. -- Наук. думка. --1976. --97p.
+
+\bibitem{anikeev}
+\emph{М.В.} Метод обнаружения аномалий на основе скрытых марковских моделей с поиском оптимального числа состояний // Информационное противодействие угрозам терроризма. -- 2006. -- № 6. -- С. 191-195.
+
+\bibitem{Gnedenko}
+\emph{Гнеденко Б.В.} Курс теории вероятностей. -- М.: Наука. -- 1988. -- 446~с.
+
+\bibitem{Baum}
+\emph{L.E. Baum, J.A. Egon} An inequality with applications to statistical estimation for probabilistic functions of Markov process and to model for ecology // Bull. Amer. Meteorol. Soc.. -- 1967. -- vol. 73, pp. 360-363.
+ \end{thebibliography}

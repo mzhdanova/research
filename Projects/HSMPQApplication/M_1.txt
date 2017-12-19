@@ -1,0 +1,28 @@
+[vector_Pi]
+1
+0
+#Markov transition probability matrix
+[matrix_tp]
+0,5 0,5
+0,5 0,5
+# Matrix of Symbol Probabilities (number of rows =  number of states; number of columns =field power)
+[matrix_sp]
+0,9 0,1
+0,1 0,9
+#Vector Ro (number of rows = number of states)
+[vector_ro]
+0,125 0,125 0,125 0,125 0,125 0,125 0,125 0,125
+
+0,125 0,125 0,125 0,125 0,125 0,125 0,125 0,125
+[vector_f] #(first row = lengths, second = probabilites)
+10
+1
+
+10
+1
+[Per]
+0,2
+0,2
+[General_Per]
+0,2
+[End]

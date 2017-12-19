@@ -1,0 +1,418 @@
+\section{Решение задачи оценивания для общей скрытой полумарковской модели} \label{chapt3_GHSMM}
+В разделе \ref{chapt3_GHSMM_Theorems} будет рассмотрена задача оценивания для общей скрытой полумарковской модели при более общих, чем в \ref{chapt1_GHSMM_IP_Yu}, предположениях относительно начала и конца наблюдаемой части последовательности состояний. Будет предложено два варианта решения этой задачи.
+
+В разделе \ref{chapt3_GHSMM_Auxilary} будут изложены вспомогательные леммы, необходимые для решения обратной задачи для подкласса общих скрытых полумарковских моделей -- моделей с независимыми наблюдениями. Под независимостью наблюдений понимается взаимная независимость символов, порожденных одним состоянием. Частными случаями общих скрытых полумарковских моделей с независимыми наблюдениями являются скрытая полумарковская модель Фергюсона и скрытая полумарковская модель $QP$-модель. Приведенные в этом разделе леммы будут использоваться в разделах \ref{chapt3_Ferguson} и \ref{chapt3_HSMQPM} для решения задач оценивания для упомянутых моделей.
+
+\subsection{Вычисление вероятности генерации заданной последовательности общей скрытой полумарковской моделью.}\label{chapt3_GHSMM_Theorems}
+Рассмотрим общую скрытую полумарковскую модель $\lambda$, определяемую в соответствии с (\ref{chapt1_GHSMM_Def}), и некоторую последовательность символов $O_{1:T}$, где $O_t$ ($t\in[1,..,T]$) принадлежит выходному алфавиту модели $\lambda$. Под задачей оценивания будем понимать задачу вычисления вероятности, с которой последовательность $O_{1:T}$ могла быть сгенерирована моделью $\lambda$.
+
+Не теряя общности будем предполагать, что наблюдаемая последовательность $O_{1:T}$ является частью потенциально бесконечной последовательности символов $O=..,O_{-1},O_0, O_1, .., O_T, ..$. Будем считать, что последовательность $O_{1:T}$ порождена общей скрытой полумарковской моделью, а значит, наблюдаемой последовательности $O$ соответствует скрытая последовательность состояний $R=.., r_{-1}, r_{0}, r_1, .., r_q,..$, где через $r_1$ будем обозначать состояние, породившее первые наблюдаемые символы из $O_{1:T}$, через $r_q$ -- состояние, породившее последние наблюдаемые символы последовательности $O_{1:T}$, при этом предполагается, что $q\leq T$. Далее будем говорить об $r_1$ как о первом наблюдаемом состоянии, а о $r_q$ как о последнем наблюдаемом состоянии.
+
+В разделе \ref{chapt1_GHSMM_IP_Yu} рассматривался подход Ю к решению задачи оценивания для общей скрытой полумарковской модели при предположении, что состояние $r_1$ началось в момент времени $t=1$ или до него и что последнее состояние $r_q$ закончилось строго в момент времени $T$. Будем вслед за Ю говорить об этом предположении как о смешанном (mixed assumption). В настоящем разделе мы предложим решение задачи оценивания для общей скрытой полумарковской модели при общем предположении (general assumption), а именно, что:
+
+1) первое состояние $r_1$ началось в момент времени $t=1$ или до него;
+
+2) последнее состояние $r_q$ закончилось в момент времени $T$ или после него.
+
+Отличие от условий, выделенных Ю в \cite{Yu} (см. начало раздела \ref{chapt1_GHSMM_IP_Yu}), состоит в том, что здесь рассматриваются менее обременительные ограничения на окончание последнего состояния. Об этом предположении будем далее говорить как об общем (general assumption).
+
+Далее будем использовать следующие обозначения. Под $\widetilde{P}[O_{1:T}]$ будем понимать вероятность генерации последовательности $O_{1:T}$ общей скрытой полумарковской моделью $\lambda$ при общем предположении,а под $P[O_{1:T}]$ -- при смешанном предположении.
+
+Заметим, что модель из \cite{Yu} предполагает невозможность самоперехода между обобщёнными состояниями. Это требование не является существенным для решения задачи оценивания, поэтому, говоря об общей скрытой полумарковской модели, будем иметь в виду более общую, чем в \cite{Yu}, модель, допускающую самопереход.
+
+%Д-замечание. Величины $alpha_T(i,d)$ и $\overline{alpha}_T(i,d)$ определяются у Ю только при $t>0$. При $t<=0$ для них нет определения. Поэтому, наверное, мы можем определить их как хотим.
+
+\begin{theorem}\label{th:chapt3_GHSMM:1}
+Вероятность генерации последовательности $O_{1:T}$ общей скрытой полумарковской моделью $\lambda$ при общем предположении может быть вычислена по следующей формуле:
+\begin{equation}\nonumber
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)b_{j,d}(O_{T-d_1+1}^{T-d_1+d}),
+\end{equation}
+где
+\begin{equation}\nonumber
+\widetilde{P}[O_{1:t}]=\left\{\begin{array}{ll}
+1, &t\leq 0,\\\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d_1}]\overline{\alpha}_{t-d_1+d}(j,d)b_{j,d}(O_{t-d_1+1}^{t-d_1+d}),& t\in [1,T],\end{array}\right.
+\end{equation}
+\begin{equation}\nonumber
+\overline{\alpha}_{t}(i,d)=\left\{
+\begin{array}{ll}
+\pi_{i,d}, &t\leq 0,\\
+\sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\overline{b}_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})
+a_{(i^\prime, d^\prime)(i,d)}, & t>0,
+\end{array}\right.
+\end{equation}
+\begin{equation}
+\nonumber
+\overline{b}_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})=\frac{b_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})\widetilde{P}[O_{1:t-d-d^\prime}]}{\widetilde{P}[O_{1:t-d}]}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Рассмотрим $\widetilde{P}[O_{1:T}]$. Построим разбиение пространства элементарных событий $\mathfrak{E}=\{E_{j,d,d_1}\}_{j\in \mathcal{S},d\in \mathcal{D}, d_1\in[1,d]}$, $P[E_{j,d,d_1}]>0, j\in S, d\in D, d_1\in[1,d]$, представляющее собой полную группу несовместимых событий. Событие $E_{j,d,d_1}$ состоит в том, что в момент времени $T$ модель находится в состоянии $j$ длительностью $d$, причём на момент времени $T$ прошло $d_1(\leq d)$ моментов времени. Тогда по формуле полной вероятности можем записать:
+$$\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d} P[O_{1:T}| S_{[T-d_1+1, T-d_1+d]}=j]P[S_{[T-d_1+1, T-d_1+d]}=j].$$
+Преобразуем формулу, используя определение условной вероятности:
+$$\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d} P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T}].$$
+Рассмотрим отдельно $P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T}]$, представляющую собой совместную вероятность двух событий -- наблюдать последовательность $O_{1:T}$ и наблюдать состояние $j$ на временном отрезке $[T-d_1+1, T-d_1+d]$. Второе событие означает, что последним состоянием на момент времени $T$ было состояние $j$, которое закончилось в или после момента времени $T$.
+
+Рассмотрим полную группу несовместимых событий $\mathfrak{E^\prime}=\{E^\prime_{i,d^\prime}\}_{i\in \mathcal{S}, d^\prime \in \mathcal{D}}$, где событие $E^\prime_{i,d^\prime}$ состоит в том, что в момент времени $T-d_1$ закончилось состояние $i$ длительности $d^\prime$. В каждый момент времени, модель может находиться только в одном состоянии, поэтому по формуле полной вероятности (\cite{Shiryaev}, стр. 36) можем записать
+\begin{equation}\nonumber
+\begin{split}
+&P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T}]
+= \sum\limits_{i\in S}\sum\limits_{d^\prime \in D} P[S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+& \cdot P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T}| S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&= \sum\limits_{i\in S}\sum\limits_{d^\prime \in D}P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&= \sum\limits_{i\in S}\sum\limits_{d^\prime \in D}P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, O_{T-d_1+1:T}, S_{[T-d_1-d^\prime+1:T-d_1]}=i] \\
+&= \sum\limits_{i\in S}\sum\limits_{d^\prime \in D} P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i] \\
+& \cdot P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i] \\
+& \cdot P[O_{T-d_1+1:T}|S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i].
+\end{split}
+\end{equation}
+Рассмотрим отдельно $P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]$:
+\begin{equation}\nonumber
+\begin{split}
+&P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&=\frac{P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}\\
+&=\frac{P[S_{[T-d_1-d^\prime+1:T-d_1]}=i]P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[S_{[T-d_1-d^\prime+1:T-d_1]}=i] P[O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i]}\\
+&=\frac{P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i]}
+\end{split}
+\end{equation}
+
+Учитывая, что общая скрытая полумарковская модель предполагает условную независимость событий $S_{[T-d_1+1, T-d_1+d]}=j$ и $O_{1:T-d_1}$ при условии события $S_{[T-d_1-d^\prime+1:T-d_1]}=i]$, перепишем (\ref{eq_cond_1}):
+\begin{equation}\nonumber
+\begin{split}&P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i] =\\& P[S_{[T-d_1+1, T-d_1+d]}=j |S_{[T-d_1-d^\prime+1:T-d_1]}=i]P[O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i].
+\end{split}
+\end{equation}
+Тогда перепишем:
+\begin{equation}\nonumber
+\begin{split}
+&P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&=\frac{P[S_{[T-d_1+1, T-d_1+d]}=j |S_{[T-d_1-d^\prime+1:T-d_1]}=i]P[O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[O_{1:T-d_1}|S_{[T-d_1-d^\prime+1:T-d_1]}=i]}\\
+&=P[S_{[T-d_1+1, T-d_1+d]}=j |S_{[T-d_1-d^\prime+1:T-d_1]}=i].
+\end{split}
+\end{equation}
+Рассмотрим
+\begin{equation}\nonumber
+\begin{split}
+&\\
+&P[O_{T-d_1+1:T}|S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&\\
+&=\frac{P[O_{T-d_1+1:T}, S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}\\
+&\\
+&=\frac{P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}\\
+&\\
+&\cdot\frac{P[O_{T-d_1+1:T}, S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[S_{[T-d_1+1, T-d_1+d]}=j| O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}\\
+&\\
+&=\frac{P[O_{T-d_1+1:T}, S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}{P[S_{[T-d_1+1, T-d_1+d]}=j| O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]}.
+\end{split}
+\end{equation}
+Поскольку общая скрытая полумарковская модель предполагает условную независимость событий $O_{T-d_1+1:T}$ и $S_{[T-d_1+1, T-d_1+d]}=j$ при условии события $O_{1:T-d_1}\cdot S_{[T-d_1-d^\prime+1:T-d_1]}=i]$, по (\ref{eq_cond_2}) запишем:
+\begin{equation}\nonumber
+\begin{split}
+&P[O_{T-d_1+1:T}, S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]=\\
+&=P[O_{T-d_1+1:T}| S_{[T-d_1+1, T-d_1+d]}=j] \\
+&\cdot P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i].
+\end{split}
+\end{equation}
+Таким образом
+\begin{equation}\nonumber
+\begin{split}
+&P[O_{T-d_1+1:T}|S_{[T-d_1+1, T-d_1+d]}=j, O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]=\\
+&=P[O_{T-d_1+1:T}| S_{[T-d_1+1, T-d_1+d]}=j].
+\end{split}
+\end{equation}
+Перепишем $P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]$ в виде:
+\begin{equation}\nonumber
+\begin{split}&P[S_{[T-d_1+1, T-d_1+d]}=j|O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&=\sum\limits_{i\in S}\sum\limits_{d^\prime \in D}P[O_{1:T-d_1},  S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&\cdot P[S_{[T-d_1+1, T-d_1+d]}=j| S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&\cdot P[O_{T-d_1+1:T}|S_{[T-d_1+1, T-d_1+d]}=j].
+\end{split}
+\end{equation}
+Теперь запишем выражение для интересующей нас вероятности $\widetilde{P}[O_{1:T}]$:
+\begin{equation}\nonumber
+\begin{split}
+& \widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\sum\limits_{i\in S}\sum\limits_{d^\prime \in \mathcal{D}}P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]\\
+&\cdot P[S_{[T-d_1+1, T-d_1+d]}=j| S_{[T-d_1-d^\prime+1:T-d_1]}=i]P[O_{T-d_1+1:T}|S_{[T-d_1+1, T-d_1+d]}=j].
+\end{split}
+\end{equation}
+Преобразуем полученное выражение, выражая множители через известные величины:
+\begin{equation}\nonumber
+\begin{split}
+&\widetilde{P}[O_{1:T}]=\\&\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\sum\limits_{i\in S}\sum\limits_{d^\prime \in D}P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]a_{(i,d^\prime)(j,d)} b_{j,d}(O_{T-d_1+1}^{T+d-d_1}).
+\end{split}
+\end{equation}
+Заметим так же, что $P[O_{1:T-d_1}, S_{[T-d_1-d^\prime+1:T-d_1]}=i]$ представляет собой прямую переменную  $\alpha_{T-d_1}(i,d^\prime)$ (\cite{Yu}, с. 218), определяемую как совместную вероятность двух событий -- наблюдать последовательность $O_{1:T-d_1}$ и, начиная с момента $T-d_1+d^\prime+1$ и заканчивая моментом $T-d_1$, наблюдать состояние $i$. Тогда:
+\begin{equation}\nonumber
+\begin{split}
+P[O_{1:T}]=&\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\sum\limits_{i\in S}\sum\limits_{d^\prime \in D} \alpha_{T-d_1}(i,d^\prime) a_{(i,d^\prime)(j,d)} b_{j,d}(O_{T-d_1+1}^{T+d-d_1}).
+\end{split}
+\end{equation}
+Для вычисления $\alpha_{t}(j,d)$ Ю предлагает использовать формулу (4) c.218. Согласно ей запишем:
+\begin{equation}
+\nonumber
+\alpha_{t}(j,d)=\left\{
+\begin{array}{ll}
+\pi_{j,d}, &t\leq 0,\\
+\alpha_{t}(j,d) =\sum\limits_{i\in S}\sum\limits_{d^\prime \in D}\alpha_{t-d}(i,d^\prime) a_{ij} p_j(d) b_{d,j}(O_{t-d+1}^{t-d+d^\prime}) & t>0,
+\end{array}\right.
+\end{equation}
+Тогда
+$$\sum\limits_{i\in S}\sum\limits_{d^\prime \in D}\alpha_{T-d_1}(i,d^\prime) a_{ij} p_j(d) b_{j,d}(O_{T-d_1+1}^{T-d_1+d}) = \alpha_{T-d_1+d}(j,d).$$
+Таким образом,
+\begin{equation}
+\label{chapt3_th1_proof}
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\alpha_{T-d_1+d}(j,d).
+\end{equation}
+Преобразуем формулу (\ref{chapt3_th1_proof}), используя понятие апостериорной вероятности $\overline{\alpha}_{t}(j,d)$. Напомним, что $\overline{\alpha}_{t}(j,d)$ определяется следующим образом:
+$$\overline{\alpha}_{t}(j,d) = P[S_{[t-d+1:t]}=j|O_{1:t-d}]\;\;\; \forall t>0$$
+и имеет место следующее соотношение:
+\begin{equation}
+\label{chapt3_th1_proof_post_alpha}
+{\alpha}_{t}(j,d) = \widetilde{P}[O_{1:t-d}]\overline{\alpha}_{t}(j,d)b_{j,d}(O_{t-d+1}^t).
+\end{equation}
+ Подставляя (\ref{chapt3_th1_proof_post_alpha}) в (\ref{chapt3_th1_proof}), получим
+\begin{equation}\nonumber
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)b_{j,d}(O_{T-d_1+1}^{T-d_1+d}).
+\end{equation}
+Заметим, что поскольку наблюдения $O_{T+1:T-d_1+d}$ неизвестны, т.е. могут принимать любые значения, то под $b_{j,d}(O_{T-d_1+1}^{T-d_1+d})$ на самом деле понимается
+$$\sum\limits_{o_{T+1:T-d_1+d}\in V^{d-d_1}}b_{j,d}(O_{T-d_1+1},..,O_T,o_{T+1},..,o_{T-d_1+d}),$$
+ т.е. $b_{j,d}(O_{T-d_1+1}^{T})$.
+
+Таким образом, получена рекуррентная формула для вычисления $\widetilde{P}[O_{1:t}]$:
+$$\widetilde{P}[O_{1:t}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d_1}]\overline{\alpha}_{t-d_1+d}(j,d)b_{j,d}(O_{t-d_1+1}^{t-d_1+d}),\;\;\; t\in [1,T],$$
+где $\overline{\alpha}_{t-d}(i^\prime,d^\prime)$ вычисляется в соответствии с (\ref{chapt3_th1_proof_post_alpha}).
+
+Для инициализации рекурсии необходимо определить также начальные значения. Определим начальные значения при $\forall t\leq 0$ следующим образом:
+$$\overline{\alpha}_{t}(i,d)=\pi_{i,d},$$
+$$\widetilde{P}[O_{1:t}]=1.$$
+\end{proof}
+
+\begin{remark} В \cite{Yu} без обоснования содержится формула для решения задачи оценивания в более узком, чем в \ref{th:chapt3_GHSMM:1}, случае --- случае смешанного предположения. В [кн Ю] предлагается решение задачи оценивания в случае общего предположения, использующее, однако, иное определение прямой переменной и не снабженное детальным обоснованием.\end{remark}
+
+%(НЕ ЗАБЫТЬ: Теорему 1 аккуратно включить в результаты, выносимые на защиту)
+
+ В теореме \ref{th:chapt3_GHSMM:1} получена формула для вычисления вероятности генерации последовательности $O_{1:T}$ заданной общей скрытой полумарковской моделью $\lambda$ при общем предположении. Вычисление этой вероятности можно упростить в случае, когда последовательность $O_{1:T}$ достаточно длинная. Тогда вероятность наблюдения некоторого обобщенного состояния $(j,d)$ в момент времени $T$ будем считать равной $\pi_{j,d}$, а вероятность времени пребывания в этом состоянии на момент времени $T$ будем полагать равным $\frac{1}{d}$. Такие последовательности будем называть стабилизированными. В следующей теореме сформулируем решение задачи оценивания для случая стабилизированной последовательности и приведем прямое доказательство этой теоремы.
+
+\begin{theorem}\label{th:chapt3_GHSMM:2} Будем предполагать последовательность $O_{1:T}$ настолько длинной, что вероятность последнего наблюдаемого состояния удовлетворяет предельному распределению вероятностей.
+ Тогда вероятность генерации последовательности $O_{1:T}$ общей скрытой полумарковской моделью $\lambda$ при общем предположении может быть вычислена по следующей формуле:
+\begin{equation}\label{eq:chapt3_gsmm:theorem2:1}
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\frac{\pi_{j,d}}{d}\sum\limits_{d_1=1}^{d}P[O_{1:T-d_1}]b_{j,d}(O_{T-d_1+1}^{T}),
+\end{equation}
+где
+\begin{equation}\label{eq:chapt3_gsmm:theorem2:2}
+P[O_{1:t}]=\left\{\begin{array}{ll}
+1, &t\leq 0,\\\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}P[O_{1:t-d}]\overline{\alpha}_{t}(i,d)b_{i,d}(O_{t-d+1:t}),& 0<t\leq T-d_1,\end{array}\right.
+\end{equation}
+\begin{equation}\label{eq:chapt3_gsmm:theorem2:3}
+\overline{\alpha}_{t}(i,d)=\left\{
+\begin{array}{ll}
+\pi_{i,d}, &t\leq 0,\\
+\sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\overline{b}_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})
+a_{(i^\prime, d^\prime)(i,d)}, & t>0,
+\end{array}\right.
+\end{equation}
+\begin{equation}
+\nonumber
+\overline{b}_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})=\frac{b_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Рассмотрим общую скрытую марковскую модель $\lambda$ и стабилизированную последовательность наблюдений $O_{1:T}$. Обозначим через $r_1,..,r_q$ последовательность обобщенных состояний, породивших наблюдаемую последовательность $O_{1:T}$. При этом предполагается, что в момент времени $t=1$ модель находилась в состоянии $r_1$, а в момент $t=T$ -- в состоянии $r_q$. Тогда $r_q$ -- последнее наблюдаемое обобщенное состояние.
+
+Рассмотрим событие $E_{d_1}$, где $d_1\in{[1,D]}$, заключающееся в том, что в момент времени $T$ модель находилась в состоянии $r_q$ на протяжении $d_1$ отсчетов времени, т. е. в момент времени $T-d_1$ закончилось состояние $r_{q-1}$, а в момент времени $T-d_1+1$ началось состояние $r_q$.
+
+Также определим событие $E^{j,d}$ (где $(j,d)\in \mathcal{S}\times \mathcal{D})$) как событие, состоящее в том, что последним наблюдаемым обобщенным состоянием $r_q$ было $(j,d)$. Заметим, что
+имеет место равенство
+$$E^{j,d}=\bigcap\limits_{d_1=1}^{D} (E^{j,d}\bigcap E_{d_1})$$
+и при этом
+\begin{equation}\label{eq:chapt3:theorem2:proof:1}
+\forall d \leq d_1 \leq D :\;\; E^{j,d}\bigcap E_{d_1}=\varnothing.
+\end{equation}
+Кроме того,
+\begin{equation}\nonumber
+\begin{split}
+O_{1:T}= & O_{1:T}\bigcap(\bigcup\limits_{(j,d)\in\mathcal{S}\times \mathcal{D}}E^{j,d})\bigcap(\bigcup\limits_{d_1=1}^{D}E_{d_1})= \\
+&O_{1:T}\bigcap(\bigcup\limits_{(j,d)\in\mathcal{S}\times \mathcal{D}}\bigcup\limits_{d_1=1}^{D}E^{j,d}\bigcap E_{d_1})=\\
+&\bigcup\limits_{(j,d)\in\mathcal{S}\times \mathcal{D}}\bigcup\limits_{d_1=1}^{D}E^{j,d}\bigcap E_{d_1}\bigcap O_{1:T}.
+\end{split}
+\end{equation}
+Далее для произвольных событий $A_1,..,A_n$ будем использовать обозначение:
+$$P[A_1,..,A_n]=P[\bigcap\limits_{i=1}^{n}A_i].$$
+Ввиду (\ref{eq:chapt3:theorem2:proof:1}) из последнего соотношения вытекает, что
+\begin{equation}\label{eq:chapt3:theorem2:proof:2}
+\begin{split}
+P\left[ O_{1:T}\right] =&\sum _{j\in\mathcal{S}}\sum _{d\in\mathcal{D}}\sum _{d_{1}=1}^{D}P[O_{1:T},E^{j,d}, E_{d_{1}}]=\\&\sum _{j\in\mathcal{S}}\sum _{d\mathcal{D}}\sum _{d_{1}=1}^{d}P[O_{1:T},E^{j,d}, E_{d_{1}}]=\\
+&\sum _{j\in\mathcal{S}}\sum _{d\in\mathcal{D}}\sum _{d_{1}=1}^{d}P[O_{1:T}|E^{j,d}, E_{d_{1}}] P[E^{j,d}, E_{d_{1}}].
+\end{split}
+\end{equation}
+Рассмотрим отдельно
+$$P[O_{1:T}|E^{j,d}, E_{d_{1}}]=P[O_{1:T-d_{1}},O_{T-d_{1}+1:T}|E^{j,d}, E_{d_{1}}].$$
+События $O_{1:T-d_{1}}$ и $O_{T-d_{1}+1:T}$ являются условно независимыми относительно $E^{j,d}\cap E_{d_{1}}$. Поэтому в виду (ссылка на свойство условной независимости)
+$$P[O_{1:T-d_1}, O_{T-d_1+1:T}|E^{j,d},E_{d_1}]=P[O_{1:T-d_1}|E^{j,d},E_{d_1}]P[O_{T-d_1+1:T}|E^{j,d},E_{d_1}.$$
+События $O_{1:T-d_1}$ и $E^{j,d}$ условно независимы относительно $E_{d_1}$, поэтому
+$$P[O_{1:T-{d_1}}|E^{j,d},E_{d_1}]=P[O_{1:T-d_1}|E_{d_1}].$$
+Воспользовавшись определением $E_{d_1}$, нетрудно увидеть, что $P[O_{1:T-d_1}|E_{d_1}]$  фактически представляет собой вероятность наблюдать последовательность $O_{1:T-d_1}$ при условии, что наблюдаемое в момент времени $T-d_1$ состояние закончилось именно в момент $T-d_1$, т. е. $$P[O_{1:T-d_1}|E_{d_1}]=P[O_{1:T-d_1}].$$
+События $O_{T-d_{1}+1:T}$ и $E_{d_1}$ условно независимы относительно $E^{j,d}$, поэтому
+$$P[O_{T-d_{1}+1:T}|E^{j,d}, E_{d_{1}}]=P[O_{T-d_{1}+1:T}|E^{j,d}].$$
+Величина $P[O_{T-d_{1}+1:T}|E^{j,d}]$ представляет собой вероятность наблюдать частичную последовательность $O_{T-d_{1}+1:T}$ в обобщенном состоянии $(j,d)$, то есть $b_{j,d}(O_{T-d_{1}+1:T})$. Тогда
+$$P[O_{1:T}|E^{j,d}, E_{d_{1}}] = P[O_{1:T-d_1}|E_{d_1}]P[O_{T-d_{1}+1:T}|E^{j,d}]=P[O_{1:T-d_1}]b_{j,d}(O_{T-d_{1}+1:T}).$$
+Из условия стабилизированности последовательности $O_{1:T}$ вытекает, что
+$$P[E^{j,d}, E_{d_1}]=\pi_{j,d}\cdot \frac{1}{d}.$$
+Таким образом, подставляя полученные выражения для $P[E^{j,d}, E_{d_1}]$ и  $P[O_{1:T}|E^{j,d}, E_{d_{1}}]$  в формулу (\ref{eq:chapt3:theorem2:proof:2}), получим:
+\begin{equation}\nonumber
+P[ O_{1:T}] =
+\sum _{j\in\mathcal{S}}\sum _{d\in\mathcal{D}}\sum _{d_{1}=1}^{d}P[O_{1:T-d_1}]b_{j,d}(O_{T-d_{1}+1:T})\pi_{j,d}\cdot \frac{1}{d}.
+\end{equation}
+
+Заметим, что для вычисления $P[O_{1:T}]$ можно использовать формулу (\ref{eq: chapt1_InverseProbles_Yu_Probability}), предложенную Ю.
+\end{proof}
+
+\subsection{Вспомогательные утверждения для скрытых полумарковских моделей с относительно независимыми длительностями и наблюдениями} \label{chapt3_GHSMM_Auxilary}
+В этом разделе сформулируем утверждения, справедливые для скрытых полумарковских моделей с относительно независимыми длительностями и наблюдениями (см. \ref{chapt1_GSHMM}) и необходимые для решения задачи оценивания для скрытой полумаровской модели Фергюсона и скрытой полумарковской $QP$ модели.
+
+Напомним, что под скрытой полумарковской моделью с относительно независимыми длительностями и наблюдениями нами понимается общая скрытая полумарковская модель со следующими дополнительными ограничениями:
+
+1) текущее состояние не зависит от длительности предыдущего состояния;
+
+2) текущая длительность определяется только текущим состоянием и не зависит от предыдущего состояния и его длительности;
+
+3) наблюдения символов выходного алфавита внутри длительности полагаются условно независимыми.
+
+Рассмотрим два события $A$ и $B$ и пусть $P[A, B]$ -- совместная вероятность этих двух событий. По маргинальной вероятностью события $A$ будем понимать безусловную вероятность $P[A]$ события $A$, т.е., вероятность события $A$, независимого от того, наступает ли какое-то другое событие $B$ или нет. Если о $B$ можно думать как о некоторой случайной величине, принявшей данное значение, маргинальная вероятность $A$ может быть получена суммированием (или более широко интегрированием) совместных вероятностей по всем значениям этой случайной величины
+$$P[A] = \sum\limits_{B\in \mathcal{B}} P[A,B].$$
+Определение можно расширить на случай $n$ событий.
+\begin{lemma} \label{lemma:chapt3_GHSMM_Aux_L1} Для скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями вероятность наблюдения последовательности $O_{t+1:t+d}$ в обобщенном состоянии $(i,d)$, $b_{i,d}(O_{t+1:t+d})$, может быть вычислена следующим образом:
+\begin{enumerate}
+  \item\label{eq:chapt3_GHSMM_Aux_L1_1} если $t+d>0$, а $t\leq T$, то $b_{i,d}(O_{t+1:t+d})=\prod\limits_{\theta=m}^k b_{i,d}(O_{t+\theta})$, где
+\begin{enumerate}
+\item $m=1$, если $t\geq0$;%т.е. t+1\in[1,T]
+
+\item $m=1-t$, если $t<0$;%т.е. m - позиция внутри отрезка, соответствующая первому моменту времени абсолютной нумерации
+
+\item $k=d$, если $t+d\leq T$;% т.е. весь отрезок является подпоследовательностью O_1:T
+
+\item $k=T-t$, если $t+d> T$;% т.е. часть отрезка лежит правее T и d - позиция внутри отрезка, соответствующая последнему моменту наблюдения в абсолютной нумерации
+ \end{enumerate}
+   \item\label{eq:chapt3_GHSMM_Aux_L1_2} если $t<0$, $t+d\leq 0$ или $t>T$, то $b_{i,d}(O_{t+1:t+d})=1$;
+\end{enumerate}
+\end{lemma}
+\begin{proof} Рассмотрим сначала ситуацию (\ref{eq:chapt3_GHSMM_Aux_L1_1}), т.е. $t+d>0$ и $t\leq T$.
+
+1. Пусть $t\geq0$ и $t+d\leq T$. В этом случае подпоследовательность $O_{t+1:t+d}$ полностью лежит внутри интервала $[1,T]$ и, следовательно, полностью нам известна. По определению $b_{i,d}( O_{t+1:t+d} )=P[ O_{t+1:t+d} |S_{[t+1:t+d]}=i]$. Т.к. для скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями предполагается условная независимость наблюдений символов выходного алфавита при фиксированном состоянии и длительности, можем записать:
+$$P[ O_{t+1:t+d}|S_{[t+1:t+d]} =i]=\prod\limits_{\theta=1}^d P[O_{t+\theta}|S_{[t+1:t+d]}=i]=\prod\limits_{\theta=1}^d b_{i,d}(O_{t+\theta}),$$
+где $O_{t+\theta}$ -- $\theta$-ое наблюдение на отрезке $[t+1, t+d]$, а $b_{i,d}(O_{t+\theta})$ -- вероятность наблюдать $t+\theta$ в обобщенном состоянии $(j,d)$.
+
+2. 	Пусть $t\geq0$ и $t+d>T$. Тогда начало подпоследовательности $O_{t+1:t+d}$ лежит внутри интервала $[1,T]$, а конец за его пределами, т. е. нам известны только первые $k=T-t$ символов последовательности $O_{t+1,t+d}$. В этом случае вероятность $P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i]$ сводится к вероятности наблюдать префикс $O_{t+1:t+k}$ в состоянии $i$ длительностью $d$, т.е. к маргинальной вероятности. Действительно, т.к. мы не знаем какие именно символы наблюдались после момента времени $t+k$, то рассмотрим $P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i]$ как сумму по всем возможным подпоследовательностям $v_{t+k+1}..v_{t+d}$:
+$$P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i]=\sum\limits_{v_{t+k+1}..v_{t+d}\in (F_q)^{d-k}}P[ O_{t+1}..O_{t+k}v_{t+k+1}..v_{t+d}|S_{[t+1:t+d]}=i].$$
+Пользуясь условной независимостью наблюдений при фиксированном состоянии и длительности, запишем
+\begin{equation}
+\begin{split}
+P[ & O_{t+1:t+d}|S_{[t+1:t+d]}=i] =\\ & \sum\limits_{v_{t+k+1}..v_{t+d}\in (V)^{d-k}}\prod\limits_{l=1}^{k}P[ O_{t+l}|S_{[t+1:t+d]}=i]\cdot \prod\limits_{s=k+1}^{d-k} P[v_{t+s}|S_{[t+1:t+d]}=i] =\\ & \sum\limits_{v_{t+k+1}..v_{t+d}\in (V)^{d-k}} P[O_{t+1}..O_{t+k}|S_{[t+1:t+d]}=i]\cdot \prod\limits_{s=k+1}^{d-k} P[v_{t+s}|S_{[t+1:t+d]}=i] = \\ & P[O_{t+1}..O_{t+k}|S_{[t+1:t+d]}=i]\sum\limits_{v_{t+k+1}..v_{t+d}\in (V)^{d-k}}P[v_{t+k+1}..v_{t+d}|S_{[t+1:t+d]}=i].
+\end{split}
+\end{equation}
+Поскольку одна последовательность из $(V)^{d-k}$ обязательно реализуется, то
+$$\sum\limits_{v_{t+k+1}..v_{t+d}\in (V)^{d-k}}P[v_{t+k+1}..v_{t+d}|S_{[t+1:t+d]}=i]=1.$$
+Следовательно,
+\begin{equation}
+\begin{split}
+P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i] & = P[O_{t+1}..O_{t+k}|S_{[t+1:t+d]}=i]=\\ & \prod\limits_{l=1}^{k}P[ O_{t+l}|S_{[t+1:t+d]}=i] = \prod\limits_{l=1}^k b_{i,d}(O_{t+l}).
+\end{split}
+\end{equation}
+
+3. 	Пусть $t<0$ и $t+d\leq T$. Этот случай аналогичен предыдущему случаю с той разницей, что теперь конец подпоследовательности $O_{t+1:t+d}$ лежит внутри интервала $[1,T]$, а начало за его пределами. Таким образом, нам известны последние $d-m$ символов последовательности $O_{t+1:t+d}$, где $m=1-t$. Тогда вероятность $P[ O_{t+1:t+d}|S_[t+1:t+d] =i]$ сводится к вероятности наблюдать суффикс $O_{t+m:t+d}$ при условии наблюдения состояния $i$ длительностью $d$. Применяя рассуждения, аналогичные доказательству предыдущей ситуации, получим
+$$P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i] =  \prod\limits_{l=m}^d b_{i,d}(O_{t+l}).$$
+
+4. Пусть $t<0$,$t+d> T$. Тогда нам известны только символы $O_{t+1,t+d}$ начиная с $m$-ого и заканчивая $k$-тым. Таким образом,
+$$P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i] = \prod\limits_{l=m}^k b_{i,d}(O_{t+l}).$$
+
+Теперь рассмотрим ситуацию (\ref{eq:chapt3_GHSMM_Aux_L1_2}). Условие $t, t+d\leq 0$ так же как и $t>T$ соответствует ситуации, когда нам неизвестен ни один символ подпоследовательности $O_{t+1:t+d}$. Поскольку последовательность $O$ бесконечная, мы можем с уверенностью утверждать, что какая-то частичная последовательность символов из $(V)^{d-k}$ обязательно реализовалась. Таким образом, $P[ O_{t+1:t+d}|S_{[t+1:t+d]}=i]=1$.
+\end{proof}
+\begin{lemma}\label{lemma:chapt3_GHSMM_Aux_L2}
+Вероятность генерации последовательности $O_{1:t}$ скрытой полумарковской моделью с относительно независимыми длительностями и наблюдениями $\lambda$ при смешанном предположении может быть вычислена по следующей рекуррентной формуле:
+\begin{equation}\label{eq:chapt3_GHSMM_Aux_L2_Prob}
+P[O_{1:t}]=\left\{
+\begin{array}{ll}
+1 ,&t\leq 0,\\
+\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}P[O_{1:t-d}]\overline{\alpha}_{t}(i,d)\prod\limits_{\tau=t-d+1}^t b_{i,d}(O_\tau),& t>0,\end{array}\right.
+\end{equation}
+где
+\begin{equation}\label{eq:chapt3_GHSMM_Aux_L2_Alpha}
+\overline{\alpha}_{t}(i,d)=\left\{
+\begin{array}{ll}
+\pi_i\rho_i(d), &t\leq 0,\\
+\sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\prod\limits_{\tau=t-d-d^\prime+1}^{t-d}b_{i^\prime,d^\prime}(O_\tau)\frac{P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}
+a_{i^\prime i} p_i(d), & t>0.
+\end{array}\right.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Рассмотрим случай, когда $t\leq 0$. Будем предполагать, что первое состояние начинается в или до момента времени $t^\prime=1$.
+Рассмотрим определение $\overline{\alpha}_t(i,d)$ из раздела \ref{chapt1_GHSMM_IP_Yu} (см. (\ref{eq: chapt1_InverseProbles_Yu_Posterior_Alpha})) и расширим его на случай $t\leq 0$:
+$$\forall t\leq 0,\forall (i,d) \in \mathcal{S}\times \mathcal{D}:\;\;\; \overline{\alpha}_t(i,d)= P[S_{[t-d+1:t]} = i| O_{1:t}].$$
+Используя определение условной вероятности, правую часть можно преобразовать к виду
+$$P[S_{[t-d+1:t]} = i| O_{1:t}]=\frac{P[S_{[t-d+1:t]}=i, O_{1:t}]}{P[O_{1:t}]}.$$
+Рассмотрим
+$$P[S_{[t-d+1:t]}=i, O_{1:t}]= P[S_{[t-d+1:t]}=i]=P[O_{1:t}|S_{[t-d+1:t]}=i].$$
+Так как мы не знаем, какие символы наблюдались до момента времени $t< 1$, $$P[O_{1:t}|S_{[t-d+1:t]}=i]=1$$ при $t<1$. Следовательно,
+$$P[S_{[t-d+1:t]}=i, O_{1:t}] =P[S_{[t-d+1:t]}=i] = \pi_{i,d}=\pi_i p_i(d)$$
+и
+$$\overline{\alpha}_t(i,d)= P[S_{[t-d+1:t]} = i| O_{1:t}] = \frac{\pi_i p_i(d)}{P[O_{1:t}]}.$$
+Рассмотрим  полную группу несовместимых событий $\mathfrak{E} = \{E_{i,d}\}_{i\in \mathcal{S}, d\in \mathcal{D}}$, где событие $E_{i,d}$  состоит в том, что в момент времени $t$ закончилось состояние $i$ длительностью $d$. По формуле полной вероятности можем записать
+$$P[O_{1:t}]=\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}P[S_{[t-d+1:t]}=i, O_{1:t}].$$
+Тогда, при $t\leq 0$ получим:
+$$P[O_{1:t}]=\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}\pi_{i,d}=1.$$
+Пользуясь формулой (\ref{eq:chapt1_GHSMM_Indep:inclus3}),
+можем записать
+$$\forall t\leq 0, \forall (i,d) \in \mathcal{S}\times \mathcal{D}: \overline{\alpha}_t(i,d)=\pi_{i} p_{i} (d).$$
+Для доказательства утверждения при $0<t\leq T$ рассмотрим формулы (\ref{eq: chapt1_InverseProbles_Yu_Probability}, \ref{eq: chapt1_InverseProbles_Yu_Posterior_Alpha_Recursion}):
+ \begin{equation}
+\nonumber
+P[O_{1:t}]=\sum\limits_{i\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}} P[O_{1:t-d}]\overline{\alpha}_t(i,d)b_{i,d}(O_{t-d+1:t}),
+\end{equation}
+ \begin{equation}
+\nonumber
+\overline{\alpha}_t(i,d) = \sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\frac{b_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}a_{(i^\prime,d^\prime)(i,d)}.
+\end{equation}
+Напомним, что для скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями справедливо соотношение (\ref{eq:chapt1_GHSMM_Indep:inclus1}, \ref{eq:chapt1_GHSMM_Indep:inclus3}):
+\begin{equation} a_{(i,d)(j,d^\prime)}= a_{ij}\cdot p_j(d^\prime),\end{equation}
+где $a_{ij}=P[S_{[t=j}|S_{t-1]=i}]$.
+
+Подставляя (\ref{eq:chapt1_GHSMM_Indep:inclus1}) в (\ref{eq: chapt1_InverseProbles_Yu_Posterior_Alpha_Recursion}), получим:
+ \begin{equation}
+\nonumber
+\overline{\alpha}_t(i,d) = \sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\frac{b_{i^\prime,d^\prime}(O_{t-d-d^\prime+1}^{t-d})P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}a_{ii^\prime}\cdot p_i^\prime(d^\prime).
+\end{equation}
+Используя лемму \ref{lemma:chapt3_GHSMM_Aux_L1}, преобразуем:
+ \begin{equation}
+\nonumber
+\overline{\alpha}_t(i,d) = \sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\prod\limits_{\tau=t-d-d^\prime+1}^{t-d}b_{i^\prime,d^\prime}(O_\tau)\frac{P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}a_{ii^\prime}\cdot p_i^\prime(d^\prime).
+\end{equation}
+С учетом леммы \ref{lemma:chapt3_GHSMM_Aux_L1} выражение(\ref{eq: chapt1_InverseProbles_Yu_Probability}) преобразуется к виду:
+  \begin{equation}
+\nonumber
+P[O_{1:t}]=\sum\limits_{i\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}} P[O_{1:t-d}]\overline{\alpha}_t(i,d)\prod\limits_{\tau=t-d+1}^t b_{i,d}(O_\tau)
+\end{equation}
+%Для инициализации $\overline{\alpha}_t(i,d)$ используем (\ref{eq: chapt1_InverseProbles_Yu_Posterior_Alpha_Init0}, \ref{eq: chapt1_InverseProbles_Yu_Posterior_Alpha_InitNegative}) с учетом (\ref{eq:chapt1_GHSMM_Indep:inclus1})
+%\begin{equation}
+%\overline{\alpha}_0(j,d) = \pi_{j}\cdot p_j(d),
+%\end{equation}
+%\begin{equation}
+%\overline{\alpha}_t(j,d) = 0, \;\;\; t<0.
+%\end{equation}
+Объединив случаи $t\leq 0$ и $0<t\leq T$ в одном выражении, можем записать:
+\begin{equation}\nonumber
+P[O_{1:t}]=\left\{
+\begin{array}{ll}
+1 ,&t\leq 0,\\
+\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}P[O_{1:t-d}]\overline{\alpha}_{t}(i,d)\prod\limits_{\tau=t-d+1}^t b_{i,d}(O_\tau),& t>0,\end{array}\right.
+\end{equation}
+где
+\begin{equation}
+\begin{split}\nonumber
+\overline{\alpha}_{t}(i,d)&=\\&\left\{
+\begin{array}{ll}
+\pi_i\rho_i(d), &t\leq 0,\\
+\sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\prod\limits_{\tau=t-d-d^\prime+1}^{t-d}b_{i^\prime,d^\prime}(O_\tau)\frac{P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}
+a_{i^\prime i} p_i(d), & t>0.
+\end{array}\right.
+\end{split}
+\end{equation}
+\end{proof} 
