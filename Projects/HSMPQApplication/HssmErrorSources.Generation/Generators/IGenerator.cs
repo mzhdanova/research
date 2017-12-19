@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Generators
+namespace HsmmErrorSources.Generation.Generators
 {
-    interface IGenerator
+    public interface IGenerator
     {
-        public int[] Generate(int length);
+        IList<int> Generate(int length);
     }
 }

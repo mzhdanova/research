@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace HssmErrorSources.Generation.Random
+namespace HsmmErrorSources.Generation.Random
 {
-    class CryptoServiceRNGenerator: IPseudoRandomNumberGenerator
+    public class CryptoServiceRNGenerator: IPseudoRandomNumberGenerator
     {
         private static RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
-        double GetValue()
+        public double GetValue()
         {
             var bytes = new Byte[8];
             provider.GetBytes(bytes);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Utils
+namespace HsmmErrorSources.Generation.Utils
 {
     /// <summary>
     /// A class representing a pare (value, probability)

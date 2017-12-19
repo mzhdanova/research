@@ -6,7 +6,7 @@ using u8 = System.Byte;
 using u32 = System.UInt32;
 using u64 = System.UInt64;
 
-namespace HssmErrorSources.Generation.Random.RC4
+namespace HsmmErrorSources.Generation.Random.RC4
 {
     public partial class RC4_PRNG
     {

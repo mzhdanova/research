@@ -7,8 +7,8 @@ namespace HSMPQApplication.Model.Utils.GaloisArithmetics
 {
     class GaloisArithmetics
     {
-        [DllImport("DllMain.dll", EntryPoint = "HelloWorld")]
-        publi
+   //     [DllImport("DllMain.dll", EntryPoint = "HelloWorld")]
+    //    publi
 
     }
 }

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Validators
+namespace HsmmErrorSources.Generation.Validators
 {
     interface IValidator
     {
-        public void Validate();
+        void Validate();
 
-        public bool HasErrors();
+        bool HasErrors();
 
-        public IList<String> GetErrors();
+        IList<String> GetErrors();
     }
 }

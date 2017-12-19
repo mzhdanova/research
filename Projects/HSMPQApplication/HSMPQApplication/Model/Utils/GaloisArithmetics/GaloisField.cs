@@ -8,11 +8,11 @@ namespace HSMPQApplication.Model.Utils.GaloisArithmetics
 {
     class GaloisField
     {
-        [DllImport("lib/GaloisFieldArithmetic.dll", EntryPoint = "GaloisField")]
-        public extern GaloisField();
+        //[DllImport("lib/GaloisFieldArithmetic.dll", EntryPoint = "GaloisField")]
+        //public extern GaloisField();
 
-        [DllImport("lib/GaloisFieldArithmetic.dll", EntryPoint = "mul")]
-        public extern int mul(int a, int b);
+        //[DllImport("lib/GaloisFieldArithmetic.dll", EntryPoint = "mul")]
+        //public extern int mul(int a, int b);
 
     }
 }

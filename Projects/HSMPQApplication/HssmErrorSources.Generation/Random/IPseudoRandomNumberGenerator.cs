@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Random
+namespace HsmmErrorSources.Generation.Random
 {
-    interface IPseudoRandomNumberGenerator
+    public interface IPseudoRandomNumberGenerator
     {
-        public double GetValue();
+        double GetValue();
     }
 }

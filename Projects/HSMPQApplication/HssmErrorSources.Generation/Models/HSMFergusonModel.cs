@@ -1,13 +1,13 @@
-﻿using HssmErrorSources.Generation.Utils;
+﻿using HsmmErrorSources.Generation.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Models
+namespace HsmmErrorSources.Generation.Models
 {
-    class HiddenSemiMarkovFergusonModel : IHiddenSemiMarkovModel
+    public class HsmFergusonModel : IHsmModel
     {
         private double[,] a;
         /// <summary>
@@ -73,6 +73,5 @@ namespace HssmErrorSources.Generation.Models
         {
             get { return b.GetLength(0); }
         }
-
     }
 }

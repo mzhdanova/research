@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HssmErrorSources.Generation.Random.RC4;
+using HsmmErrorSources.Generation.Random.RC4;
 
-namespace HssmErrorSources.Generation.Random
+namespace HsmmErrorSources.Generation.Random
 {
-    class RC4PRNGenerator: IPseudoRandomNumberGenerator
+    public class RC4PRNGenerator: IPseudoRandomNumberGenerator
     {
         private static RC4_PRNG rc4_prng = new RC4_PRNG();
         public double GetValue()

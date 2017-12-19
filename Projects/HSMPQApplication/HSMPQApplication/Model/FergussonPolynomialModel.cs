@@ -29,12 +29,12 @@ namespace HSMPQApplication.Model
         public FergussonPolynomialModel(double[] uA, double[] uB,
             double[] uF, int[] fA, int[] fB, int[] fF)
         {
-            this.fA = fA;
-            this.fB = fB;
-            this.fF = fF;
-            this.uA = uA;
-            this.uB = uB;
-            this.uF = uF;
+            //this.fA = fA;
+            //this.fB = fB;
+            //this.fF = fF;
+            //this.uA = uA;
+            //this.uB = uB;
+            //this.uF = uF;
         }
  /*       public int[] generate(int n)
         {
@@ -59,6 +59,7 @@ namespace HSMPQApplication.Model
                     
                 }
             }
+            return 0;
         }
 
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Models
+namespace HsmmErrorSources.Generation.Models
 {
-    interface IHiddenSemiMarkovModel
+    public interface IHsmModel
     {
     }
 }

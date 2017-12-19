@@ -1,26 +1,26 @@
-﻿using HssmErrorSources.Generation.Models;
-using HssmErrorSources.Generation.Random;
-using HssmErrorSources.Generation.Utils;
+﻿using HsmmErrorSources.Generation.Models;
+using HsmmErrorSources.Generation.Random;
+using HsmmErrorSources.Generation.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Generators
+namespace HsmmErrorSources.Generation.Generators
 {
-    class HiddenSemiMarkovFergusonModelGenerator : IGenerator
+    public class HsmFergusonModelGenerator : IGenerator
     {
-        private HiddenSemiMarkovFergusonModel model;
+        private HsmFergusonModel model;
         private ProbabilityHandler probabilityHandler;
 
-        public HiddenSemiMarkovFergusonModelGenerator(HiddenSemiMarkovFergusonModel model, IPseudoRandomNumberGenerator pRNGenerator)
+        public HsmFergusonModelGenerator(HsmFergusonModel model, IPseudoRandomNumberGenerator pRNGenerator)
         {
             this.model = model;
             this.probabilityHandler = new ProbabilityHandler(pRNGenerator);
         }
 
-        public List<int> Generate(int sequenceLength)
+        public IList<int> Generate(int sequenceLength)
         {
             List<int> result = new List<int>(sequenceLength);
 
@@ -44,7 +44,7 @@ namespace HssmErrorSources.Generation.Generators
             return result;
         }
 
-        public List<int> GenerateWord(int currentState, int currentPeriod, int symbolNumber)
+        private List<int> GenerateWord(int currentState, int currentPeriod, int symbolNumber)
         {
             List<int> result = new List<int>();
 
@@ -61,7 +61,7 @@ namespace HssmErrorSources.Generation.Generators
         /// <param name="currentState">current state index. If set to null then next state is calculated
         /// based on the initial state distribution Pi</param>
         /// <returns>next state of the model</returns>
-        public int GetNextState(int? currentState)
+        private int GetNextState(int? currentState)
         {
             if (currentState == null)
             {
@@ -74,13 +74,13 @@ namespace HssmErrorSources.Generation.Generators
             }
         }
 
-        public int GetCurrentPeriod(int currentState)
+        private int GetCurrentPeriod(int currentState)
         {
             double[] periodDistribution = MatrixUtils.GetRow(model.F, currentState);
             return probabilityHandler.RealizeProbability(periodDistribution);
         }
 
-        public int GetCurrentWordLength(int currentPeriod, int symbolsNumberToGenerate)
+        private int GetCurrentWordLength(int currentPeriod, int symbolsNumberToGenerate)
         {
             return Math.Min(currentPeriod, symbolsNumberToGenerate);
         }

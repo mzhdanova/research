@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HssmErrorSources.Generation.Random
+namespace HsmmErrorSources.Generation.Random
 {
-    class StandartPRNGenerator: IPseudoRandomNumberGenerator
+    public class StandartPRNGenerator: IPseudoRandomNumberGenerator
     {
         private static System.Random random = new System.Random(Convert.ToInt32(DateTime.Now.Millisecond));
-        double GetValue()
+        public double GetValue()
         {
             return (double)random.NextDouble(); 
         }
