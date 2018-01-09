@@ -55,6 +55,7 @@
     <Compile Include="Random\IPseudoRandomNumberGenerator.cs" />
     <Compile Include="Utils\MatrixUtils.cs" />
     <Compile Include="Utils\ProbabilityHandler.cs" />
+    <Compile Include="Validators\HsmQPModelValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
   </ItemGroup>
   <ItemGroup />

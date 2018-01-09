@@ -47,8 +47,7 @@ namespace HsmmErrorSources.Generation.Generators
         private List<int> GenerateWord(int currentState, int currentPeriod, int symbolNumber)
         {
             List<int> result = new List<int>();
-            double[] rho = model.Rho[currentState];
-            double[] errorDistribution = ScaleModelErrorDistribution(rho, rho.Length, currentPeriod);
+            double[] errorDistribution = GenerateErrorDistribution(currentState, currentPeriod);
 
             double[] symbolDistribution = MatrixUtils.GetRow(model.B, currentState);
 
@@ -71,17 +70,19 @@ namespace HsmmErrorSources.Generation.Generators
         /// </summary>
         /// <param name="currentState">current state index. </param>
         /// <param name="currentPeriod">curreny period length</param>
-        /// <returns>next state of the model</returns>
+        /// <returns>probabilities of error inside the current period (index stands for point in the period)</returns>
         private double[] GenerateErrorDistribution(int currentState, int currentPeriod)
         {
-            int modelSegmentLength = model.Rho[currentState].Length;
+            double[] rho = model.Rho[currentState];
+            double per = model.Per[currentState];
+            int modelSegmentLength = rho.Length;
 
-            double[] result = new double[currentPeriod];//вероятность ошибки в момент j
-            double[] Phi = ScaleModelErrorDistribution(model.Rho[currentState], modelSegmentLength, currentPeriod);
+            double[] result = new double[currentPeriod];
+            double[] phi = ScaleModelErrorDistribution(rho, modelSegmentLength, currentPeriod);
 
             for (int j = 0; j < currentPeriod; j++)
             {
-                result[j] = Phi[j] * model.Per[currentState] * currentPeriod;
+                result[j] = phi[j] * per * currentPeriod;
             }
             return result;
         }
