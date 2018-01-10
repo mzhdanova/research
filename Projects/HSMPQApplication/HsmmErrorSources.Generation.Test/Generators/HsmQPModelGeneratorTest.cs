@@ -37,9 +37,9 @@ namespace HsmmErrorSources.Generation.Test.Generators
             double[] pi = { 1, 0 };
             double[,] f = { { 0, 1 }, { 0, 1 } };
             double[,] b = { { 1, 0 }, { 0, 1 } };
-            double[][]rho = 
+            //double[][]rho = {} 
 
-            HsmFergusonModel model = new HsmFergusonModel();
+            HsmQPModel model = new HsmQPModel();
             model.A = a;
             model.B = b;
             model.F = f;

@@ -220,7 +220,6 @@ namespace HMMQPN_Model
                             if ((adaptance == 1) && (t <= 1)) adaptance = 1; else { adaptance = 0; break; };
                         }
                         if (adaptance == 0) break;
-
                     }
                     #endregion Проверка условий адаптированности
                     #region Проверка условий согласования

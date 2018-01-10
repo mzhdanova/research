@@ -35,7 +35,7 @@ namespace HsmmErrorSources.Generation.Models
 
         private double[] pi;
         /// <summary>
-        /// Initial state probability distribution(n)
+        /// Initial state probability distribution (n)
         /// </summary>
         public double[] Pi
         {
