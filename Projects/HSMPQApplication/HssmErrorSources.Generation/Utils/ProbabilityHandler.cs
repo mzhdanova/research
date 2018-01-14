@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HsmmErrorSources.Generation.Utils
 {
-    class ProbabilityHandler
+    public class ProbabilityHandler
     {
         private IPseudoRandomNumberGenerator generator;
         public ProbabilityHandler(IPseudoRandomNumberGenerator generator)

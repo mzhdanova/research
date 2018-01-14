@@ -39,12 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generators\AbstractHsmModelGenerator.cs" />
     <Compile Include="Generators\HsmFergusonModelGenerator.cs" />
     <Compile Include="Generators\HsmQPModelGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
+    <Compile Include="Models\AbstractHsmModel.cs" />
     <Compile Include="Models\HsmFergusonModel.cs" />
     <Compile Include="Models\HsmQPModel.cs" />
     <Compile Include="Models\IHsmModel.cs" />
+    <Compile Include="Models\Qp\QpUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Random\RC4PRNGenerator.cs" />
     <Compile Include="Random\Rc4\RC4_PRNG.cs" />
@@ -55,6 +58,8 @@
     <Compile Include="Random\IPseudoRandomNumberGenerator.cs" />
     <Compile Include="Utils\MatrixUtils.cs" />
     <Compile Include="Utils\ProbabilityHandler.cs" />
+    <Compile Include="Validators\AbstractHsmModelValidator.cs" />
+    <Compile Include="Validators\HsmFergusonModelValidator.cs" />
     <Compile Include="Validators\HsmQPModelValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
   </ItemGroup>
