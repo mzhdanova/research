@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HsmmErrorSources.Generation.Models.Qp
+namespace HsmmErrorSources.Models.Models.Qp
 {
-    class QpUtils
+    public class QpUtils
     {
         /// <summary>
         /// Calculates vector of probabilites of error locations based on scaling algorithm for QP-models

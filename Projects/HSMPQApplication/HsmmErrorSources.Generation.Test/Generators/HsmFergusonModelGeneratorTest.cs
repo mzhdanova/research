@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HsmmErrorSources.Generation.Generators;
-using HsmmErrorSources.Generation.Models;
+using HsmmErrorSources.Models.Models;
 using HsmmErrorSources.Generation.Random;
 using System.Collections.Generic;
 

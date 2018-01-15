@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HsmmErrorSources.Models.Models
 {
-    class HiddenSemiMarkovQPModel
+    public interface IHsmModel
     {
     }
 }

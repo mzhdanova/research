@@ -1,5 +1,5 @@
-﻿using HsmmErrorSources.Generation.Models;
-using HsmmErrorSources.Generation.Models.Qp;
+﻿using HsmmErrorSources.Models.Models;
+using HsmmErrorSources.Models.Models.Qp;
 using HsmmErrorSources.Generation.Random;
 using HsmmErrorSources.Generation.Utils;
 using System;

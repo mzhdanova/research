@@ -1,4 +1,4 @@
-﻿using HsmmErrorSources.Generation.Models;
+﻿using HsmmErrorSources.Models.Models;
 using HsmmErrorSources.Generation.Random;
 using HsmmErrorSources.Generation.Utils;
 using System;

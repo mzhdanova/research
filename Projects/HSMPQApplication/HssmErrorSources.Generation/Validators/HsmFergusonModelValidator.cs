@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HsmmErrorSources.Generation.Models;
+using HsmmErrorSources.Models.Models;
 
 namespace HsmmErrorSources.Generation.Validators
 {
