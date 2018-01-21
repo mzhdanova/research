@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace HsmmErrorSources.Models.Models
 {
+    [DataContract]
     public abstract class AbstractHsmModel : IHsmModel
     {
         private double[,] a;
         /// <summary>
         /// Transition Probability Markov Matrix (nxn)
         /// </summary>
+
+        [DataMember]
         public double[,] A
         {
             get { return a; }
@@ -24,6 +30,7 @@ namespace HsmmErrorSources.Models.Models
         /// <summary>
         /// Symbol Probability Matrix (qxn)
         /// </summary>
+        [DataMember]
         public double[,] B
         {
             get { return b; }
@@ -37,6 +44,7 @@ namespace HsmmErrorSources.Models.Models
         /// <summary>
         /// Initial state probability distribution(n)
         /// </summary>
+        [DataMember]
         public double[] Pi
         {
             get { return pi; }
@@ -50,6 +58,7 @@ namespace HsmmErrorSources.Models.Models
         /// <summary>
         /// Quasi-periods' lengths distribution (Dmax x n)
         /// </summary>
+        [DataMember]
         public double[,] F
         {
             get { return f; }
@@ -61,6 +70,7 @@ namespace HsmmErrorSources.Models.Models
         /// <summary>
         /// Number of model states
         /// </summary>
+
         public int N
         {
             get { return a.GetLength(0); }
