@@ -13,9 +13,9 @@ namespace HsmmErrorSources.Generation.Test.Generators
         [TestMethod]
         public void TestSimpleGenerate()
         {
-            HsmQPModel model = createSimpleModel();
+            HsmQpModel model = createSimpleModel();
             IPseudoRandomNumberGenerator randomizer = new StandartPRNGenerator();
-            HsmQPModelGenerator generator = new HsmQPModelGenerator(model, randomizer);
+            HsmQpModelGenerator generator = new HsmQpModelGenerator(model, randomizer);
             IList<int> result = generator.Generate(10);
             Assert.AreEqual(10, result.Count);
             foreach (int i in result)
@@ -31,7 +31,7 @@ namespace HsmmErrorSources.Generation.Test.Generators
             }
         }
 
-        private HsmQPModel createSimpleModel()
+        private HsmQpModel createSimpleModel()
         {
             double[,] a = { { 0, 1 }, { 1, 0 } };
             double[] pi = { 1, 0 };
@@ -39,7 +39,7 @@ namespace HsmmErrorSources.Generation.Test.Generators
             double[,] b = { { 1, 0 }, { 0, 1 } };
             //double[][]rho = {} 
 
-            HsmQPModel model = new HsmQPModel();
+            HsmQpModel model = new HsmQpModel();
             model.A = a;
             model.B = b;
             model.F = f;

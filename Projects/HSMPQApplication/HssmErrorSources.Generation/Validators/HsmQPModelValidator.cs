@@ -8,9 +8,9 @@ using HsmmErrorSources.Generation.Utils;
 
 namespace HsmmErrorSources.Generation.Validators
 {
-    public class HsmQPModelValidator : AbstractHsmModelValidator<HsmQPModel>
+    public class HsmQPModelValidator : AbstractHsmModelValidator<HsmQpModel>
     {
-        public HsmQPModelValidator(HsmQPModel model) : base(model) { }
+        public HsmQPModelValidator(HsmQpModel model) : base(model) { }
 
         public override void Validate()
         {

@@ -4,15 +4,12 @@ using HsmmErrorSources.Generation.Random;
 using HsmmErrorSources.Generation.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HsmmErrorSources.Generation.Generators
 {
-    public class HsmQPModelGenerator : AbstractHsmModelGenerator<HsmQPModel>
+    public class HsmQpModelGenerator : AbstractHsmModelGenerator<HsmQpModel>
     {
-        public HsmQPModelGenerator(HsmQPModel model, IPseudoRandomNumberGenerator pRNGenerator) : base(model, pRNGenerator) { }
+        public HsmQpModelGenerator(HsmQpModel model, IPseudoRandomNumberGenerator pRnGenerator) : base(model, pRnGenerator) { }
         protected override List<int> GenerateWord(int currentState, int currentPeriod, int symbolNumber)
         {
             List<int> result = new List<int>();

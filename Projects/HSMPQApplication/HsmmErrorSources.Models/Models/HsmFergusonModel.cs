@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace HsmmErrorSources.Models.Models
 {
-    [DataContract]
     public class HsmFergusonModel : AbstractHsmModel
     {
     }
