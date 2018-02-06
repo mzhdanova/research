@@ -4,6 +4,7 @@ namespace HsmmErrorSources.Models.Models
 {
     public abstract class AbstractHsmModel : IHsmModel
     {
+
         /// <summary>
         /// Transition Probability Markov Matrix (nxn)
         /// </summary>
@@ -42,5 +43,7 @@ namespace HsmmErrorSources.Models.Models
         {
             get { return B.GetLength(0); }
         }
+
+        public abstract ModelType GetModelType();
     }
 }

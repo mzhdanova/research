@@ -9,5 +9,9 @@ namespace HsmmErrorSources.Models.Models
 {
     public class HsmFergusonModel : AbstractHsmModel
     {
+        public override ModelType GetModelType()
+        {
+            return ModelType.HsmFergusonModel;
+        }
     }
 }

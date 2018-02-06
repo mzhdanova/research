@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HsmmErrorSources.Models.Models
+namespace HsmmErrorSources.Models.Representations
 {
-    public interface IHsmModel
+    public interface IRepresentation
     {
-        ModelType GetModelType();
     }
 }

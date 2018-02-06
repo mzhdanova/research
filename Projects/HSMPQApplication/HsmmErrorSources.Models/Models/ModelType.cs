@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HsmmErrorSources.Models.Models
 {
-    public interface IHsmModel
+    public enum ModelType
     {
-        ModelType GetModelType();
+        HsmFergusonModel,
+        HsmQpModel
     }
 }

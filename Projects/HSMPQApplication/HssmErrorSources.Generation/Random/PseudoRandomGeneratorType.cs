@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HsmmErrorSources.Models.Models
+namespace HsmmErrorSources.Generation.Random
 {
-    public interface IHsmModel
+    public enum PseudoRandomGeneratorType
     {
-        ModelType GetModelType();
+        Rc4,
+        Standart,
+        Security
     }
 }

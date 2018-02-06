@@ -12,5 +12,10 @@
         /// Vector of length n containing average error probabilities in states
         /// </summary>
         public double[] Per { get; set; }
+
+        public override ModelType GetModelType()
+        {
+            return ModelType.HsmQpModel;
+        }
     }
 }

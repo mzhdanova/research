@@ -49,8 +49,11 @@
     <Compile Include="Models\HsmFergusonModel.cs" />
     <Compile Include="Models\HsmQPModel.cs" />
     <Compile Include="Models\IHsmModel.cs" />
+    <Compile Include="Models\JsonModelFactory.cs" />
+    <Compile Include="Models\ModelType.cs" />
     <Compile Include="Models\Qp\QpUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Representations\IRepresentation.cs" />
     <Compile Include="Representations\JsonRepresentation.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HsmmErrorSources.Generation.Validators
 {
-    interface IValidator
+    public interface IValidator
     {
         void Validate();
 
