@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HsmmErrorSources.Models.Representations;
 
 namespace HsmmErrorSources.Models.Models
@@ -12,15 +8,20 @@ namespace HsmmErrorSources.Models.Models
         public IHsmModel CreateModel(String json)
         {
             ModelType modelType = GetModelType(json);
-            JsonRepresentation<AbstractHsmModel> jsonRepresentation;
             switch (modelType)
             {
                 case ModelType.HsmFergusonModel:
                 {
-                    jsonRepresentation = new JsonRepresentation<HsmFergusonModel>();
+                    var jsonRepresentation = new JsonRepresentation<HsmFergusonModel>();
+                    return jsonRepresentation.Deserialize(json);
                 }
                 case ModelType.HsmQpModel: {
-                    jsonRepresentation = new JsonRepresentation<HsmQpModel>();
+                    var jsonRepresentation = new JsonRepresentation<HsmQpModel>();
+                    return jsonRepresentation.Deserialize(json);
+                }
+                default:
+                {
+                    throw new NotImplementedException("Model Type is not supported");
                 }
             }
         }

@@ -1,23 +1,21 @@
 ﻿using System;
-using HsmmErrorSources.Generation.Random;
 using HsmmErrorSources.Models.Models;
 
-namespace HsmmErrorSources.Generation.Generators
+namespace HsmmErrorSources.Generation.Validators
 {
-    public class HsmmGeneratorFactory
+    public class HsmmValidatorFactory
     {
-        public IGenerator CreateModelGenerator(AbstractHsmModel model,
-            IPseudoRandomNumberGenerator pRNGenerator)
+        public IValidator CreateModelValidator(IHsmModel model)
         {
             switch (model.GetModelType())
             {
                 case ModelType.HsmFergusonModel:
                 {
-                    return new HsmFergusonModelGenerator((HsmFergusonModel) model, pRNGenerator);
+                    return new HsmFergusonModelValidator((HsmFergusonModel) model);
                 }
                 case ModelType.HsmQpModel:
                 {
-                    return new HsmQpModelGenerator((HsmQpModel) model, pRNGenerator);
+                    return new HsmQPModelValidator((HsmQpModel) model);
                 }
                 default:
                 {

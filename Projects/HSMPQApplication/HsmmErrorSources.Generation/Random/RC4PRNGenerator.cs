@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HsmmErrorSources.Generation.Random.RC4;
 
 namespace HsmmErrorSources.Generation.Random
 {
