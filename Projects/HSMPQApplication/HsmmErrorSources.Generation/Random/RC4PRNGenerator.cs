@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HsmmErrorSources.Generation.Random.RC4;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

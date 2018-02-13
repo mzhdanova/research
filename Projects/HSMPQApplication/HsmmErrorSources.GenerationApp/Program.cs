@@ -43,7 +43,15 @@ namespace HsmmErrorSources.GenerationApp
                 outputPath = Console.ReadLine();
             }
 
-            //GenerationManager manager
+            GenerationManager manager = new GenerationManager(prngMode);
+            GenerationResult result = manager.Generate(jsonModel, sequenceLength);
+            if (result.HasErrors())
+            {
+                Console.WriteLine("Errors:" + result.Errors);
+            }
+            else {
+                Console.WriteLine("Result:" + result.Value);
+            }
 
         }
 
