@@ -44,6 +44,6 @@ namespace HsmmErrorSources.Models.Models
             get { return B.GetLength(0); }
         }
 
-        public abstract ModelType GetModelType();
+        public abstract ModelType Type { get; }
     }
 }

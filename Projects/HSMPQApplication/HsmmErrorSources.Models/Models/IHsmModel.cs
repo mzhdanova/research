@@ -8,6 +8,6 @@ namespace HsmmErrorSources.Models.Models
 {
     public interface IHsmModel
     {
-        ModelType GetModelType();
+        ModelType Type { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace HsmmErrorSources.GenerationApp.Utils
     {
         public static bool ParseBoolean(string input)
         {
-            return input.ToLower() == "yes";
+            return input.ToLower() == "y";
         }
 
         public static PseudoRandomGeneratorType ParsePseudoRandomGeneratorType(string input)
@@ -19,7 +19,7 @@ namespace HsmmErrorSources.GenerationApp.Utils
             int typeCode = 0;
             try
             {
-                typeCode = Convert.ToInt32(Console.ReadLine());
+                typeCode = Convert.ToInt32(input);
             }
             catch (Exception e)
             {

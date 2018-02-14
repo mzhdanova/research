@@ -9,7 +9,7 @@ namespace HsmmErrorSources.Generation.Generators
         public IGenerator CreateModelGenerator(IHsmModel model,
             IPseudoRandomNumberGenerator pRNGenerator)
         {
-            switch (model.GetModelType())
+            switch (model.Type)
             {
                 case ModelType.HsmFergusonModel:
                 {

@@ -4,14 +4,17 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace HsmmErrorSources.Models.Models
 {
     public class HsmFergusonModel : AbstractHsmModel
     {
-        public override ModelType GetModelType()
+        [JsonConverter(typeof(StringEnumConverter))]
+        public override ModelType Type
         {
-            return ModelType.HsmFergusonModel;
+            get { return ModelType.HsmFergusonModel; }
         }
     }
 }

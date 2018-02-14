@@ -26,6 +26,7 @@ namespace HsmmErrorSources.Models.Test.Representations
             Assert.IsNotNull(serializedModel);
             HsmFergusonModel deserializedModel = jsonSerializer.Deserialize(serializedModel);
             Assert.IsNotNull(deserializedModel);
+            Assert.AreEqual(initialModel.Type, deserializedModel.Type);
             Assert.AreEqual(initialModel.N, deserializedModel.N);
             Assert.AreEqual(initialModel.Q, deserializedModel.Q);
             CollectionAssert.AreEqual(initialModel.A, deserializedModel.A);
@@ -65,6 +66,7 @@ namespace HsmmErrorSources.Models.Test.Representations
             Assert.IsNotNull(serializedModel);
             HsmQpModel deserializedModel = jsonSerializer.Deserialize(serializedModel);
             Assert.IsNotNull(deserializedModel);
+            Assert.AreEqual(initialModel.Type, deserializedModel.Type);
             Assert.AreEqual(initialModel.N, deserializedModel.N);
             Assert.AreEqual(initialModel.Q, deserializedModel.Q);
             CollectionAssert.AreEqual(initialModel.A, deserializedModel.A);

@@ -7,7 +7,7 @@ namespace HsmmErrorSources.Generation.Validators
     {
         public IValidator CreateModelValidator(IHsmModel model)
         {
-            switch (model.GetModelType())
+            switch (model.Type)
             {
                 case ModelType.HsmFergusonModel:
                 {
