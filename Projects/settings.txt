@@ -1,4 +1,6 @@
-d:\science\research\Projects\HsmQpModel.json
-d:\science\research\Projects\out.txt
-d:\science\research\Projects\HsmFergusonModel.json
-d:\science\research\Projects\out2.txt
+k:\git\research\Projects\HsmQpModel.json
+k:\git\research\Projects\out.txt
+k:\git\research\Projects\HsmFergusonModel.json
+k:\git\research\Projects\out2.txt
+
+k:\git\research\Projects\HsmQpModel2.json
