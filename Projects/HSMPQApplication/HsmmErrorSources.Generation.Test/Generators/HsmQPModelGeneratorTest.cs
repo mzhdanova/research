@@ -14,7 +14,7 @@ namespace HsmmErrorSources.Generation.Test.Generators
         public void TestSimpleGenerate()
         {
             HsmQpModel model = createSimpleModel();
-            IPseudoRandomNumberGenerator randomizer = new StandartPRNGenerator();
+            IPseudoRandomNumberGenerator randomizer = new StandartPrnGenerator();
             HsmQpModelGenerator generator = new HsmQpModelGenerator(model, randomizer);
             IList<int> result = generator.Generate(10);
             Assert.AreEqual(10, result.Count);

@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmmErrorSources.Models.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmmErrorSources.GenerationApp", "HsmmErrorSources.GenerationApp\HsmmErrorSources.GenerationApp.csproj", "{AB6150E2-9367-4C06-86F1-4F5EF5CD5C5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmmErrorSources.Analysis", "HsmmErrorSources.Analysis\HsmmErrorSources.Analysis.csproj", "{2C02DB82-E845-418E-8307-6AEFE1363DEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,16 @@ Global
 		{AB6150E2-9367-4C06-86F1-4F5EF5CD5C5E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AB6150E2-9367-4C06-86F1-4F5EF5CD5C5E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AB6150E2-9367-4C06-86F1-4F5EF5CD5C5E}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2C02DB82-E845-418E-8307-6AEFE1363DEF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

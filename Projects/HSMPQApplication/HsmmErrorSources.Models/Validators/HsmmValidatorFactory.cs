@@ -1,7 +1,7 @@
 ﻿using System;
 using HsmmErrorSources.Models.Models;
 
-namespace HsmmErrorSources.Generation.Validators
+namespace HsmmErrorSources.Models.Validators
 {
     public class HsmmValidatorFactory
     {
@@ -15,7 +15,7 @@ namespace HsmmErrorSources.Generation.Validators
                 }
                 case ModelType.HsmQpModel:
                 {
-                    return new HsmQPModelValidator((HsmQpModel) model);
+                    return new HsmQpModelValidator((HsmQpModel) model);
                 }
                 default:
                 {

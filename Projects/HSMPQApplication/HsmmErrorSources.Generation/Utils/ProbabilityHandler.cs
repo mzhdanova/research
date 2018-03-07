@@ -1,9 +1,5 @@
 ﻿using HsmmErrorSources.Generation.Random;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HsmmErrorSources.Models.Utils;
 
 namespace HsmmErrorSources.Generation.Utils
 {
@@ -35,7 +31,7 @@ namespace HsmmErrorSources.Generation.Utils
             {
                 for (int i = 1; i < n; i++)
                     if (x >= aux[i - 1] && x < aux[i]) index = i;
-            };
+            }
             if (x == aux[n - 1]) { index = n - 1; }
             return index;
         }

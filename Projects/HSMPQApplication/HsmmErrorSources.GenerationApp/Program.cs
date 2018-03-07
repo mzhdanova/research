@@ -12,7 +12,7 @@ namespace HsmmErrorSources.GenerationApp
 {
     public class Program
     {
-        private static readonly AutoResetEvent _closing = new AutoResetEvent(false);
+        private static readonly AutoResetEvent Closing = new AutoResetEvent(false);
 
         public static void Main(string[] args)
         {
@@ -73,13 +73,13 @@ namespace HsmmErrorSources.GenerationApp
             });
 
             Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
-            _closing.WaitOne();
+            Closing.WaitOne();
         }
 
         protected static void OnExit(object sender, ConsoleCancelEventArgs args)
         {
             Console.WriteLine("Exit");
-            _closing.Set();
+            Closing.Set();
         }
 
         private static string ParseModelFile(string path)

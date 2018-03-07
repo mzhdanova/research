@@ -8,15 +8,15 @@
             {
                 case PseudoRandomGeneratorType.Rc4:
                 {
-                    return new RC4PRNGenerator();
+                    return new Rc4PrnGenerator();
                 }
                 case PseudoRandomGeneratorType.Security:
                 {
-                    return new CryptoServiceRNGenerator();
+                    return new CryptoServiceRnGenerator();
                 }
                 default:
                 {
-                    return new StandartPRNGenerator();
+                    return new StandartPrnGenerator();
                 }
             }
         }

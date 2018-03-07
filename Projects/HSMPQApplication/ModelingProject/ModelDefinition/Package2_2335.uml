@@ -1,0 +1,1162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="0def1ac3-a9c0-4757-9116-1d31419daa5c"
+  name="Utils"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="d345565e-7bf5-4db4-b562-feadee0afa5a"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DHsmmErrorSources.Models.Utils"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="0fd7b3e9-28ea-47c6-871f-8c2636a27b46"
+        name="DoubleUtils"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="3e8a244a-49cc-41c0-81e8-346aedcd9894"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="49e1cf5a-7374-4379-810a-788ebae6eef5"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4874ec38-5ffd-4478-bcd4-8ebe8f41a650">
+                <propertyInstance
+                  Id="8924cdfb-f56f-4705-893e-fd21cbeedc86"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a4c2af17-0285-42cc-9bee-25e432d32cbc">
+                <propertyInstance
+                  Id="a496996b-9f35-4c2a-a245-62e967dc4b1d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f1ba66fb-be48-4ec7-97e0-6c477c897434">
+                <propertyInstance
+                  Id="3774b2c9-6dba-499c-9858-38c31a204532"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0e37b852-e6bd-4bc2-a657-c0c5119e36be">
+                <propertyInstance
+                  Id="d76c0987-2e48-4b67-8076-048b2560dc7a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f6684693-9cb4-4928-bb4a-e1fc69ab69f9">
+                <propertyInstance
+                  Id="6b9a8cca-4abd-496f-bbaa-003ee252f99e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="e9c61733-a133-4632-8aac-6eb0c4d3b049"
+            name="Epsilon"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5c40912f-0c9f-415b-92cc-65fbdd971de7"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3DEpsilon"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ffae2a61-ca92-4a2a-b4a3-0476a3dbc2af"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2b76281-ae82-4519-8819-5d63ada5d085">
+                    <propertyInstance
+                      Id="828fc5fe-d8dd-4e6f-abbb-00f6b800478a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b366850-e9cb-4946-87cc-8dd2eb6104ec">
+                    <propertyInstance
+                      Id="ccbf2fde-2d4c-4d21-847b-2dfbaebdff30"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd02ada5-851f-465b-b7bd-a4becfc848ee">
+                    <propertyInstance
+                      Id="5a8dce11-2848-4d61-9d85-29e68a6c9765"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="063e3b02-99ea-4923-84b8-3b4a27a42e6b">
+                    <propertyInstance
+                      Id="dc8b12c7-9f9f-4035-b7ae-baa246ed5d82"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="30a7bfc4-f78a-466a-83c7-e2f9aeda3943">
+                    <propertyInstance
+                      Id="92c0f9f0-3362-4bb0-9fc9-62cc245ba5d6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="1ffdbdbd-cadd-4ca5-bf61-72b52fa6560d"
+            name="AreEqual"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="ee317692-cb8c-4765-abac-e73e15062b76"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3D(Name%3DAreEqual OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7fe995b9-a3be-4b18-84be-ca39baf72785"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2265616-0af6-40ed-8ee2-11e185a6512f">
+                    <propertyInstance
+                      Id="9c2a5ac8-a1f2-4748-9b30-b6b1f5554e37"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="26049aa3-d333-4db7-b646-a101889fafc2">
+                    <propertyInstance
+                      Id="e7a9944a-d2c6-45ec-a85a-9643613df154"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="856b3dc5-63e6-494b-a68f-a54a91d2b817">
+                    <propertyInstance
+                      Id="e9af38bc-c690-4be7-b97d-beafbfe973c6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c17baba5-aae4-4042-a409-187885b9d1fb">
+                    <propertyInstance
+                      Id="68ce5932-beac-4316-9d2a-6c0ea09411d6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7fcecde5-7755-45f2-99cf-6edf34787095">
+                    <propertyInstance
+                      Id="e079c05b-57ba-4778-8313-0750d2d5ccef"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da07cb4b-b2ca-4189-85b2-8f82f197acbb">
+                    <propertyInstance
+                      Id="c6c73e09-9ec4-4cc4-9381-68762dcaf1fe"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a96d250d-91bb-4a63-968f-7f630d72b70e"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="20e1d994-119a-45cb-8abe-db22f5d99d7e"
+                  name="value1"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="fbda36f9-04a8-4935-b506-9675b505ad3e"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3D(Name%3DAreEqual OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)]) ParameterIdentifier%3Dvalue1"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c8b23eb9-ebf9-4d05-9fad-117b2aeac998"
+                  name="value2"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="dae709cd-51bf-4f4e-8f3e-224be3e4dff0"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3D(Name%3DAreEqual OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)]) ParameterIdentifier%3Dvalue2"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="61519093-db8c-44e6-ba3e-0d75f0e5f72c"
+            name="EqualsZero"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="20a79aa0-fa46-4833-9fa8-e807f38e4963"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3D(Name%3DEqualsZero OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="33e96710-7b35-42ca-826c-66de2ca95550"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50fcfb7b-65a8-48de-8008-557c5584eb5f">
+                    <propertyInstance
+                      Id="53a6d69c-3f49-4569-a46d-bdf180765c81"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c4efd72b-0950-41fa-bec2-d55b3931a2d4">
+                    <propertyInstance
+                      Id="d1c2c1bb-3c44-496c-941b-f3b58a4a6fdb"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ac08977-c03f-43d0-9738-a3a74edbfca9">
+                    <propertyInstance
+                      Id="8ef1c836-3b6f-4e58-9821-34a0537cd8b6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="022a4bde-1c91-43e9-8165-158bcc673c09">
+                    <propertyInstance
+                      Id="4c5df125-668b-42da-b853-e1b60460cf8d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a110151f-accd-49b4-bc18-c2cb03e78bbf">
+                    <propertyInstance
+                      Id="28f84073-17d3-488a-a81e-e55696c68bac"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="db162add-9179-4963-886b-75be507acdfc">
+                    <propertyInstance
+                      Id="c48dbf45-414e-4c9e-8fae-48dd81e858b6"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="28dbb118-088d-4a52-a35a-c5dcf799c270"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="22744db6-6214-44f4-8ec3-3f24e2b55096"
+                  name="value"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="8b6745b3-5003-4c64-a80d-e048bd471936"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3D(Name%3DEqualsZero OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDouble)]) ParameterIdentifier%3Dvalue"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="13b2b155-cd26-43d6-bd08-1711fa732d2f"
+            name="DoubleUtils"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8438ab8a-0c29-425a-8b38-1c556683b52d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DDoubleUtils Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="52d3b253-ba53-4f24-a7de-383d3859a4a8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a42472f8-053f-401e-8519-91c262cf21cc">
+                    <propertyInstance
+                      Id="45099f10-cff1-4c1c-80bd-895642edad79"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="af2e31e1-a2a2-4249-bf67-50fc47fc2381">
+                    <propertyInstance
+                      Id="106449b3-c172-4cf7-982b-6ee210bb0129"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d3715b4a-26c1-46d5-b637-727d791f13e7">
+                    <propertyInstance
+                      Id="58a0b58d-c965-4bfc-a26d-acb3611b0157"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0abe7d8d-14ec-4e2a-ad62-1dbfd7c0d0b9">
+                    <propertyInstance
+                      Id="00e3da0c-ed3a-42d9-9c05-10e76fc9a45c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6843712-3633-420f-aeda-5fd424ec9f3e">
+                    <propertyInstance
+                      Id="497184de-3e7e-4d40-a8ce-2af874b3aea4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="614c94c0-f17c-4241-ab6d-1083dd8351b0">
+                    <propertyInstance
+                      Id="d37623aa-ba93-4115-9cd9-6ba4aba7401a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ff4e5cc5-210a-4bf0-9c0d-a0de18affa46"
+        name="MatrixUtils"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="d0f25c08-ad21-4358-992a-a53a2609eb4d"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c629a4cf-fbc2-42fc-a25d-ade5fe1a5b24"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d4f32ee4-b7a4-4a64-910b-c4a1affa24e5">
+                <propertyInstance
+                  Id="eeeb39ce-0533-4a5f-8213-b96e87284a15"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="57cf73be-470f-466b-9895-64fc119e1089">
+                <propertyInstance
+                  Id="b615a173-ee0f-46fd-8229-431134f47ff3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fea2579e-2202-42e6-acd1-6f4fd44617c3">
+                <propertyInstance
+                  Id="142616ef-d34d-4f60-b7a6-d4fd83569e14"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b11806fb-9787-4846-964c-e35b1975db70">
+                <propertyInstance
+                  Id="a604f019-25ab-4dbf-a8b3-6c0b69025628"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="77f41131-13e8-41ad-92a6-c3ba1f6dc99d">
+                <propertyInstance
+                  Id="4234b268-9fd9-4087-8ca8-c42b5f3a9938"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="9f23bb7c-8c1f-4bed-8e26-94407862574f"
+            name="GetColumn"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="092c6fba-1c1e-416f-a10e-471c09a86e05"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DGetColumn OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="27bd9921-f1e6-4d7a-b9eb-fb3125793d2e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="058b9a41-f9a1-48c5-b2eb-ac326d3d982e">
+                    <propertyInstance
+                      Id="f3dc9c0e-1f4e-4d2b-a40b-b8d09c5aeb76"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="59ea4a60-efec-4d45-b88d-a6c7cdbd3464">
+                    <propertyInstance
+                      Id="a25ba72a-ca5e-4dbc-9761-cd79a780ade3"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ddb5c04b-9fb5-4719-a378-30e0c8e8a56c">
+                    <propertyInstance
+                      Id="3e2edc0b-a2e7-4771-aafb-b3aa8122b4cd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39534015-d6c8-4f38-95eb-5f1177cb3b49">
+                    <propertyInstance
+                      Id="a7943361-f585-4db5-b69f-68988b9fef07"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="131e41ed-38dd-4be3-b27b-c5cfad82999d">
+                    <propertyInstance
+                      Id="f56dae2a-c97d-483e-bc6c-e5d30d402124"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da6dba60-95fe-429f-896e-7b64d0738393">
+                    <propertyInstance
+                      Id="b1a1adb8-fb9c-4808-9668-29e92e662df5"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="884057c0-6551-4a12-bd08-d0469b374f1b"
+                  direction="Return"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="fd8da49b-317d-4e28-ab97-7b7e305e614f"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="eddc94c6-c6c2-4344-8436-7cdd0749b607"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="297aa43d-7f59-4fa1-9b18-b427463cfcf2"
+                  name="a"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="6a7ace27-387c-435a-9a66-c3b9ef29f9fd"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DGetColumn OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Da"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e498e6c8-000f-49be-8423-d06dd7f65835"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="3844d313-dbab-43cb-9e77-dd9bd17122d2"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3a6ed7e4-380a-4849-a618-333da449a916"
+                  name="colNumber"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="da037806-fc20-4624-bce8-884051713c5d"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DGetColumn OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3DcolNumber"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2b0f8116-a320-42a3-a4c8-c4b9d375c02d"
+            name="GetRow"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="92cd5023-2ace-4c3a-9676-8861fc7ac981"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DGetRow OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="22d9c37b-c115-4920-8c7b-a482ca7db81b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41d3e830-e78a-4824-9291-9346f023172d">
+                    <propertyInstance
+                      Id="b7b57a1f-6d28-4fe5-a3fd-b712cfc2cf88"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f67398e1-a1df-4eac-beca-853801bfcccf">
+                    <propertyInstance
+                      Id="a94aceb7-4a22-4826-b277-76a320969cb1"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f435be2a-f02b-4631-9360-bdb3a6713bb6">
+                    <propertyInstance
+                      Id="d035b864-58a0-4ff3-a363-db76fbd10179"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="afeab74c-2a03-4fa7-9142-62d5266305c1">
+                    <propertyInstance
+                      Id="6257a9f6-68f0-4620-9ad6-ed6120335a89"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c243d1cc-eb6b-47b9-a8ff-044f2b18be84">
+                    <propertyInstance
+                      Id="ac338d91-20aa-4381-a929-562a99c96039"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f79ffbc1-cb9b-4e46-9bcc-10e13dca471f">
+                    <propertyInstance
+                      Id="9b3a5eaf-3f42-4e13-9260-993316b389e8"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fc486662-7e3b-4900-9096-56753e9a20b6"
+                  direction="Return"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="edb9116d-c2c5-4a6e-a0ff-2f5fe03253f0"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c3c2f878-5b75-44e5-b0d3-8de01daa8917"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f5d64d86-cc61-473a-8374-f6663a35d018"
+                  name="a"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="f0b07ce7-ec16-4917-8595-49d4f0b0e246"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DGetRow OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Da"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1919a6ff-a3bf-4fd6-891f-830395fe32f0"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="63402b5f-4d24-4f0f-8bca-2d31e60d2154"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="deebdde5-a956-4367-a929-030143e90c46"
+                  name="rowNumber"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="b5a278bc-a160-41a2-a7ad-7753edc2d203"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DGetRow OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3DrowNumber"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="77a4af52-5fe1-4a72-bbec-ea0e4844944f"
+            name="IsStochasticByColumns"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="29deb1e6-b997-46ae-9b50-3e0e36b3d112"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DIsStochasticByColumns OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ae20eff7-af38-4e47-811a-40188f569270"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36e53602-dff1-4a5e-85ad-6f6229495fb5">
+                    <propertyInstance
+                      Id="e4a7a2e9-f9ac-4177-9105-f17f79f914b9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e7a9cd67-6a1a-4863-98e6-a7a8e9d825ee">
+                    <propertyInstance
+                      Id="a07a8cba-0b65-42c9-ac92-6127cff1aac5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d5ba6957-6efc-4fcc-b610-a5a82c618e35">
+                    <propertyInstance
+                      Id="7afe4351-9eb0-45d4-bf2f-d6fefb8c3a9e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="baf8dbed-2115-4ef2-a8dd-f5eddbe525f0">
+                    <propertyInstance
+                      Id="2debdbf7-d24a-4b18-b9ea-e663b9dd35a0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="91879448-cdbd-4ec3-aefb-1e72895ffcee">
+                    <propertyInstance
+                      Id="cf0238ad-6457-46f5-8651-084810739018"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02b25ec4-084d-4593-a3c4-7fae36bd3276">
+                    <propertyInstance
+                      Id="a5b90141-dcb0-495e-8fbf-1f541a05c08b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f9e7e0b5-97f4-4d1c-b2af-5a0c6a9230fd"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="74b44c1b-e870-436e-b5fa-ae081df707f5"
+                  name="matrix"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="f43b310e-03ca-45ac-a5b0-b6fdcd4ed98f"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DIsStochasticByColumns OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))]) ParameterIdentifier%3Dmatrix"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="57033e38-fec4-4e65-9c6d-4a6f5f69bef4"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9b715442-7805-474a-b6b4-9836001b04a3"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cc841a5a-bd5e-41f9-bee7-8ae2cdca2240"
+            name="IsStochasticByRows"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="4a8fd4c2-b525-496f-acb0-8dcdae40734f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DIsStochasticByRows OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ea0d2932-37f7-412d-828f-34327e5fdfcb"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9cab3491-ada7-4e4f-a61c-2dcf10941787">
+                    <propertyInstance
+                      Id="0041b1d0-73c8-47b4-8406-9a747d9146ff"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5f3876d4-d758-4d61-bf30-25abd51bce5a">
+                    <propertyInstance
+                      Id="ea403a5f-7eaf-46c7-93ad-c63f2f7ca977"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="34d2f29d-190e-45d5-b07d-6a699ccabcc5">
+                    <propertyInstance
+                      Id="de1c09f3-b66e-445f-b542-a59ef917c806"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9dbc2286-85a7-46f7-861f-f561531040f4">
+                    <propertyInstance
+                      Id="1e70f5c2-bbc1-4da2-ba98-d8d74b770b1b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e239cd93-08bd-4c53-8600-8dafedc0ffd1">
+                    <propertyInstance
+                      Id="93e2728f-b5cc-4f95-81aa-bc52c9369289"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38e027fd-9790-4c33-8ad1-2ab3ef02aa5c">
+                    <propertyInstance
+                      Id="becf786a-8f65-48ec-971a-9340bcd22d82"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4084ce1e-1c0d-4adf-9f99-0a0df713264a"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5710c4ba-07ba-4643-8718-d24aca669f05"
+                  name="matrix"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="302ec97b-8f24-43b8-895b-cd58d76ec507"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DIsStochasticByRows OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))]) ParameterIdentifier%3Dmatrix"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="59b35bc6-0724-4290-9995-6bedc83114b5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7d7e1c20-1d27-45ed-8a84-50b90a09f392"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="be5d2258-5228-46c5-a3e7-70f4e7f62a01"
+            name="IsTwiceStochastic"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="c484d376-1979-47ad-8042-5131a5fb3631"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DIsTwiceStochastic OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d9f22c32-90dd-47bd-b591-e24435d9044e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d9270b8f-9e99-4de8-a980-1b724df50a26">
+                    <propertyInstance
+                      Id="40215734-ad37-4985-b425-ad5fa8746f52"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="707786b5-0be4-47bf-a9eb-f3f183640957">
+                    <propertyInstance
+                      Id="6afa0b6d-688b-491c-a598-8e032f4d3fd6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b370b327-2bbc-4e85-96c4-ac7587dc24f4">
+                    <propertyInstance
+                      Id="95a19736-abae-4262-bb34-a9d8845650aa"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d18506d6-1c27-4d9f-b929-82d905006c38">
+                    <propertyInstance
+                      Id="94b33927-4fb3-4454-a50e-f393bb125f2d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="612ac248-1171-4aca-9c59-026ecc2efe9f">
+                    <propertyInstance
+                      Id="29dbdaca-c269-45f6-96b3-29a2c3c8fd14"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57231a7f-d98a-400a-b839-2c50b1078952">
+                    <propertyInstance
+                      Id="385efcbc-9aaa-42d4-8259-46b1a9a4728b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e9fa53d7-02c5-4527-93d2-a6933e9c29be"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ecb6cbe8-2ff9-495d-902c-3d863ab3e321"
+                  name="matrix"
+                  direction="In"
+                  isOrdered="true">
+                  <referencesInternal>
+                    <reference
+                      Id="9f5ba5f7-e522-4168-8837-b667948fde03"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D(Name%3DIsTwiceStochastic OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DDouble ArrayRank%3D2 ParentType%3DDouble))]) ParameterIdentifier%3Dmatrix"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <lowerValueInternal>
+                    <literalString
+                      Id="aa2d8992-0ffd-4fde-b920-d2ad1fcdfe6a"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e909fd52-1e97-4c43-8352-d35cce0131cf"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1276baa4-3bac-46c2-9cae-99427d64e206"
+                      LastKnownName="Double"
+                      LastKnownLocation="Package3_2334.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="3278de12-5f52-4199-af21-ed965ec23ba0"
+            name="MatrixUtils"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="c791d82f-da71-4c13-b4ee-a95a6279cb38"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fscience%2Fresearch%2FProjects%2FHSMPQApplication%2FHsmmErrorSources.Models%2Fbin%2FRelease%2FHsmmErrorSources.Models.dll Namespace%3DHsmmErrorSources.Models.Utils Type%3DMatrixUtils Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5094f730-ddb0-4462-b319-857b38a95def"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="22d7a285-f415-4081-a6cb-f5bbd966bf8b">
+                    <propertyInstance
+                      Id="8f0268f6-c767-42bc-89c1-e45973c65bdd"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86b8185e-8be6-4a36-9a61-985ea3183e65">
+                    <propertyInstance
+                      Id="1fa2e70d-d7bc-4f70-bc93-33824f472da5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8c2e44e-4ea5-4f2a-aabf-f927605d5f83">
+                    <propertyInstance
+                      Id="009b73b8-5f61-4961-afe7-9268a774e2b5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="30bb12ee-4eee-4b68-8f46-b8bf33fce2d5">
+                    <propertyInstance
+                      Id="2973defb-d5d8-492c-816c-cc84a607d8db"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d5faa3d9-19fd-425f-b752-e2fe62029d8d">
+                    <propertyInstance
+                      Id="b6d9287f-fe39-41e1-ae27-4d9be3690411"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5adf622-17a2-476b-8b22-851a4cde4dfb">
+                    <propertyInstance
+                      Id="3982d612-82b6-408e-811e-bf4d213b6330"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -1,9 +1,9 @@
 ﻿using HsmmErrorSources.Models.Models;
 using HsmmErrorSources.Models.Models.Qp;
 using HsmmErrorSources.Generation.Random;
-using HsmmErrorSources.Generation.Utils;
 using System;
 using System.Collections.Generic;
+using HsmmErrorSources.Models.Utils;
 
 namespace HsmmErrorSources.Generation.Generators
 {
@@ -15,15 +15,15 @@ namespace HsmmErrorSources.Generation.Generators
             List<int> result = new List<int>();
             double[] errorDistribution = GenerateErrorDistribution(currentState, currentPeriod);
 
-            double[] symbolDistribution = MatrixUtils.GetRow(model.B, currentState);
+            double[] symbolDistribution = MatrixUtils.GetRow(Model.B, currentState);
 
             for (int i = 0; i < symbolNumber; i++)
             {
-                bool hasError = probabilityHandler.RealizeBinaryProbability(errorDistribution[i]) == 1;
+                bool hasError = ProbabilityHandler.RealizeBinaryProbability(errorDistribution[i]) == 1;
                 int symbol;
                 if (hasError)
                 {
-                    symbol = probabilityHandler.RealizeProbability(symbolDistribution) + 1;
+                    symbol = ProbabilityHandler.RealizeProbability(symbolDistribution) + 1;
                 }
                 else { symbol = 0; }
 
@@ -39,8 +39,8 @@ namespace HsmmErrorSources.Generation.Generators
         /// <returns>probabilities of error inside the current period (index stands for point in the period)</returns>
         private double[] GenerateErrorDistribution(int currentState, int currentPeriod)
         {
-            double[] rho = model.Rho[currentState];
-            double per = model.Per[currentState];
+            double[] rho = Model.Rho[currentState];
+            double per = Model.Per[currentState];
 
             double[] result = new double[currentPeriod];
             double[] phi = QpUtils.CalculateErrorLocationDistribution(rho, currentPeriod);

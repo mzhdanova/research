@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HsmmErrorSources.Models.Models;
-using HsmmErrorSources.Generation.Utils;
+using HsmmErrorSources.Models.Utils;
 
-namespace HsmmErrorSources.Generation.Validators
+namespace HsmmErrorSources.Models.Validators
 {
-    public class HsmQPModelValidator : AbstractHsmModelValidator<HsmQpModel>
+    public class HsmQpModelValidator : AbstractHsmModelValidator<HsmQpModel>
     {
-        public HsmQPModelValidator(HsmQpModel model) : base(model) { }
+        public HsmQpModelValidator(HsmQpModel model) : base(model) { }
 
         public override void Validate()
         {
@@ -19,35 +15,35 @@ namespace HsmmErrorSources.Generation.Validators
             {
                 return;
             }
-            if (model.Rho == null
-                || model.Per == null)
+            if (Model.Rho == null
+                || Model.Per == null)
             {
                 AddError("Some of the QP-model parameters are not set");
                 return;
             }
-            if (model.N != model.Rho.Length
-                || model.N != model.Per.Length)
+            if (Model.N != Model.Rho.Length
+                || Model.N != Model.Per.Length)
             {
                 AddError("Inconsistent matrices and arrays dimensions");
                 return;
             }
 
-            if (!MatrixUtils.IsStochasticByRows(model.Rho))
+            if (!MatrixUtils.IsStochasticByRows(Model.Rho))
             {
                 AddError("Rho vectors should be stochastic");
             }
 
-            if (!DoubleUtils.AreEqual(model.Pi.Sum(), 1))
+            if (!DoubleUtils.AreEqual(Model.Pi.Sum(), 1))
             {
                 AddError("Sum of Pi elements should be equal to 1");
             }
 
-            if (!isRhoAdapted())
+            if (!IsRhoAdapted())
             {
                 AddError("Rho is not adapted");
             }
 
-            if (!isFAdapted())
+            if (!IsFAdapted())
             {
                 AddError("Matrix F is not adapted");
             }
@@ -55,7 +51,7 @@ namespace HsmmErrorSources.Generation.Validators
 
         private int GetMaxPeriod(int stateNumber)
         {
-            return MatrixUtils.GetRow(model.F, stateNumber)
+            return MatrixUtils.GetRow(Model.F, stateNumber)
                 .Select((value, index) => new { value, index })
                 .Where(item => !DoubleUtils.EqualsZero(item.value))
                 .OrderByDescending(item => item.index)
@@ -65,7 +61,7 @@ namespace HsmmErrorSources.Generation.Validators
 
         private int GetMinPeriod(int stateNumber)
         {
-            return MatrixUtils.GetRow(model.F, stateNumber)
+            return MatrixUtils.GetRow(Model.F, stateNumber)
                 .Select((value, index) => new { value, index })
                 .Where(item => !DoubleUtils.EqualsZero(item.value))
                 .OrderBy(item => item.index)
@@ -73,19 +69,19 @@ namespace HsmmErrorSources.Generation.Validators
                 .index;
         }
 
-        private bool isRhoAdapted()
+        private bool IsRhoAdapted()
         {
-            for (int i = 0; i < model.N; i++)
+            for (int i = 0; i < Model.N; i++)
             {
-                int modelSegmentLength = model.Rho[i].Length;
-                double t = 1 / (modelSegmentLength * model.Per[i]);
+                int modelSegmentLength = Model.Rho[i].Length;
+                double t = 1 / (modelSegmentLength * Model.Per[i]);
                 if (t >= 1)
                 {
                     return false;
                 }
                 for (int j = 0; j < modelSegmentLength; j++)
                 {
-                    if (model.Rho[i][j] > t)
+                    if (Model.Rho[i][j] > t)
                     {
                         return false;
                     }
@@ -94,12 +90,12 @@ namespace HsmmErrorSources.Generation.Validators
             return true;
         }
 
-        private bool isFAdapted()
+        private bool IsFAdapted()
         {
-            for (int i = 0; i < model.N; i++)
+            for (int i = 0; i < Model.N; i++)
             {
                 int minPeriodInState = GetMinPeriod(i);
-                if (minPeriodInState * model.Per[i] <= 1)
+                if (minPeriodInState * Model.Per[i] <= 1)
                 {
                     return false;
                 }

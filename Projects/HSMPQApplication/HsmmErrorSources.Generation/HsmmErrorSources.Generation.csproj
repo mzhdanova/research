@@ -44,25 +44,17 @@
     <Compile Include="Generators\AbstractHsmModelGenerator.cs" />
     <Compile Include="Generators\HsmFergusonModelGenerator.cs" />
     <Compile Include="Generators\HsmmGeneratorFactory.cs" />
-    <Compile Include="Generators\HsmQPModelGenerator.cs" />
+    <Compile Include="Generators\HsmQpModelGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Random\PseudoRandomGeneratorFactory.cs" />
     <Compile Include="Random\PseudoRandomGeneratorType.cs" />
-    <Compile Include="Random\RC4PRNGenerator.cs" />
-    <Compile Include="Random\Rc4\RC4_PRNG.cs" />
-    <Compile Include="Random\SecurityRNGenerator.cs" />
-    <Compile Include="Random\StandartPRNGenerator.cs" />
-    <Compile Include="Utils\DistributionPare.cs" />
-    <Compile Include="Utils\DoubleUtils.cs" />
+    <Compile Include="Random\Rc4PrnGenerator.cs" />
+    <Compile Include="Random\Rc4\Rc4Prng.cs" />
+    <Compile Include="Random\CryptoServiceRnGenerator.cs" />
+    <Compile Include="Random\StandartPrnGenerator.cs" />
     <Compile Include="Random\IPseudoRandomNumberGenerator.cs" />
-    <Compile Include="Utils\MatrixUtils.cs" />
     <Compile Include="Utils\ProbabilityHandler.cs" />
-    <Compile Include="Validators\AbstractHsmModelValidator.cs" />
-    <Compile Include="Validators\HsmFergusonModelValidator.cs" />
-    <Compile Include="Validators\HsmmValidatorFactory.cs" />
-    <Compile Include="Validators\HsmQPModelValidator.cs" />
-    <Compile Include="Validators\IValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HsmmErrorSources.Models\HsmmErrorSources.Models.csproj">

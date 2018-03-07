@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HsmmErrorSources.Generation.Utils
+namespace HsmmErrorSources.Models.Utils
 {
-    class DoubleUtils
+    public class DoubleUtils
     {
         private const double Epsilon = 0.00000001D;
 

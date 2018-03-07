@@ -7,17 +7,17 @@ namespace HsmmErrorSources.Generation.Generators
     public class HsmmGeneratorFactory
     {
         public IGenerator CreateModelGenerator(IHsmModel model,
-            IPseudoRandomNumberGenerator pRNGenerator)
+            IPseudoRandomNumberGenerator pRnGenerator)
         {
             switch (model.Type)
             {
                 case ModelType.HsmFergusonModel:
                 {
-                    return new HsmFergusonModelGenerator((HsmFergusonModel) model, pRNGenerator);
+                    return new HsmFergusonModelGenerator((HsmFergusonModel) model, pRnGenerator);
                 }
                 case ModelType.HsmQpModel:
                 {
-                    return new HsmQpModelGenerator((HsmQpModel) model, pRNGenerator);
+                    return new HsmQpModelGenerator((HsmQpModel) model, pRnGenerator);
                 }
                 default:
                 {

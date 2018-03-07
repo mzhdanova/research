@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HsmmErrorSources.Models.Models;
 using HsmmErrorSources.Generation.Random;
 using HsmmErrorSources.Generation.Utils;
+using HsmmErrorSources.Models.Utils;
 
 namespace HsmmErrorSources.Generation.Generators
 {
-    abstract public class AbstractHsmModelGenerator<T> : IGenerator where T : AbstractHsmModel
+    public abstract class AbstractHsmModelGenerator<T> : IGenerator where T : AbstractHsmModel
     {
-        protected T model;
-        protected ProbabilityHandler probabilityHandler;
+        protected T Model;
+        protected ProbabilityHandler ProbabilityHandler;
 
-        public AbstractHsmModelGenerator(T model, IPseudoRandomNumberGenerator pRNGenerator)
+        protected AbstractHsmModelGenerator(T model, IPseudoRandomNumberGenerator pRnGenerator)
         {
-            this.model = model;
-            this.probabilityHandler = new ProbabilityHandler(pRNGenerator);
+            Model = model;
+            ProbabilityHandler = new ProbabilityHandler(pRnGenerator);
         }
 
         public IList<int> Generate(int sequenceLength)
@@ -54,24 +51,24 @@ namespace HsmmErrorSources.Generation.Generators
         {
             if (currentState == null)
             {
-                return probabilityHandler.RealizeProbability(model.Pi);
+                return ProbabilityHandler.RealizeProbability(Model.Pi);
             }
             else
             {
-                double[] stateDistribution = MatrixUtils.GetRow(model.A, (int)currentState);
-                return probabilityHandler.RealizeProbability(stateDistribution);
+                double[] stateDistribution = MatrixUtils.GetRow(Model.A, (int)currentState);
+                return ProbabilityHandler.RealizeProbability(stateDistribution);
             }
         }
 
         private int GetCurrentPeriod(int currentState)
         {
-            double[] periodDistribution = MatrixUtils.GetRow(model.F, currentState);
-            return probabilityHandler.RealizeProbability(periodDistribution);
+            double[] periodDistribution = MatrixUtils.GetRow(Model.F, currentState);
+            return ProbabilityHandler.RealizeProbability(periodDistribution);
         }
 
-        abstract protected List<int> GenerateWord(int currentState, int currentPeriod, int wordLength);
+        protected abstract List<int> GenerateWord(int currentState, int currentPeriod, int wordLength);
 
-        abstract protected int GetCurrentWordLength(int currentPeriod, int p);
+        protected abstract int GetCurrentWordLength(int currentPeriod, int p);
 
     }
 }

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="453e6cd9-2339-403e-82c0-b4d270f0d830"
+  name="Models"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="75e630aa-c9da-438b-8c29-990ba99ded54"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DHsmmErrorSources.Models"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="de49c2af-38e0-4fda-b78e-475416faf422"
+        LastKnownName="Models"
+        LastKnownLocation="Package2_2334.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ed20637e-c5ed-4f76-843c-daecfaee8cfe"
+        LastKnownName="Representations"
+        LastKnownLocation="Package_2335.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="0def1ac3-a9c0-4757-9116-1d31419daa5c"
+        LastKnownName="Utils"
+        LastKnownLocation="Package2_2335.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="46d299b8-2358-4c38-8a6e-8305d6f27f1d"
+        LastKnownName="Validators"
+        LastKnownLocation="Package3_2335.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
