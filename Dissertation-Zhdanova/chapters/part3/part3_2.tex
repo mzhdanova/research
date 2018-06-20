@@ -1,14 +1,17 @@
 \section{Решение задачи оценивания для модели Фергюссона} \label{chapt3_Ferguson}
-В этом разделе рассмотрим решение задачи оценивания для частного случая общей скрытой полумарковской модели -- скрытой полумарковской модели Фергюсона (см. раздел \ref{chapt2_Ferguson}).
+В этом разделе рассмотрим решение задачи оценивания для частного случая общей скрытой полумарковской модели --- скрытой полумарковской модели Фергюсона (см. раздел \ref{chapt2_Ferguson}).
 
-Будем рассматривать скрытую полумарковскую модель Фергюсона $\lambda = \{S,A,\pi,V,B,D,F\}$, параметры которой определяются в соответствии с (\ref{chapt2_Ferguson_model:def}), и некоторую последовательность символов $O_{1:T}$ из алфавита $V$ -- $O_{1:T}$.
+Будем рассматривать скрытую полумарковскую модель Фергюсона $\lambda = \{S,A,\pi,V,B,D,F\}$, параметры которой определяются в соответствии с (\ref{chapt2_Ferguson_model:def}), и некоторую последовательность символов $O_{1:T}$ из алфавита $V$.
 \begin{theorem}
 Вероятность генерации последовательности $O_{1:T}$ скрытой полумарковской моделью Фергюсона $\lambda$ при общем предположении может быть вычислена по следующей формуле:
+\begin{equation}\nonumber
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)\prod\limits_{\tau=T-d_1+1}^{T-d_1+d} b_{i,d}(O_\tau),
+\end{equation}
 \begin{equation}\nonumber
 \widetilde{P}[O_{1:T}]=\left\{
 \begin{array}{ll}
 1 ,&t\leq 0,\\
-\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d) \prod\limits_{\tau=T-d+1}^{T-d_1+d} b_{i}(O_\tau),& t>0,\end{array}\right.
+\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d_1}]\overline{\alpha}_{t-d_1+d}(j,d) \prod\limits_{\tau=t-d+1}^{t-d_1+d} b_{i}(O_\tau),& t>0,\end{array}\right.
 \end{equation}
 \begin{equation}\nonumber
 \overline{\alpha}_{t}(i,d)=\left\{
@@ -20,15 +23,15 @@ a_{i^\prime i} p_i(d), & t>0.
 \end{equation}
 \end{theorem}
 \begin{proof}
-Для доказательства теоремы используем тот факт, что скрытая полумарковская модель Фергюсона является частным случаем скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями. С учетом этого факта формулы, полученные в теореме \ref{th:chapt3_GHSMM:1}, преобразуются следующим образом:
+Для доказательства теоремы используем тот факт, что скрытая полумарковская модель Фергюсона является частным случаем скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями. С учетом этого факта формулы, полученные в теореме \ref{th:chapt3_GHSMM:1}, преобразуются в соответсвии с леммой \label{lemma:chapt3_GHSMM_Aux_L2} следующим образом:
 \begin{equation}\nonumber
-\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}P[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)b_{j,d}(O_{T-d_1+1}^{T-d_1+d}),
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d) b_{j,d}(O_{T-d_1+1}^{T-d_1+d}),
 \end{equation}
 \begin{equation}\nonumber
-P[O_{1:t}]=\left\{
+\widetilde{P}[O_{1:t}]=\left\{
 \begin{array}{ll}
 1 ,&t\leq 0,\\
-\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}P[O_{1:t-d}]\overline{\alpha}_{t}(i,d)\prod\limits_{\tau=t-d+1}^t b_{i,d}(O_\tau),& t>0,\end{array}\right.
+\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d}]\overline{\alpha}_{t-d_1+1}(i,d)\prod\limits_{\tau=t-d+1}^{t-d-1+d} b_{i,d}(O_\tau),& t>0,\end{array}\right.
 \end{equation}
 \begin{equation}\nonumber
 \overline{\alpha}_{t}(i,d)=\left\{
@@ -38,7 +41,7 @@ P[O_{1:t}]=\left\{
 a_{i^\prime i} p_i(d), & t>0.
 \end{array}\right.
 \end{equation}
-Воспользуемся тем, что в модели Фергюсона вероятность наблюдения символа зависит только от состояния, но не от его длительности. Тогда справедливо
+Воспользуемся тем фактом, что для модели Фергюсона вероятность наблюдения символа зависит только от состояния, но не от его длительности. Тогда справедливо
 $$\forall d\in D:  b_{i,d}(O_\tau) = b_{i}(O_\tau).$$
 Заменив в приведенных выше утверждениях $b_{i,d}(O_\tau)$ на $b_{i}(O_\tau)$, получим формулы теоремы.
 \end{proof}

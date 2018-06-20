@@ -54,13 +54,13 @@ $$\alpha_{T}(i)=P[O_1 O_2\ldots O_T,q_T=S_i |\lambda].$$
 
  Приведем классический алгоритм прямого хода для общей скрытой полумарковской модели, изложенный в \cite{Yu}. Прямая переменная в случае полумарковской модели вводится следующим образом:
  \begin{equation}
- \label{eq:chapter1_GHSMM_InverseProblem_alpha_def}
+ \label{eq:chapt1_GHSMM_InverseProblem_alpha_def}
  \alpha_t(j,d)=P[S_{[t-d+1:t]}=j, o_{1:t}|\lambda].
  \end{equation}
 
 Аналогично формулам алгоритма прямого хода для скрытой марковской модели получаются формула вычисления прямой переменной для общей скрытой полумарковской модели:
  \begin{equation}
- \label{eq:chapter1_GHSMM_InverseProblem_alpha_rec}
+ \label{eq:chapt1_GHSMM_InverseProblem_alpha_rec}
  \alpha_t(j,d)=\sum\limits_{i\in S\{j\}}\sum\limits_{d^\prime \in D} \alpha_{t-d}(i,d^\prime)\cdot a_{(i,d^\prime)(j,d)}\cdot b_{j,d}(o_{t-d})
  \end{equation}
  для $t>0$, $d\in D$, $j\in S$.

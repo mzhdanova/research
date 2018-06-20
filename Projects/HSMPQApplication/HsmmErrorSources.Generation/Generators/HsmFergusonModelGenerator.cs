@@ -20,10 +20,5 @@ namespace HsmmErrorSources.Generation.Generators
             }
             return result;
         }
-
-        protected override int GetCurrentWordLength(int currentPeriod, int symbolsNumberToGenerate)
-        {
-            return Math.Min(currentPeriod, symbolsNumberToGenerate);
-        }
     }
 }

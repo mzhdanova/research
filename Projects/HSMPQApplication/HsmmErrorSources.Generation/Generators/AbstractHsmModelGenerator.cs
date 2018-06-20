@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HsmmErrorSources.Models.Models;
 using HsmmErrorSources.Generation.Random;
 using HsmmErrorSources.Generation.Utils;
@@ -68,7 +69,10 @@ namespace HsmmErrorSources.Generation.Generators
 
         protected abstract List<int> GenerateWord(int currentState, int currentPeriod, int wordLength);
 
-        protected abstract int GetCurrentWordLength(int currentPeriod, int p);
+        protected int GetCurrentWordLength(int currentPeriod, int symbolsNumberToGenerate)
+        {
+            return Math.Min(currentPeriod, symbolsNumberToGenerate);
+        }
 
     }
 }

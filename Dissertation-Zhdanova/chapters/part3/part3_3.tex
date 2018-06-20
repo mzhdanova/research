@@ -3,49 +3,45 @@
 
 Прежде чем перейти к решению задачи оценивания, сформулируем необходимое нам в дальнейшем вспомогательное утверждение.
 
-Зафиксируем скрытую полумарковскую $QP$-модель $\lambda=\{\mathcal{S};\mathcal{D}; A; \Pi; p(d); \rho; \mu ;M ;{\mathbb{F}}_q;B \}$. Пусть $o$ --  некоторый символ из алфавита $\mathbb{F}_q$. Обозначим $b_{i,\theta}^{d}(o)$ вероятность наблюдать символ $o$ в состоянии $i$ на $\theta$-ой позиции внутри отрезка длины $d$, т.е.
+Зафиксируем скрытую полумарковскую $QP$-модель $\lambda=\{\mathcal{S};\mathcal{D}; A; \Pi; p(d); \rho; \mu ;M ;{\mathbb{F}}_q;B \}$. Пусть $o$ ---  некоторый символ из алфавита $\mathbb{F}_q$. Обозначим $b_{i, d}^{\tau}(o)$ вероятность наблюдать символ $o$ в состоянии $i$ на $\tau$-ой позиции внутри отрезка длины $d$. Обозначим $I_{\mathbb{F}^{\ast}_q}$ --- индикатор множества $\mathbb{F}^{\ast}_q$. Под $\varphi_i^d$ будем понимать функцию, полученную масштабным растяжением эталонной плотности $\rho_i$  на отрезок длины $d$ согласно (\ref{eq_varphi}) (подробнее см. в \cite{DeMoRGUPS}).
 
- $$b_{i,\theta}^{d}(o)\triangleq P[o|S_{[t+1:t+d]}=i],$$
- где $\theta\in[1,d]$. Обозначим $I_{\mathbb{F}^{\ast}_q}$ -- индикатор множества $\mathbb{F}^{\ast}_q$. Под $\varphi_i^d$ будем понимать функцию, полученную масштабным растяжением эталонной плотности $\rho_i$  на отрезок длины $d$ согласно (\ref{eq_varphi}) (подробнее см. в \cite{DeMoRGUPS}).
-
-\begin{lemma}Вероятность $b_{i,\theta}^{d}(o)$ может быть вычислена по формуле:
+\begin{lemma}Вероятность $b_{i, d}^{\tau}(o)$ может быть вычислена по формуле:
 
 \begin{equation}
-\label{eq_b}
-b_{i,\theta}^d(o) =I_{\mathbb{F}^{\ast}_q}(o)\varphi_i^d(\theta)\mu_idb_i(o)+(1-I_{\mathbb{F}^{\ast}_q}(o))(1-\varphi_i^d(\theta)\mu_id).
+\label{eq:chap3:l3:1}
+b_{i, d}^{\tau}(o) =I_{\mathbb{F}^{\ast}_q}(o)\varphi_i^d(\tau)\mu_idb_i(o)+(1-I_{\mathbb{F}^{\ast}_q}(o))(1-\varphi_i^d(\tau)\mu_id).
 \end{equation}
 \end{lemma}
 \begin{proof}
-В соответствии с (\ref{eq_error_prob}) в каждый момент времени $\theta$ внутри длительности $d$ в состоянии $i$ мы можем наблюдать ненулевой символ (то есть символ из $\mathbb{F}_q^\ast$) с вероятностью $e_{i,\theta}^d= \varphi_i^d(\theta)\mu_i d$ и нулевой символ (не принадлежащий $\mathbb{F}_q^\ast$) с вероятностью $1-e_{i,\theta}^d$. В случае, когда символ ненулевой, его значение определяется соответствующей текущему состоянию $i$ строкой матрицы $B$. Тогда, для краткости используя понятие индикатора множества, можно записать (\ref{eq_b}).
+В соответствии с (\ref{eq_error_prob}) в каждый момент времени $\tau$ внутри длительности $d$ в состоянии $i$ мы можем наблюдать ненулевой символ (то есть символ из $\mathbb{F}_q^\ast$) с вероятностью $e_{i,d}^\tau= \varphi_i^d(\tau)\mu_i d$ и нулевой символ (не принадлежащий $\mathbb{F}_q^\ast$) с вероятностью $1-e_{i,d}^\tau$. В случае, когда символ ненулевой, его значение определяется соответствующей текущему состоянию $i$ строкой матрицы $B$. Тогда, для краткости используя понятие индикатора множества, можно записать (\ref{eq_b}).
 \end{proof}
 
 Теперь сформулируем теорему о решении задачи оценивания для скрытой полумарковской $QP$-модели.
 \begin{theorem}
-Вероятность наблюдать последовательность $O_{1:T}$ при общем предположении, т.е. что первое наблюдаемое состояние началось в момент времени $t=1$ или до этого момента, а последнее состояние закончилось в момент времени $T$ или после него, может быть вычислена по следующей формуле:
+Вероятность генерации последовательности $O_{1:T}$ скрытой полумарковской $QP$-моделью $\lambda$ при общем предположении может быть вычислена по следующей формуле:
 \begin{equation}\nonumber
-\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}P[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)\prod\limits_{\tau=T-d_1+1}^{T-d_1+d} b_{j,d}(O_\tau),
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)\prod\limits_{\tau=T-d_1+1}^{T-d_1+d} b_{i,d}^\tau(O_\tau),
 \end{equation}
 где
 \begin{equation}\nonumber
-P[O_{1:t}]=\left\{
-\begin{array}{ll}
-1 ,&t\leq 0,\\
-\sum\limits_{i\in \mathcal{S}}\sum\limits_{d\in \mathcal{D}}P[O_{1:t-d}]\overline{\alpha}_{t}(i,d)\prod\limits_{\tau=t-d+1}^t b_{i,d}(O_\tau),& t>0,\end{array}\right.
+\widetilde{P}[O_{1:t}]=\left\{\begin{array}{ll}
+1, &t\leq 0,\\\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d_1}]\overline{\alpha}_{t-d_1+d}(j,d)\prod\limits_{\tau=t-d_1+1}^{t-d_1+d} b_{i,d}^\tau(O_\tau),& t\in [1,T],\end{array}\right.
 \end{equation}
 \begin{equation}\nonumber
 \overline{\alpha}_{t}(i,d)=\left\{
 \begin{array}{ll}
-\pi_i\rho_i(d), &t\leq 0,\\
-\sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)\prod\limits_{\tau=t-d-d^\prime+1}^{t-d}b_{i^\prime,d^\prime}(O_\tau)\frac{P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}
-a_{i^\prime i} p_i(d), & t>0.
+\pi_i p_i(d), &t\leq 0,\\
+\sum\limits_{i^\prime\in \mathcal{S}}\sum\limits_{d^\prime \in \mathcal{D}}\overline{\alpha}_{t-d}(i^\prime,d^\prime)
+\prod\limits_{\tau=t-d-d^\prime+1}^{t-d}b_{i^\prime,d^\prime}^\tau(O_\tau)\frac{P[O_{1:t-d-d^\prime}]}{P[O_{1:t-d}]}
+a_{i^\prime i} p_i(d), & t>0,
 \end{array}\right.
 \end{equation}
-$$b_{i,\theta}^d(o) =I_{\mathbb{F}^{\ast}_q}(o)\varphi_i^d(\theta)\mu_idb_i(o)+(1-I_{\mathbb{F}^{\ast}_q}(o))(1-\varphi_i^d(\theta)\mu_id).$$.
+$$b_{i,d}^{\tau}(O_\tau) =I_{\mathbb{F}^{\ast}_q}(O_\tau)\varphi_i^d(\tau)\mu_idb_i(O_\tau)+(1-I_{\mathbb{F}^{\ast}_q}(O_\tau))(1-\varphi_i^d(\tau)\mu_id).$$.
 \end{theorem}
 \begin{proof}
 Для доказательства теоремы используем тот факт, что скрытая полумарковская $QP$-модель является частным случаем скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями. С учетом этого факта формулы, полученные в теореме \ref{th:chapt3_GHSMM:1}, преобразуются следующим образом:
 \begin{equation}\nonumber
-\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}P[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)b_{j,d}(O_{T-d_1+1}^{T-d_1+d}),
+\widetilde{P}[O_{1:T}]=\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:T-d_1}]\overline{\alpha}_{T-d_1+d}(j,d)\prod\limits_{\tau=T-d_1+1}^{T-d_1+d} b_{i,d}(O_\tau),
 \end{equation}
 \begin{equation}\nonumber
 P[O_{1:t}]=\left\{
@@ -61,5 +57,5 @@ P[O_{1:t}]=\left\{
 a_{i^\prime i} p_i(d), & t>0.
 \end{array}\right.
 \end{equation}
-В соответствии с предыдущей леммой вероятность $b_{i^\prime,d^\prime}(O_\tau)$ может быть вычислена в соответствии с формулой (\ref{eq_b}).  
+В соответствии с предыдущей леммой вероятность $b_{i^\prime,d^\prime}(O_\tau)=b_{i,d}^{\tau}(O_\tau)$ может быть вычислена в соответствии с формулой (\ref{eq:chap3:l3:1}).
 \end{proof}

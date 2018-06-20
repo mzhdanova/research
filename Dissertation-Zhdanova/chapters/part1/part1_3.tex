@@ -214,15 +214,18 @@ $\mathcal{V}=\{v_1,...,v_M\}$ --- алфавит наблюдаемых символов, $$B=\{b_{i,d}(\h
  Под $P[\alpha | \beta]$ будем понимать вероятность события $\alpha$ при условии выполнения события $\beta$, а под  $P[\alpha\cdot \beta]$  -- совместную вероятность наблюдения событий $\alpha$ и $\beta$.
 
  Используя введенные обозначения, можем записать:
-$$\forall (i,d), (i^\prime,d^\prime)\in \mathcal{S}\times\mathcal{D}:\;\;\; a_{(i,d)(i^\prime,d^\prime)}\triangleq P[S_{[t+1:t+d^\prime]}=i^\prime|S_{[t-d +1:t]}=i],$$
+\begin{equation}
+\label{eq:chapt1_GHSMM_A}
+\forall (i,d), (i^\prime,d^\prime)\in \mathcal{S}\times\mathcal{D}:\;\;\; a_{(i,d)(i^\prime,d^\prime)}\triangleq P[S_{[t+1:t+d^\prime]}=i^\prime|S_{[t-d +1:t]}=i],
+\end{equation}
 где $t$ -- момент времени, когда произошел переход из обобщенного состояния $(i,d)$ в $(i^\prime,d^\prime)$;
 \begin{equation}
-\nonumber
+\label{eq:chapt1_GHSMM_Pi}
 \forall t\leq 0,\forall (i,d)\in \mathcal{S}\times\mathcal{D}:\;\;\; \pi_{i,d}\triangleq P[S_{[t-d+1:t]}=i];
 \end{equation}
 \begin{equation}
 \begin{split}
-\label{eq_firstb}
+\label{eq:chapt1_GHSMM_B}
 \forall (i,d) \in \mathcal{S}\times \mathcal{D},\forall (o_{t+1},...,o_{t+d}) &\in V^d :\\
 &b_{i,d}(o_{t+1},...,o_{t+d})\triangleq P[ o_{t+1},...,o_{t+d}|S_{[t+1:t+d]}=i].
 \end{split}
@@ -248,6 +251,21 @@ $$\forall (i,d), (i^\prime,d^\prime)\in \mathcal{S}\times\mathcal{D}:\;\;\; a_{(
   Рис.9. Работа скрытой полумарковской модели
   \end{center}
 
+Приведем также два свойства общей скрытой полумарковской модели, которые будут использоваться в двальнейшем.
+
+1) Для общей скрытой полумарковской модели предполагается условная независимость события, заключающегося в наблюдении в некоторый момент времени $t+1$ состояния $j$ с длительностью $d$, от события, заключающегося в наблюдении последовательности $O_{1:t}$, при условии, что в момент времени $t$ закончилось состояние $i$ длительностью $d^\prime$. По определению условной независимости можно записать:
+\begin{equation}
+\label{eq:chapt1_GHSMM_Cond1}
+\begin{split}
+&P[S_{[t+1,t+d+1]}=j, O_{1:t}|S_{[t-d^\prime+1,t]}=i] \\
+&= P[S_{[t+1,t+d+1]}=j|S_{[t-d^\prime+1,t]}=i]P[ O_{1:t}|S_{[t-d^\prime+1,t]}=i];
+\end{split}
+\end{equation}
+2) Кроме того, для общей скрытой полумарковской модели предполагается условная независимость события, заключающегося в наблюдении последовательности $O_{t+1,t+d}$, от произведения событий наблюдения последовательности $O_{1:t}$ и окончания в момент времени $t$ состояния $i$ длительности $d^\prime$ при условии, что в момент времени $t+1$ началось состояние $j$ длительностью $d$. Таким образом из определения условной независимости следует, что:
+\begin{equation}\label{eq:chapt1_GHSMM_Cond2}
+P[O_{t+1:t+d}|S_{[t+1,t+d+1]}=j, O_{1:t}, S_{[t-d^\prime+1,t]}=i] =
+P[O_{t+1:t+d}|S_{[t+1,t+d+1]}=j].
+\end{equation}
 
 Для решения прикладных задач представляют интерес частные случаи общей скрытой полумарковской модели. В частности, рассмотрим общую скрытую полумарковскую модель со следующими дополнительными условиями:
 
@@ -268,4 +286,5 @@ $$\forall (i,d), (i^\prime,d^\prime)\in \mathcal{S}\times\mathcal{D}:\;\;\; a_{(
 \label{eq:chapt1_GHSMM_Indep:inclus3}
  \pi_{(i,d)}= \pi_{i}\cdot p_i(d),
 \end{equation}
-где $\pi_{i}=P[S_{[t}=i]$ для $t\leq 0$. 
+где $\pi_{i}=P[S_{[t}=i]$ для $t\leq 0$.
+
