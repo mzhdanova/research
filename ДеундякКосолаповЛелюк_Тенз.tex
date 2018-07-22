@@ -1,0 +1,649 @@
+\documentclass[12pt]{article} %14pt
+%\documentclass{mais}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[mag=1000,a4paper,left=2.2cm,right=3.0cm,top=3.1cm,bottom=3.0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsfonts,amssymb,amscd,amsmath,amsthm}
+\usepackage{mathrsfs}
+\usepackage{epsf}
+\usepackage{wrapfig}
+\usepackage{cite}
+\usepackage[hyper]{amsbib}
+%\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{algorithm2e}
+\usepackage[hyper]{amsbib}
+
+%\newcommand*{\No}{\textnumero}
+
+%% поля, заполняемые автором
+\title{Декодирование тензорного произведения $\mathrm{MLD}$-кодов и приложения}
+
+%%%%Макросы необходимые автору
+\def\W{\overset{\circ}{W}}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\eps}{\varepsilon}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{dfn}{Определение}
+\newtheorem{note}{Замечание}
+\newtheorem{conseq}{Следствие}
+%%%%%Макросы необходимые автору
+
+\SetKwInput{KwData}{Исходные параметры}
+\SetKwInput{KwResult}{Результат}
+\SetKwInput{KwIn}{Входные данные}
+\SetKwInput{KwOut}{Выходные данные}
+\SetKwIF{If}{ElseIf}{Else}{если}{тогда}{иначе\ если}{иначе}{конец\ условия}
+\SetKwFor{While}{до\ тех\ пор,\ пока}{выполнять}{конец\ цикла}
+\SetKw{KwTo}{от}
+\SetKw{KwRet}{возвратить}
+\SetKw{Return}{возвратить}
+\SetKwBlock{Begin}{начало\ блока}{конец\ блока}
+\SetKwFor{For}{цикл}{выполнять}{конец\ цикла}
+\SetKwFor{ForEach}{для\ каждого}{выполнять}{конец\ цикла}
+\SetKwFor{eForEach}{для\ каждой}{выполнять}{конец\ цикла}
+\SetKwRepeat{Repeat}{повторять}{до\ тех\ пор,\ пока}
+\SetAlgorithmName{Алгоритм}{алгоритм}{Список алгоритмов}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\footnotesize
+%Подробная аннотация, сжато отражающая содержание статьи. Объем аннотации -- не менее 12-15 строк формата нашего журнала (необходимое требование для международных баз данных)
+Для практического применения кодовой криптосистемы типа Мак-Элиса необходимо, чтобы используемый в основе криптосистемы код имел быстрый алгоритм декодирования. С другой стороны, используемый код должен быть таким, чтобы нахождение секретного ключа по известному открытому ключу было бы практически неосуществимо при относительно небольшом размере ключа. С этой целью в работе  предлагается в криптосистеме типа Мак-Элиса использовать тензорное произведение $C_1\otimes C_2$ групповых мажоритарно-декодируемых кодов $C_1$ и $C_2$. С одной стороны, известно, что код $C_1\otimes C_2$ --- также мажоритарно-декодируемый, и в настоящей работе строятся необходимые  для декодирования алгоритмы. Групповое свойство кода $C_1\otimes C_2$, в частности, позволяет существенно упростить построение декодера. С другой стороны, алгебраическая структура кода $C_1\otimes C_2$ в общем случае отличается от структуры кодов $C_1$ и $C_2$, поэтому представляется возможным построение стойких криптосистем типа Мак-Элиса даже на основе кодов, для которых известны успешные атаки ключ. В работе приводится оценка стойкости криптосистемы типа Мак-Элиса на основе тензорного произведения кодов к атаке на ключ.
+\end{abstract}
+
+\newpage
+\normalsize
+
+\section*{Введение}
+Стойкость применяемых в настоящее время на практике асимметричных криптосистем основана на сложности задач факторизации целых чисел или дискретного логарифмирования в конечной группе. Однако в \cite{Sho1994} показано, что эти задачи могут быть решены за полиномиальное время на квантовом компьютере. Криптографические системы, в основе которых лежит применение помехоустойчивых кодов (далее --- кодовые криптосистемы), рассматриваются в настоящее время как одна из альтернатив используемым в настоящее время асимметричным криптографическим системам \cite{Sen2016}. Недостатком кодовых криптосистем является большой размер ключа. В частности, размер ключа для первой кодовой криптосистемы на основе кодов Гоппы, предложенной Робертом Мак-Элисом в \cite{McEliece1978}, составляет порядка 65Кбайт. Попытки уменьшить размер ключа за счет использования кодов, отличных от кодов Гоппы, не дали должного результата, так как предложенные системы оказались нестойкими. К нестойким относятся такие известные системы, как криптосистема Нидеррайтера \cite{Nid1986}, криптосистема Габидулина-Парамонова-Третьякова \cite{Gab1991}, криптосистема Сидельникова \cite{Sid1994}. Для перечисленных криптосистем имеются эффективные структурные атаки, то есть атаки направленные на нахождения подходящего секретного ключа по известному открытому ключу (см. \cite{SidShest1992}-\cite{Chi2014}).
+
+Представляется, что усилить стойкость кодовых криптосистем к структурным атакам возможно путем использования помехоустойчивых кодов, для которых, с одной стороны, имеется быстрый алгоритм декодирования, а с другой стороны, которые не обладают явно выраженной алгебраической структурой. Такой подход применен, например, в \cite{DeKo2016}, где предлагается в криптосистеме типа Мак-Элиса использовать коды, индуцированные групповыми кодами. В настоящей работе предлагается одно обобщение этого подхода: в качестве помехоустойчивого кода предлагается применять тензорное произведение $C_1\otimes C_2$ двух групповых мажоритарно-декодируемых кодов $C_1$ и $C_2$ ($\mathrm{MLD}$-кодов). Результаты работы представлены в первом и втором разделах. Именно, в первом разделе приводятся необходимые сведения о групповых $\mathrm{MLD}$-кодах и далее строятся и обосновываются конструктивные алгоритмы декодирования тензорного произведения таких кодов. Во втором разделе приводится анализ стойкости криптосистемы типа Мак-Элиса к нахождению подходящего секретного колюча, если известна структурная атака хотя бы для одного из кодов $C_1$ и $C_2$. Там же приводятся результаты расчета стойкости в случае тензорного произведения кодов Рида-Маллера-Бермана.
+
+\section{Тензорное произведение $\mathrm{MLD}$-кодов}
+\subsection{$\mathrm{MLD}$-коды}
+
+Для натурального $n$ символом $\underline{n}$ будем обозначать множество $\{1,...,n\}$. Пусть $V$ -- векторное пространство над конечным  полем $\mathbb{F}$. Зафиксируем в $V$ базис $B$ и символом $(V,d_B)$ обозначим метрическое пространство $V$ с метрикой Хэмминга $d_B$, построенной относительно базиса $B$. Для вектора $\mathbf{x}(\in V)$ множество базисных векторов, коэффициенты при которых в разложении $\mathbf{x}=\sum_{\mathbf{b}\in B}x_{\mathbf{b}}\mathbf{b}$ ненулевые, называется носителем вектора $\mathbf{x}$ относительно базиса $B$ и обозначается $\mathrm{supp}_{B}(\mathbf{x})$; коэффициенты $x_{\mathbf{b}}$ будем называть значением $\mathbf{b}$-координаты вектора $\mathbf{x}$. Вес $w_{B}(\mathbf{x})$ вектора $\mathbf{x}$ определяется как $|\mathrm{supp}_B(\mathbf{x})|$. (Здесь и далее символом $|A|$ обозначается мощность множества $A$.) Всякое линейное подпространство $C$ метрического пространства $(V,d_B)$ называется линейным кодом. Размерность и длину кода будем обозначать соответственно $k(C)$ и $n(C)$, а минимальное кодовое расстояние кода $C$ обозначим $\mathrm{dist}_{B}(C)$. Двойственный код к коду $C$  обозначим  $C^\bot$. Множество векторов $\mathcal{M}_{\mathbf{v}}=\{\mathbf{v}^{(1)},...,\mathbf{v}^{(r)}\}(\subset V)$ называется $M$-ортогональным вектору $\mathbf{v}(\in V)$, если $|\mathrm{supp}_{B}(\mathbf{v}^{(i)})|>|\mathrm{supp}_{B}(\mathbf{v})|$ для всех $i=1,...,r$ и
+\begin{equation}
+\label{alternative}
+\forall\;\; i\neq j:\;\;\;\mathrm{supp}_{B}(\mathbf{v}^{(i)})\cap \mathrm{supp}_{B}(\mathbf{v}^{(j)})=\mathrm{supp}_{B}(\mathbf{v}).
+\end{equation}
+Пусть $\mathbf{c}(\in C)$ --- кодовый вектор, $\mathbf{x}=\mathbf{c}+\mathbf{e}$ --- принятый и канала вектор, $w_{B}(\mathbf{e})\leq \left\lfloor (\mathrm{dist}_{B}(C)-1)/2\right\rfloor$. Рассмотрим разложение $\sum_{\mathbf{b}\in B}e_{\mathbf{b}}\mathbf{b}$ вектора ошибок $\mathbf{e}$ по базису $B$. Если для $\mathbf{b}$-координаты существует \textit{декодирующее дерево} $\mathrm{WB}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}$, такое, что $\left\lfloor r_{\mathbf{b}}/2\right\rfloor\geq w_{B}(\mathbf{e})$, то значение $e_{\mathbf{b}}$ для $\mathbf{b}$-координаты вектора $\mathbf{e}$ находится однозначно с помощью мажоритарного декодера (см. \cite{DeKo2015}, алгоритм 3 \textrm{Decoder2}). Декодирующим деревом $\mathrm{WB}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}=\mathrm{WB}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}[C]$ для $\mathbf{b}$-координаты здесь и далее будем называть в соответствии с \cite{DeKo2015} помеченное дерево с корнем $\mathbf{b}$, обладающее следующими свойствами:
+
+1) множество вершин этого дерева состоит из $L_{\mathbf{b}}+1$ уровня; корень с меткой $\mathbf{b} (\in B)$ находится на уровне 0, а листья -- на уровне $L_{\mathbf{b}}$; метки вершин $i$-ого уровня образуют набор $V_{i}$, $i=0,...,L_{\mathbf{b}}$;
+
+2) листья дерева помечены элементами из $C^{\bot}$;
+
+3) каждая вершина, не являющаяся листом, имеет не менее $r_{\mathbf{b}}(\in \mathbb{N})$ непосредственно следующих за ней вершин;
+
+4) с меткой $\mathbf{p}$ каждой вершины дерева связывается числовое значение $l(\mathbf{p})(\in\mathbb{F})$ метки, вычисляемое в зависимости от значения принятого из канала вектора $\mathbf{x}$: для каждого листа $\mathbf{p}$ дерева значение $l(\mathbf{p})$ равно скалярному произведению $(\mathbf{p},\mathbf{x})$ векторов $\mathbf{p}$ и $\mathbf{x}$, а для вершин на уровне $i (0\leq i\leq L_{\mathbf{b}}-1)$ значение $l(\mathbf{p})$ вычисляется в соответствии с построенным в \cite{DeKo2015} алгоритмом ${\mathrm{MajorVote}}$ (для полноты изложения алгоритм ${\mathrm{MajorVote}}$ приведен ниже);
+
+5) метки вершин, непосредственно следующих из произвольной вершины $\mathbf{p}$, находящейся на уровне $i(0\leq i<L_{\mathbf{b}})$, образуют в совокупности множество $\mathcal{M}_{\mathbf{p}}$, $M$-ортогональное $\mathbf{p}$; символом $l[\mathcal{M}_{\mathbf{p}}]$ обозначается набор $(l(\mathbf{q}))_{\mathbf{q}\in\mathcal{M}_{\mathbf{p}}}$.
+
+\begin{algorithm}[!ht]
+\SetAlgoLined
+\KwData{$\mathcal{A}$ -- последовательность чисел из $\mathbb{F}$}
+\KwResult{элемент $v (\in \mathbb{F})$, который в последовательности $\mathcal{A}$ встречается наибольшее число раз}
+\ForEach{$a\in\mathbb{F}$}{вычислить величину $\mathrm{count}(a)$, равную числу появления элемента $a$ в последовательности $\mathcal{A}$}
+\eIf{найдется только один $a'(\in \mathbb{F})$, что $\mathrm{count}(a')\geq \left\lceil |\mathcal{A}|/2\right\rceil$}{$v:=a'$}{$v:=0$}
+\KwRet $v$
+\caption{${\mathrm{MajorVote}}$}
+\end{algorithm}
+
+Если для кода $C$ существует такой набор
+\begin{equation}
+\label{nabor}
+\mathcal{WB}(C)=\{\mathrm{WB}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}\}_{\mathbf{b}\in B},
+\end{equation}
+для которого $\mathrm{dmaj}_{B}(C)=\min_{\mathbf{b}(\in B)}\{r_{\mathbf{b}}\}= \mathrm{dist}_{B}(C)-1$, то код $C$ называют $\mathrm{MLD}$-кодом (Majority Logic Decodable). Заметим, что $\mathrm{dmaj}_{B}(C)\leq \mathrm{dist}_{B}(C)-1$, иначе в противном случае бы получили, что код может гарантированно исправлять более $\left\lfloor (\mathrm{dist}_{B}(C)-1)/2\right\rfloor$ ошибок.
+
+Построение набора $\mathcal{WB}(C)$ представляется в общем случае сложной задачей. С одной стороны, сложной представляется задача построения дерева для фиксированной координаты, а с другой стороны, деревья для разных координат строятся независимо. В то же время вторая задача решается просто для групповых кодов, если имеется декодирующее дерево хотя бы для одной координаты. Необходимые сведения о групповых кодах и построении множества $\mathcal{WB}(C)$ для группового кода $C$ приводятся ниже.
+
+\subsection{Групповые $\mathrm{MLD}$-коды}
+
+Пусть $\mathcal{G}=\{g_1=\hat{1},...,g_{|\mathcal{G}|}\}$ --- конечная группа с зафиксированным линейным порядком на множестве ее элементов, $\hat{1}$ -- нейтральный элемент группы; зафиксированный порядок на группе будем обозначать $\mathrm{ord}(\mathcal{G})$. Рассмотрим групповую алгебру $\mathbb{F}\mathcal{G}$, элементами которой являются формальные суммы (функции):
+\begin{equation}
+\label{elem_of_algebra}
+\sum_{g\in\mathcal{G}}a_{g}g, a_g\in \mathbb{F}.
+\end{equation}
+В конечномерной групповой алгебре $\mathbb{F}\mathcal{G}$ зафиксируем базис $B=B^{\mathbb{F}\mathcal{G}}:=\{\mathbf{g}=\delta_g\}_{g\in \mathcal{G}}$, где $\delta_{g}=1g$ -- функция Дирака; $\mathbf{1}:=1\hat{1}$. Это
+позволяет рассматривать в $\mathbb{F}\mathcal{G}$ метрику Хэмминга $d_B$. Отметим, что
+ в категории конечномерных линейных пространств $\mathbb{F}\mathcal{G}$ и $\mathbb{F}^{|\mathcal{G}|}$ изоморфны; соответствующий изоморфизм обозначим $\nu_{\mathcal{G}}$. Отметим, что произведение функций $\delta_{x}$ и $\delta_{y}$ в $\mathbb{F}\mathcal{G}$ равно
+$\delta_{x}\delta_{y}=\delta_{xy}$. Поэтому элементы групповой алгебры можно записывать в виде: $
+\sum_{g\in\mathcal{G}}a_{g}\delta_{g}, a_g\in \mathbb{F}$. Для удобства значение функции $\phi(\in \mathbb{F}\mathcal{G})$ в точке $g (\in \mathcal{G})$ будем обозначать $\phi(g)$.
+
+В соответствии с \cite{Zim2011}, с. 39, всякий отличный от $\{\mathbf{0}\}$ \emph{левый} идеал $C$ в групповой алгебре $\mathbb{F}\mathcal{G}$ называется \emph{групповым кодом} ($\mathbb{F}\mathcal{G}$--кодом)
+длины $n(C)=|\mathcal{G}|$. Идеал в групповой алгебре $\mathbb{F}\mathcal{G}$ является подпространством пространства функций $\mathbb{F}\mathcal{G}$, размерность $k(C)$ кода $C$ --- это размерность этого подпространства. Пусть $B^{C}=\{\epsilon_1,...,\epsilon_{k(C)}\} (\subseteq \mathbb{F}\mathcal{G})$ --- базис идеала $C$. Заметим, что порядок $\mathrm{ord}(\mathcal{G})$ индуцирует порядок на базисе $B^{\mathbb{F}\mathcal{G}}$ групповой алгебры $\mathbb{F}\mathcal{G}$, что позволяет выписать порождающую матрицу $G(C)$ группового кода $C$:
+\begin{equation}
+\label{generating_matrix}
+G(C)=\left(\begin{array}{c}
+\nu_{\mathcal{G}}(\epsilon_1)\\
+\dots\\
+\nu_{\mathcal{G}}(\epsilon_{k(C)})
+\end{array}\right)
+\end{equation}
+
+Группа $\mathcal{G}$ действует слева на групповой алгебре $\mathbb{F}\mathcal{G}$ следующим естественным образом (см. \cite{Zim2011}, с. 32):
+\begin{equation}
+\label{group_action_on_group_algebra}
+\mathcal{G}\times \mathbb{F}\mathcal{G} \ni (g,\phi=\sum_{h\in\mathcal{G}}\phi_{h}h)\mapsto \phi g^{-1}:=\sum_{h\in\mathcal{G}}\phi_{hg^{-1}}h\in \mathbb{F}\mathcal{G}.
+\end{equation}
+Отметим, что $C^{\bot}$ --- также групповой код \cite{Zim2011}, т.е. левый идеал. В силу этого действие группы $\mathcal{G}$ по правилу \eqref{group_action_on_group_algebra} на элементах кода $C^{\bot}$ не выводит за код $C^{\bot}$. С другой стороны, группа $\mathcal{G}$ действует транзитивно на элементах из $B^{\mathbb{F}\mathcal{G}}$ и не нарушает $M$-ортогональности \cite{DeKo2015}. Это позволяет построить набор \eqref{nabor} по одному из декодирующих деревьев  (соответствующие алгоритмы построены в \cite{DeKo2015}). В частности, если для базисной функции $\mathbf{1}=\delta_{\hat{1}}=1\hat{1}$ удалось построить декодирующее дерево $\mathrm{WB}_{\mathbf{1},r_{\mathbf{1}},L_{\mathbf{1}}}$, то дерево $\mathrm{WB}_{\mathbf{g},r_{\mathbf{g}},L_{\mathbf{g}}}$ для базисной функции $\mathbf{g}=\delta_{g}=1g$ может быть построено путем действия элементов $g^{-1}(\in \mathcal{G})$ на узлы дерева $\mathrm{WB}_{\mathbf{1},r_{\mathbf{1}},L_{\mathbf{1}}}$ по правилу \eqref{group_action_on_group_algebra}. При этом $r_{\mathbf{1}}=r_{\mathbf{g}}$ и $L_{\mathbf{1}}=L_{\mathbf{g}}$ для всех $g\in \mathcal{G}$.
+
+\subsection{Тензорное произведение групповых кодов}
+
+Пусть $\mathcal{G}=\{g_1,...,g_{|\mathcal{G}|}\}$, $\mathcal{H}=\{h_1,...,h_{|\mathcal{H}|}\}$ --- конечные группы с зафиксированными на них линейными порядками $\mathrm{ord}(\mathcal{G})$ и $\mathrm{ord}(\mathcal{H})$. В групповых алгебрах $\mathbb{F}\mathcal{G}$ и $\mathbb{F}\mathcal{H}$ зафиксируем базисы $B^{\mathbb{F}\mathcal{G}}=\{\delta_{g_1},...,\delta_{g_{|\mathcal{G}|}}\}$ и $B^{\mathbb{F}\mathcal{H}}=\{\delta_{h_1},...,\delta_{h_{|\mathcal{H}|}}\}$ соответственно. Рассмотрим тензорное произведение $\mathbb{F}\mathcal{G}\otimes_{\mathbb{F}} \mathbb{F}\mathcal{H}$ групповых алгебр $\mathbb{F}\mathcal{G}$ и $\mathbb{F}\mathcal{H}$ над полем $\mathbb{F}$ (см. \cite{Ker1969}, с.79). Отметим, что $\mathbb{F}\mathcal{G}\otimes_{\mathbb{F}} \mathbb{F}\mathcal{H}=\mathbb{F}(\mathcal{G}\times\mathcal{H})$.
+
+В групповых алгебрах $\mathbb{F}\mathcal{G}$ и $\mathbb{F}\mathcal{H}$ рассмотрим групповые коды $C_1\ (\subseteq \mathbb{F}\mathcal{G})$ и $C_2 \ (\subseteq \mathbb{F}\mathcal{H})$ с соответствующими базисами $B^{C_1} = \{\epsilon_1,...,\epsilon_{k(C_1)}\}$ и $B^{C_2} = \{\phi_1,...,\phi_{k(C_2)}\}$, где $\epsilon_i = \sum_{g\in\mathcal{G}}a_{i,g}\delta_{g}, a_{i,g}\in \mathbb{F}$ и $\phi_j = \sum_{h\in\mathcal{H}}b_{j,h}\delta_{h}, b_{j,h}\in \mathbb{F}$. Тензорным произведением кодов $C_1$ и $C_2$ будем называть код $C_1\otimes C_2 (\subseteq \mathbb{F}(\mathcal{G}\times\mathcal{H}))$ с базисом $B^{C_1\otimes C_2} = \{\epsilon_i\otimes\phi_j|i=1,...,k(C_1),j=1,...,k(C_2)\}$, где $(\epsilon_i\otimes\phi_j)(g, h) = \epsilon_i(g)\phi_j(h)$, $(g,h)\in \mathcal{G}\times \mathcal{H}$. Под тензорным произведением $A\otimes B$ матрицы $A=(a_{i,j})$ размера $(r\times s)$ и матрицы $B$ будем понимать, как обычно, матрицу вида:
+$$A\otimes B=\begin{pmatrix}
+a_{1,1}B&...&a_{1,s}B\\
+a_{2,1}B&...&a_{2,s}B\\
+...&...&...\\
+a_{r,1}B&...&a_{r,s}B
+\end{pmatrix}.
+$$
+Тогда $G(C_1\otimes C_2) = G(C_1)\otimes G(C_2)$ --- порождающая матрица кода $C_1\otimes C_2$, где, согласно \eqref{generating_matrix}, порождающие матрицы кодов $C_1$ и $C_2$ могут быть представлены в виде соответственно:
+$$G(C_1)=\begin{pmatrix}
+a_{1,g_1}&...&a_{1,g_{|\mathcal{G}|}}\\
+a_{2,g_1}&...&a_{2,g_{|\mathcal{G}|}}\\
+...&...&...\\
+a_{k(C_1),g_1}&...&a_{k(C_1),g_{|\mathcal{G}|}}
+\end{pmatrix},
+\;\;\;G(C_2)=\begin{pmatrix}
+b_{1,h_1}&...&b_{1,h_{|\mathcal{H}|}}\\
+b_{2,h_1}&...&b_{2,h_{|\mathcal{H}|}}\\
+...&...&...\\
+b_{k(C_2),h_1}&...&b_{k(C_2),h_{|\mathcal{H}|}}
+\end{pmatrix}.
+$$
+Заметим, $k(C_1\otimes C_2)=k(C_1)k(C_2)$, $n(C_1\otimes C_2)=n(C_1)n(C_2)$ и
+\begin{equation}
+\label{dist_tens}
+\mathrm{dist}_{B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}}(C_1\otimes C_2)=\mathrm{dist}_{B^{\mathbb{F}\mathcal{G}}}(C_1)\mathrm{dist}_{B^{\mathbb{F}\mathcal{H}}}(C_2),
+\end{equation}
+где $B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}=\{\delta_{(g_1,h_1)},...,\delta_{(g_1,h_{|\mathcal{H}|})},\delta_{(g_2,h_1)},...,\delta_{(g_{|\mathcal{G}|},{h_{|\mathcal{H}|}})}\}$ --- базис групповой алгебры $\mathbb{F}(\mathcal{G}\times\mathcal{H})$ на группе $\mathcal{G}\times\mathcal{H}$ с линейным порядком, индуцированным линейными порядками $\mathrm{ord}(\mathcal{G})$ и $\mathrm{ord}(\mathcal{H})$.
+
+\subsection{Декодирование тензорного произведения $\mathrm{MLD}$-кодов}
+Пусть $\mathbf{c}(\in C_1\otimes C_2)$ -- кодовый вектор, который на выходе из канала принимает вид
+\begin{equation}
+\label{x_vector}
+\mathbf{x}=\mathbf{c} + \mathbf{e}, \;\; \mathbf{e}\in\mathbb{F}(\mathcal{G}\times \mathcal{H}).
+\end{equation}
+В этом разделе строятся алгоритмы, позволяющие правильно находить значение вектора ошибок $\mathbf{e}$, если вес этого вектора  удовлетворяет следующему неравенству (см. \eqref{dist_tens}):
+\begin{equation}
+\label{max_errors}
+w_{B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}}(\mathbf{e})\leq \left\lfloor \frac{\mathrm{dist}_{B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}}(C_1\otimes C_2)-1}{2} \right\rfloor .
+\end{equation}
+
+Прежде всего сформулируем вспомогательную лемму.
+\begin{lemma}
+\label{lemma_1}
+Пусть ${\mathbf{c}_1} \in \mathbb{F}^{n_1}$, $\mathcal{M}_{\mathbf{c}_1}$ -- $M$-ортогональное множество для вектора ${\mathbf{c}_1}$,  ${\mathbf{c}_2}\in \mathbb{F}^{n_2}$, $\mathcal{M}_{\mathbf{c}_2}$ -- $M$-ортогональное множество для вектора ${\mathbf{c}_2}$,
+тогда $M$-ортогональное множество для вектора $\mathbf{c}_1\otimes\mathbf{c}_2$ состоит из векторов вида:
+\begin{center}
+$ 1) \mathbf{c}_1 \otimes \mathbf{w},$ \\
+$ 2) \mathbf{v} \otimes \mathbf{c}_2,$ \\
+$ 3) \mathbf{c}_1 \otimes \mathbf{w}  + \mathbf{v}\otimes \mathbf{c}_2 + \mathbf{v}\otimes \mathbf{w}$,
+\end{center}
+где $\mathbf{v}\in \mathcal{M}_{\mathbf{c}_1}$, $\mathbf{w} \in \mathcal{M}_{\mathbf{c}_2}$.
+\end{lemma}
+\begin{proof} Эта лемма вытекает из \cite{Zim2011}, с.121-122.
+\end{proof}
+
+Для векторов $\mathbf{c}_1\in C_1(\subseteq\mathbb{F}\mathcal{G})$ и $\mathbf{c}_2\in C_2(\in\subseteq\mathbb{F}\mathcal{H})$ рассмотрим соответствующие им $M$-ортогональные множества $\mathcal{M}_{\mathbf{c}_1}$ и $\mathcal{M}_{\mathbf{c}_2}$. Ниже построен алгоритм ${\mathrm{M\_orth}}$, который конструирует для каждого вектора $\mathbf{c}_1\otimes \mathbf{c}_2\in C_1\otimes C_2(\subseteq\mathbb{F}(\mathcal{G}\times\mathcal{H}))$ такое $M$-ортогональное множество $\mathcal{M}_{\mathbf{c}_1\otimes \mathbf{c}_2}$, что
+\begin{equation}
+\label{M_tens}
+|\mathcal{M}_{\mathbf{c}_1\otimes \mathbf{c}_2}|=|\mathcal{M}_{\mathbf{c}_1}|+|\mathcal{M}_{\mathbf{c}_1}|.
+\end{equation}
+\begin{algorithm}[!ht]
+\SetAlgoLined
+\KwData{Векторы ${\mathbf{c}_1}$,${\mathbf{c}_2}$ и соответствующие им $\mathcal{M}$-ортогональные множества $\mathcal{M}_{\mathbf{c}_1}$, $\mathcal{M}_{\mathbf{c}_2}$. }
+\KwResult{$\mathcal{M}$-ортогональное множество $\mathcal{M}_{\mathbf{c}_1\otimes\mathbf{c}_2}$ для
+вектора $\mathbf{c}_1\otimes\mathbf{c}_2$. }
+$\mathcal{M}_{\mathbf{c}_1\otimes\mathbf{c}_2}:=\emptyset$\\
+\ForEach{$\mathbf{w} \in  \mathcal{M}_{\mathbf{c}_2}$}{
+к $\mathcal{M}_{\mathbf{c}_1\otimes\mathbf{c}_2}$ добавить $\mathbf{c}_1 \otimes \mathbf{w}$
+}
+\ForEach{$\mathbf{v} \in  \mathcal{M}_{\mathbf{c}_1}$}{
+к $\mathcal{M}_{\mathbf{c}_1\otimes\mathbf{c}_2}$ добавить $\mathbf{v} \otimes \mathbf{c}_2$
+}
+\KwRet{$\mathcal{M}_{\mathbf{c}_1\otimes\mathbf{c}_2}$}
+\caption{${\mathrm{M\_orth}}$}
+\end{algorithm}
+
+С применением алгоритма ${\mathrm{M\_orth}}$ построен алгоритм ${\mathrm{MakeTensorTree}}$, который для корня с меткой $\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}$ по декодирующим деревьям $\mathrm{WB}_{\mathbf{1}_{\mathcal{G}},r_{\mathbf{1}_{\mathcal{G}}},L_{\mathbf{1}_{\mathcal{G}}}}[C_1]$ и $\mathrm{WB}_{\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{H}}}}[C_2]$ строит некоторое \emph{вспомогательное декодирующее дерево}, которое обозначим следующим образом
+\begin{equation}
+\label{tens_tree}
+{\mathrm{WB}^{\otimes}}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}}[C_1\otimes C_2].
+\end{equation}
+\begin{algorithm}[!ht]
+\SetAlgoLined
+\KwData{ $\mathrm{WB}_{\mathbf{1}_{\mathcal{G}},r_{\mathbf{1}_{\mathcal{G}}},L_{\mathbf{1}_{\mathcal{G}}}}[C_1]$, $\mathrm{WB}_{\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{H}}}}[C_2]$.}
+\KwResult{дерево \eqref{tens_tree}.}
+$V_1^\otimes := \mathrm{M\_orth}(\mathbf{1}_{\mathcal{G}},\mathbf{1}_{\mathcal{H}}, \mathcal{M}_{\mathbf{1}_{\mathcal{G}}}, \mathcal{M}_{\mathbf{1}_{\mathcal{H}}})$ \\
+\For{$1 \leq k \leq L_{\mathbf{1}_{\mathcal{G}}}+L_{\mathbf{1}_{\mathcal{H}}}-2$}{
+\ForEach{$\mathbf{v}^k = (\mathbf{c}_1^k \otimes \mathbf{c}_2^k) \in V_k^\otimes$}{
+\If{$\mathbf{v}^k \notin (C_1 \otimes C_2)^\perp$}{
+на уровень $V_{k+1}^\otimes$ добавить $|\mathcal{M}_{\mathbf{c}_1^k}|\cdot |\mathcal{M}_{\mathbf{c}_2^k}|$ вершин и соединить их с вершиной, имеющей метку $\mathbf{v}^k$ на уровне $V^{\otimes}_{k}$;\\
+пометить добавленные вершины метками из множества $$\mathcal{M}_{\mathbf{v}^k} = \mathrm{M\_orth}(\mathbf{c}_1^k, \mathbf{c}_2^k, \mathcal{M}_{\mathbf{c}_1^k}, \mathcal{M}_{\mathbf{c}_2^k}).$$
+}
+}
+}
+\KwRet{${\mathrm{WB}}^{\otimes}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}}[C_1\otimes C_2]$}
+\caption{${\mathrm{MakeTensorTree}}$}
+\end{algorithm}
+
+Если $C_1$ и $C_2$ --- групповые $\mathrm{MLD}$-коды, то есть $\mathrm{dmaj}_{B^{\mathbb{F}\mathcal{G}}}(C_1)=\mathrm{dist}_{B^{\mathbb{F}\mathcal{G}}}(C_1)-1$ и $\mathrm{dmaj}_{B^{\mathbb{F}\mathcal{G}}}(C_2)=\mathrm{dist}_{B^{\mathbb{F}\mathcal{G}}}(C_2)-1$, то в общем случае вспомогательное декодирующее дерево, построенное по алгоритму ${\mathrm{MakeTensorTree}}$, не позволяет найти с помощью мажоритарного декодера (см. \cite{DeKo2015}, алгоритм 3 \textrm{Decoder2}) значения ошибок $\mathbf{e}$, вес которых удовлетворяет неравенству \eqref{max_errors}. Дело в том, что из сравнения равенств \eqref{dist_tens} и \eqref{M_tens} вытекает, что мощность $|\mathcal{M}_{\mathbf{c}_1}|+|\mathcal{M}_{\mathbf{c}_2}|$ построенного алгоритмом ${\mathrm{MakeTensorTree}}$ $M$-ортогонального множества $\mathcal{M}_{\mathbf{c}_1\otimes \mathbf{c}_2}$ меньше
+$$\mathrm{dist}_{B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}}(C_1\otimes C_2)-1=|\mathcal{M}_{\mathbf{c}_1}||\mathcal{M}_{\mathbf{c}_2}|+|\mathcal{M}_{\mathbf{c}_1}|+|\mathcal{M}_{\mathbf{c}_2}|$$
+для каждого узла с меткой $\mathbf{c}_1\otimes \mathbf{c}_2$.
+
+  %могут быть построены $|\mathcal{M}_{\mathbf{c}^k_1}||\mathcal{M}_{\mathbf{c}^k_2}|+|\mathcal{M}_{\mathbf{c}^k_1}|+|\mathcal{M}_{\mathbf{c}^k_2}|$ векторов, которые являются $M$-ортогональными к вектору $\mathbf{v}^k$. Отметим, что
+ Вспомогательное декодирующее дерево \eqref{tens_tree} может быть достроено до полного декодирующего дерева $\mathrm{MLD}$-кода $C_1\otimes C_2$ на основании конструкции 3) леммы \ref{lemma_1} путем добавления недостающих вершин, однако представляется удобным работать только со значениями меток недостающих вершин.
+ Алгоритм ${\mathrm{AddVals}}$ для каждого узла $\mathbf{v}=\mathbf{c}_1\otimes \mathbf{c}_2$ по принятому из канала вектору $\mathbf{x}$ и вспомогательному декодирующему дереву \eqref{tens_tree} вычисляет дополнительные $|\mathcal{M}_{\mathbf{c}_1}||\mathcal{M}_{\mathbf{c}_2}|$ значений меток недостающих вершин, но, подчеркнем, к дереву \eqref{tens_tree} при выполнении алгоритма ${\mathrm{AddVals}}$ дополнительные вершины не добавляются.
+\begin{algorithm}[!ht]
+\SetAlgoLined
+\KwData{$\mathbf{x}$ -- вектор вида \eqref{x_vector}, $\mathcal{M}_{\mathbf{v}^k}$ -- $M$ - ортогональное множество для $\mathbf{v}^k=\mathbf{c}_1^k \otimes \mathbf{c}_2^k$, ${\mathrm{WB}^{\otimes}}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}}[C_1\otimes C_2]$ -- декодирующее дерево, $k$ -- текущий уровень дерева}
+\KwResult{Набор чисел $l_k$ мощности $|\mathcal{M}_{\mathbf{c}^k_1}|\cdot|\mathcal{M}_{\mathbf{c}^k_2}|$ }
+\eIf{$k = L_{\mathbf{1}_{\mathcal{G}}} + L_{\mathbf{1}_{\mathcal{H}}} - 2$}{
+\For{$1 \leq i \leq |\mathcal{M}_{\mathbf{c}_2^k}|$}{
+\For{$|\mathcal{M}_{\mathbf{c}_2^{k}}|+1 \leq j \leq |\mathcal{M}_{\mathbf{c}_2^{k}}|+|\mathcal{M}_{\mathbf{c}_1^{k}}|$}{
+к $l_k$ добавить $l(\mathbf{v}_i=(\mathbf{c}_1^i \otimes \mathbf{c}_2^i)) + l(\mathbf{v}_j=(\mathbf{c}_1^j \otimes \mathbf{c}_2^j)) + <\mathbf{c}_1^j\otimes \mathbf{c}_2^i,\mathbf{x}>$,
+где $\mathbf{v}_i,\mathbf{v}_j \in \mathcal{M}_{\mathbf{v}^k}, \mathbf{c}_1^j \otimes \mathbf{c}_2^i \in (C_1\otimes C_2)^\perp$
+}
+}
+}{
+\For{$1 \leq i \leq |\mathcal{M}_{\mathbf{c}_2^k}|$}{
+\For{$|\mathcal{M}_{\mathbf{c}_2^k}|+1 \leq j \leq |\mathcal{M}_{\mathbf{c}_2^k}|+|\mathcal{M}_{\mathbf{c}_1^k}|$}{
+к $l_k$ добавить $l(\mathbf{v}_i=(\mathbf{c}_1^i \otimes \mathbf{c}_2^i)) + l(\mathbf{v}_j=(\mathbf{c}_1^j \otimes \mathbf{c}_2^j)) + l(\mathbf{c}_1^j \otimes \mathbf{c}_2^i)$,
+где $\mathbf{v}_i,\mathbf{v}_j \in \mathcal{M}_{\mathbf{v}^k}, \mathbf{c}_1^j \otimes \mathbf{c}_2^i \in {V^\otimes}_{k+2}$
+}
+}
+}
+\KwRet{$l_k$}
+\caption{${\mathrm{AddVals}}$}
+\end{algorithm}
+
+Алгоритм ${\mathrm{AddVals}}$ применяется в алгоритме декодирования ${\mathrm{DecodeTensorBit}}$, который по принятому вектору $\mathbf{x}$ находит значение $e_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}$ вектора ошибок $\mathbf{e}$ в координате, соответствующей базисной функции $\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}$. (Отметим, что в алгоритме ${\mathrm{DecodeTensorBit}}$ используется операция конкатенации наборов чисел, которая обозначается символом $\uplus$.) Таким образом, алгоритм ${\mathrm{DecodeTensorBit}}$ в случае тензорного произведения кодов выполняет функцию упомянутого выше алгоритма мажоритарного декодирования и правильно находит значение координаты вектора ошибок $\mathbf{e}$, когда вес ошибки удовлетворяет неравенству \eqref{max_errors}.
+\begin{algorithm}[!ht]
+\SetAlgoLined
+\KwData{$\mathbf{x}$ -- вектор вида \eqref{x_vector}, $\mathrm{WB}^{\otimes}[C_1\otimes C_2]={\mathrm{WB}^{\otimes}}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}}[C_1\otimes C_2]$ -- декодирующее дерево}
+\KwResult{$e_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}$}
+
+\For{$1 \leq k \leq L_{\mathbf{1}_{\mathcal{G}}} + L_{\mathbf{1}_{\mathcal{H}}} - 1$ }{
+\ForEach{$\mathbf{v}_k \in {V^\otimes}_k$}{
+\eIf{$\mathbf{v}_k \in (C_1\otimes C_2)^\perp$}{$l(\mathbf{v}_k) := <\mathbf{v}_k,\mathbf{x}>$}{
+$l(\mathbf{v}_k) := \mathrm{MajorVote}(l[\mathcal{M}_{v^k}]\uplus \mathrm{AddVals}(\mathbf{x},\mathcal{M}_{v^k},\mathrm{WB}^{\otimes}[C_1\otimes C_2], k))$
+}
+}
+}
+$e_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}} := \mathrm{MajorVote}(l[\mathcal{M}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}]\uplus \mathrm{AddVals}(\mathbf{x},\mathcal{M}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}},\mathrm{WB}^{\otimes}[C_1\otimes C_2], 0))$ \\
+\KwRet{$e_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}$}
+\caption{${\mathrm{DecodeTensorBit}}$}
+\end{algorithm}
+
+Заметим, что алгоритм ${\mathrm{MakeTensorTree}}$ строит вспомогательное декодирующее дерево для координаты, соответствующей элементу $\widehat{1}_{\mathcal{G}}\times\widehat{1}_{\mathcal{H}} (\in \mathcal{G} \times \mathcal{H})$. В \cite{DeKo2015} для групповых кодов построен приведенный ниже вспомогательный алгоритм
+${\mathrm{CloneTree}}$, позволяющий по вспомогательному декодирующему дереву с одной меткой у корня построить вспомогательноее декодирующее дерево для корня с любой другой меткой.
+\begin{algorithm}[h]
+\SetAlgoLined
+\KwData{$\mathcal{G}$, $\mathrm{WB}^{\otimes}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}[C]$, $\mathbf{b}'$}
+\KwResult{$\mathrm{WB}^{\otimes}_{\mathbf{b}',r_{\mathbf{b}}',L_{\mathbf{b}'}}[C]$}
+$\mathrm{WB}^{\otimes}_{\mathbf{b}',r_{\mathbf{b}}',L_{\mathbf{b}'}}[C]:=\mathrm{WB}^{\otimes}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}[C]$\;
+Найти $g(\in \mathcal{G})$ такой, что $(g,\mathbf{b})=\mathbf{b}'$\;
+\eForEach{метки $\mathbf{p}$ дерева $\mathrm{WB}^{\otimes}_{\mathbf{b}',r_{\mathbf{b}}',L_{\mathbf{b}'}}[C]$}{
+// Действие элементом $g$ на $\mathbf{p}$ по правилу \eqref{group_action_on_group_algebra}\;
+$\mathbf{p}:=(g,\mathbf{p})$\;}
+\KwRet $\mathrm{WB}^{\otimes}_{\mathbf{b}',r_{\mathbf{b}}',L_{\mathbf{b}'}}[C]$
+\caption{$\mathrm{CloneTree}$}
+\end{algorithm}
+
+Таким образом, набор вспомогательных декодирующих деревьев
+$$\mathcal{WB}^{\otimes}(C_1\otimes C_2)=\{{\mathrm{WB}}^{\otimes}_{\delta_{(g,h)},r_{\delta_{(g,h)}},L_{\delta_{(g,h)}}}\}_{\delta_{(g,h)}\in B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}}$$ для группового кода $C_1\otimes C_2$ может быть построен по дереву \eqref{tens_tree}. Именно, для любой базисной функции $\delta_{(g,h)}\in B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}$:
+$${\mathrm{WB}}^{\otimes}_{\delta_{(g,h)},r_{\delta_{(g,h)}},L_{\delta_{(g,h)}}}=\mathrm{CloneTree}(\mathcal{G}\times\mathcal{H},{\mathrm{WB}^{\otimes}}_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}},r_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}},L_{\mathbf{1}_{\mathcal{G}}\otimes\mathbf{1}_{\mathcal{H}}}}, \delta_{(g,h)}).$$
+По аналогии с алгоритмом \textrm{Decoder3} из \cite{DeKo2015} построен алгоритм \textrm{DecodeTensorVector} декодирования принятого вектора $\mathbf{x}$, в котором каждая координата декодируется с помощью алгоритма \textrm{DecodeTensorBit}.
+\begin{algorithm}[h]
+\SetAlgoLined
+\KwData{принятый вектор $\mathbf{x}=\mathbf{c}+\mathbf{e}$, набор вспомогательных декодирующих деревьев $\mathcal{WB}^{\otimes}(C_1\otimes C_2)=
+\{\mathrm{WB}^{\otimes}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}}\}_{\mathbf{b}\in B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}}$}
+\KwResult{вектор $\mathbf{c}'$ -- результат декодирования}
+\ForEach{$\mathbf{b}\in B^{\mathbb{F}(\mathcal{G}\times\mathcal{H})}$}{
+$a:=x_{\mathbf{b}}-\mathrm{DecodeTensorBit}(\mathbf{x},\mathbf{b}_{i}, \mathrm{WB}^{\otimes}_{\mathbf{b},r_{\mathbf{b}},L_{\mathbf{b}}})$}
+\KwRet $\mathbf{c}'$
+\caption{${\mathrm{DecodeTensorVector}}$}
+\end{algorithm}
+
+Таким образом справедлива следующая теорема.
+\begin{theorem}
+\label{teor_1}
+Пусть $C_1$ и $C_2$ --- групповые $\mathrm{MLD}$-коды с наборами декодирующих деревьев $\mathcal{WB}(C_1)$ и $\mathcal{WB}(C_2)$ соответственно, $\mathcal{WB}^{\otimes}(C_1\otimes C_2)$ -- набор вспомогательных декодирующих деревьев кода $C_1\otimes C_2$, построенный с помощью алгоритмов $\mathrm{MakeTensorTree}$ и $\mathrm{CloneTree}$ с использованием $\mathcal{WB}(C_1)$ и $\mathcal{WB}(C_2)$. Тогда, если $\mathbf{c}(\in C_1\otimes C_2)$ -- кодовый вектор, который на выходе из канала принимает вид $\mathbf{x}=\mathbf{c} + \mathbf{e}$, где вес вектора ошибок $\mathbf{e}$ удовлетворяет условию \eqref{max_errors}, то $$\mathrm{DecodeTensorVector}(\mathbf{x},\mathcal{WB}^{\otimes}(C_1\otimes C_2))=\mathbf{c}.$$
+\end{theorem}
+
+\section{Криптосистема типа Мак-Элиса на основе произведения кодов}
+\subsection{Криптосистема типа Мак-Элиса}
+Пусть $C (\subseteq\mathbb{F}^n)$ --- линейный $[n,k,d]$-код длины $n=n(C)$, размерности $k=k(C)$, с кодовым расстоянием $d=\mathrm{dist}_{B}(C)$, $G(C)$ --- порождающая матрица кода $C$. Под криптосистемой типа Мак-Элиса на основе $[n,k,d]$-кода $C$ здесь понимается асимметричная криптосистема, в которой открытый ключ $\mathbf{k}_{\mathrm{pub}}$ --- это пара $(\widetilde{G},t=\left\lfloor(d-1)/2\right\rfloor)$, а секретный ключ $\mathbf{k}_{\mathrm{sec}}$ --- пара матриц $(S,P)$, где $S$ -- случайная невырожденная $(k\times k)$-матрица, $P$ -- случайная перестановочная $(n\times n)$-матрица, причем $\widetilde{G}=S\cdot G(C) \cdot P$. Правило шифрования произвольного сообщения $\mathbf{s}(\in \mathbb{F}^{k})$ имеет вид:
+\begin{equation}
+\label{encryption}
+\mathbf{z}=\mathbf{s}\widetilde{G}+\mathbf{e},
+\end{equation}
+где вес Хэмминга добавляемой ошибки $\mathbf{e}=(e_1,...,e_n)$ удовлетворяет неравенству: $w_{B}(\mathbf{e})\leq t$. Для расшифрования $\mathbf{c}$ секретный ключ $\mathbf{k}_{\mathrm{sec}}$ используется по правилу: $\mathbf{s}=\mathrm{Dec}_{C}(\mathbf{z}P^{-1})S^{-1}$, где $\mathrm{Dec}_{C}:\mathbb{F}^n\rightarrow \mathbb{F}^k$ --- декодер кода $C$, гарантированно исправляющий $t$ и менее ошибок и восстанавливающий вектор $\mathbf{s}$. Далее предполагается, что вектор ошибок $\mathbf{e}$ выбирается случайно и равновероятно из множества $\mathbb{F}^{n,t}=\mathbb{F}^{n,t}_q (\subseteq \mathbb{F}^n_q)$, состоящего из векторов веса $t$, $|\mathbb{F}^{n,t}|=C^{t}_n(q-1)^{t}$.
+
+\subsection{Анализ стойкости $\mathrm{McE}(C_1\otimes C_2)$ к атакам на ключ}
+Рассмотрим криптосистему типа Мак-Элиса $\mathrm{McE}(C)$, где $C=C_1\otimes C_2$ --- тензорное произведение $[n_1,k_1,d_1]$-кода $C_1$ и $[n_2,k_2,d_2]$-кода $C_2$. В качестве модели нарушителя рассмотрим противника, целью которого является нахождение подходящего секретного ключа для правильного расшифрования криптограмм. Предполагается, что наблюдатель имеет алгоритм $\mathrm{Attack}$, с помощью которого может быть эффективно найден подходящий секретный ключ для криптосистемы $\mathrm{McE}(C_2)$.
+
+Порождающая матрица кода $C=C_1\otimes C_2$ имеет вид $G(C)={G}(C_1)\otimes G(C_2)$, а размерность $K$ кода $C$ равна $k_1k_2$. Тогда $(k_1k_2\times k_1k_2)$-матрица $S$ (часть секретного ключа $\mathbf{k}_{\mathrm{sec}}$) может быть представлена в блочном виде:
+\begin{equation}
+\label{block_matrix_S_}
+S=
+\left(\begin{array}{c|c|c|c}
+S_{0,0}&S_{0,1}&...&S_{0,k_1-1}\\
+\hline
+S_{1,0}&S_{1,1}&...&S_{1,k_1-1}\\
+\hline
+...&...&...&...\\
+\hline
+S_{k_1-1,0}&S_{k_1-1,1}&...&S_{k_1-1,k_1-1}
+\end{array}\right),
+\end{equation}
+где $S_{ij}$ --- $(k_2\times k_2)$ -матрица, $i,j=0,...,k_1-1$. Поэтому для матрицы $S\cdot G(C)$ имеет место представление:
+\begin{equation}
+\label{public_key_matrix_simple_}
+S\cdot G(C)=
+\left(\begin{array}{c|c|c}
+\sum\limits_{j=0}^{k_1-1}S_{0,j}g^1_{j,1}G(C_2)&...&\sum\limits_{j=0}^{k_1-1}S_{0,j}g^1_{j,n_1}G(C_2)\\
+\hline
+\sum\limits_{j=0}^{k_1-1}S_{1,j}g^1_{j,1}G(C_2)&...&\sum\limits_{j=0}^{k_1}S_{1,j}g^1_{j,n_1}G(C_2)\\
+\hline
+...&...&...\\
+\hline
+\sum\limits_{j=0}^{k_1-1}S_{k_1-1,j}g^1_{j,1}G(C_2)&...&\sum\limits_{j=0}^{k_1-1}S_{k_1-1,j}g^1_{jn_1}G(C_2)
+\end{array}\right).
+\end{equation}
+Для каждого $i\in\{1,...,n_1\}$ блочный столбец матрицы \eqref{public_key_matrix_simple_} представим в виде:
+\begin{equation}
+\label{public_key_matrix_simple_block}
+\left(\begin{array}{c}
+\sum\limits_{j=0}^{k_1-1}S_{0,j}g^1_{j,i}G(C_2)\\
+\hline
+\sum\limits_{j=0}^{k_1-1}S_{1,j}g^1_{j,i}G(C_2)\\
+\hline
+...\\
+\hline
+\sum\limits_{j=0}^{k_1-1}S_{v_1,j}g^1_{j,i}G(C_2)
+\end{array}\right)=\mathbf{S}_iG(C_2),\;\;\mathbf{S}_i=\left(\begin{array}{c}S_{0,0}\\
+\hline
+S_{1,0}\\
+\hline
+...\\
+\hline
+S_{k_1-1,0}
+\end{array}\right)g^1_{0,i}+...+\left(\begin{array}{c}
+S_{0,k_1-1}\\
+\hline
+S_{1,k_1-1}\\
+\hline
+...\\
+\hline
+S_{k_1-1,k_1-1}
+\end{array}\right)g^1_{k_1-1,i}.
+\end{equation} Непосредственно проверяется, что для каждого $i\in\{1,...,n_1\}$ матрица $\mathbf{S}_i$
+имеет ранг $k_2$. Тогда сложность нахождения подходящего секретного ключа не превышает соответствующей сложности применения алгоритма $\mathrm{AttackInduced}$ из \cite{DeKo2016} для криптосистемы типа Мак-Элиса на индуцированном коде с порождающей матрицей $I_{n_1}\otimes G^2_{k_2-1}$. Именно, если $Q$ --- вычислительная сложность алгоритма $\mathrm{Attack}$ для $\mathrm{McE}(C_2)$, то
+\begin{equation}
+\label{prev_result}
+\mathcal{O}\left(\left(\frac{n_1^{n_2-1}}{e}\right)^{n_1}(n_1Q+k_1k_2)^3\right)
+\end{equation}
+--- оценка сверху на сложность нахождения ключа для $\mathrm{McE}(C_1\otimes C_2)$.
+
+\begin{table}[!ht]
+\begin{center}
+        \begin{tabular}{c|c|c|c|c|c|c|c|c|c|}
+            \cline{2-9}
+             & \multicolumn{8}{|c|}{$\mathbf{n_2}$} \\
+            \hline
+            \multicolumn{1}{|c|}{$\mathbf{n_1}$} & \textit{2} & \textit{4} & \textit{8} & \textit{16} & \textit{32} & \textit{64} & \textit{128} & \textit{256} \\
+						\hline
+						\multicolumn{1}{|c|}{$\textit{2}$} &0&0&8&25&58&122&\textbf{250}&\textbf{506}\\
+            \hline
+						\multicolumn{1}{|c|}{$\textit{4}$} &0&16&48&112&\textbf{240}&\textbf{496}&\textbf{1008}&\textbf{2032}\\
+            \hline
+						\multicolumn{1}{|c|}{$\textit{8}$} &8&48&\textbf{152}&\textbf{344}&\textbf{728}&\textbf{1496}&\textbf{3032}&\textbf{6104}\\
+            \hline
+						\multicolumn{1}{|c|}{$\textit{16}$} &25&112&\textbf{344}&\textbf{928}&\textbf{1952}&\textbf{4000}&\textbf{8096}&\textbf{16288}\\
+            \hline
+						\multicolumn{1}{|c|}{$\textit{32}$} &52&\textbf{240}&\textbf{728}&\textbf{1952}&\textbf{4896}&\textbf{10016}&\textbf{20256}&\textbf{40000}\\
+            \hline
+						\multicolumn{1}{|c|}{$\textit{64}$} &122&\textbf{496}&\textbf{1496}&\textbf{4000}&\textbf{10016}&\textbf{24064}&\textbf{48640}&\textbf{96000}\\
+						\hline
+						\multicolumn{1}{|c|}{$\textit{128}$} &\textbf{250}&\textbf{1008}&\textbf{3032}&\textbf{8096}&\textbf{20256}&\textbf{48640}&\textbf{113536}&\textbf{237000}\\
+            \hline
+						\multicolumn{1}{|c|}{$\textit{256}$} &\textbf{506}&\textbf{2032}&\textbf{6104}&\textbf{16288}&\textbf{40000}&\textbf{96000}&\textbf{237000}&\textbf{512000}\\
+            \hline
+        \end{tabular}
+				\end{center}
+				\caption{Значения величины $\left\lceil \log_{2}(K(n_1,n_2))\right\rceil$, где $K(n_1,n_2)$ --- количество перебираемых ключей в атаке ${\mathrm{AttackInduced}}$ на криптосистему $\mathrm{McE}(C_1\otimes C_2)$, для $i\in \{1;2\}$ здесь $C_i$ --- код Рида-Маллера $\mathcal{RM}(r,m)$, $n_i=2^{m}$, $r\leq m$, $m=1,...,8$. // Values of $\left\lceil \log_{2}(K(n_1,n_2))\right\rceil$, where $K(n_1,n_2)$ is number of probed keys in attack ${\mathrm{AttackInduced}}$ for $\mathrm{McE}(C_1\otimes C_2)$ cryptosystem, where for $i\in\{1;2\}$ here $C_i$ --- Reed-Muller code $\mathcal{RM}(r,m)$, $n_i=2^{m}$, $r\leq m$, $m=1,...,8$.}
+				\label{table1}
+			\end{table}
+	
+	В таблице \ref{table1} приведен пример расчета сложности атаки на ключ для криптосистемы $\mathrm{McE}(C_1\otimes C_2)$, где $C_i$ --- код Рида-Маллера, $i\in \{1;2\}$. В каждой ячейке таблицы приведено число $\left\lceil \log_{2}(K(n_1,n_2))\right\rceil$, где $K(n_1,n_2)$ --- количество перебираемых ключей в атаке ${\mathrm{AttackInduced}}$ (множитель $({n_1^{n_2-1}}{e}^{-1})^{n_1}$ в \eqref{prev_result}), где $n_1$ и $n_2$ --- длины кодов $C_1$ и $C_2$ соответственно.  Жирным выделены те ячейки таблицы, для которых $\left\lceil \log_{2}(K(n_1,n_2))\right\rceil\geq 128$, так как перебор ключей длины 128 бит и более в настоящее время является вычислительно  неосуществимой задачей \cite{Len2001}. Заметим также, что $A\otimes B=Q_1\cdot (B\otimes A) \cdot Q_2$, где $Q_1$ и $Q_2$ --- перестановочные матрицы подходящего размера. Поэтому парам $(n_1,n_2)$ и $(n_2,n_1)$ таблице соответствую ячейки с одинаковым значением $\min\{\left\lceil \log_{2}(K(n_1,n_2))\right\rceil;\left\lceil \log_{2}(K(n_2,n_1))\right\rceil\}$. На основании результатов, представленных в таблице \ref{table1}, можно сделать вывод, что для кодов Рида-Маллера $C_1$ и $C_2$ криптосистема $\mathrm{McE}(C_1\otimes C_2)$ представляется стойкой к структурным атакам на ключ уже при $n_i\geq 8$, где $n_i$ --- длина кода $C_i$, $i=1,2$.
+
+\medskip
+\renewcommand{\refname}{Список литературы / References}
+{\footnotesize
+\begin{thebibliography}{99}%Пример оформления списка литературы. Для публикаций на русском языке в скобках приводится вариант на англ. языке, если есть (см. Пример 4) или транслитерация (см. Пример 5).
+
+\Bibitem{Sho1994}
+\by Shor~P.\,W.
+\paper Algorithms for quantum computation: Discrete logarithms and factoring
+\jour  Proceedings 35th Annual Symposium on Foundations of Computer Science, IEEE Computer Society Press
+\yr 1994
+%\vol 106
+%\issue 42
+\pages 124--134
+
+
+\Bibitem{Sen2016}
+\by Sendrier~N., Tillich~J.-P.
+\paper Code-Based Cryptography: New Security Solutions Against a Quantum Adversary
+\jour  ERCIM News, ERCIM, 2016, Special Theme Cybersecurity (106). <hal-01410068>
+%\yr 2016
+%\vol 106
+%\issue 42
+%\pages 94--34
+
+\Bibitem{McEliece1978}
+\by McEliece~R.\,J.
+\paper A Public-Key Cryptosystem Based on Algebraic Coding Theory
+\jour JPL Deep Space Network Progress Report
+\yr 1978
+%\vol 3
+\issue 42
+\pages 114--116
+
+\Bibitem{Nid1986}
+\by Niederreiter~H.
+\paper Knapsack-Type Cryptosystem and Algebraic Coding Theory
+\jour Probl. Control and Inform. Theory
+\yr 1986
+\vol 15
+%\issue 42
+\pages 94--34
+
+\Bibitem{Gab1991}
+\by Gabidulin~E.\,M. et al.
+\paper Ideals Over a Non-Commutative Ring and Their Application in Cryptology.
+\jour Advances in Cryptology–EUROCRYPT’91 / Ed. by D.W. Davies. Lect. Notes in Comp. Sci. Springer-Verlag
+\yr 1991
+\vol 547
+%\issue 42
+\pages 482--489
+
+\RBibitem{Sid1994}
+\by Сидельников~В.\,М.
+\paper Открытое шифрование на основе двоичных кодов Рида-Маллера
+\jour Дискретная математика
+\yr 1994
+\vol 6
+\issue 2
+\pages 3--20
+\transl
+[\by Sidel'nikov~V.\,M.
+\paper Open coding based on Reed–Muller binary codes.
+\jour Diskr. Mat.
+\yr 1994
+\vol  6
+\issue 2
+\pages 3--20
+\finalinfo (in Russian).\nofrills]
+
+\RBibitem{SidShest1992}
+\by Сидельников~В.\,М., Шестаков~С.\,О.
+\paper О системе шифрования, основанной па обобщенных кодах Рида-Соломона
+\jour Дискретная математика
+\yr 1992
+\vol 3
+\issue 3
+\pages 57--63
+\transl
+[\by Sidel'nikov~V.\,M., Shestakov~S.\,O.
+\paper O sisteme shifrovanija, osnovannoj pa obobshhennyh kodah Rida-Solomona
+\jour Diskr. Mat.
+\yr 1992
+\vol  3
+\issue 3
+\pages 57--63
+\finalinfo (in Russian).\nofrills]
+
+\RBibitem{DeDrKo2006}
+\by Деундяк~В.\,М. и др.,
+\paper Модификация криптоаналитического алгоритма Сидельникова-Шестакова для обобщенных кодов Рида-Соломона и ее программная реализация
+\jour Известия высших учебных заведений. Северо-Кавказский регион. Технические науки.
+\yr 2006
+%\vol 3
+\issue 4
+\pages 15--20
+\transl
+[\by Deundyak~V.\,M. et al.,
+\paper Modifikatsiya kriptoanaliticheskogo algoritma Sidel'nikova-Shestakova dlya obobshchennykh kodov Rida-Solomona i ee programmnaya realizatsiya
+\jour Izvestiya vysshikh uchebnykh zavedeniy. Severo-Kavkazskiy region. Tekhnicheskie nauki
+\yr 2006
+%\vol  3
+\issue 4
+\pages 15--20
+\finalinfo (in Russian).\nofrills]
+
+\Bibitem{Over2006}
+\by Overbeck~R.
+\paper Structural Attacks for Public Key Cryptosystems based on Gabidulin Codes
+\jour Journal of Cryptology
+\yr 2008
+\vol 21
+\issue 2
+\pages 280--301
+
+\Bibitem{MinSho2007}
+\by Minder~L., Shokrollahi~A.
+\paper Cryptanalysis of the Sidelnikov cryptosystem
+\jour Lecture Notes in Computer Science
+\yr 2007
+\vol 4515
+%\issue 2
+\pages 347--360
+
+\RBibitem{Chi2014}
+\by Чижов~И.\,И., Бородин~М.\,А.
+\paper Эффективная атака на криптосистему Мак-Элиса, построенную на основе кодов Рида–Маллера
+\jour Дискрет. матем.
+\yr 2014
+\vol 26
+\issue 1
+\pages 10--20
+\transl
+[\by Chizhov~I.\,I., Borodin~M.\,A.
+\paper Jeffektivnaja ataka na kriptosistemu Mak-Jelisa, postroennuju na osnove kodov Rida–Mallera
+\jour Diskr. Mat.
+\yr 2014
+\vol  26
+\issue 1
+\pages 10--20
+\finalinfo (in Russian).\nofrills]
+
+\RBibitem{DeKo2016}
+\by Деундяк~В.\,М., Косолапов~Ю.\,В.
+\paper Криптосистема на индуцированных групповых кодах
+\jour Модел. и анализ информ. систем.
+\yr 2016
+\vol 23
+\issue 2
+\pages 137--152
+\transl
+[\by Deundyak~V.\,M., Kosolapov~Yu.\,V.
+\paper Cryptosystem Based on Induced Group Codes
+\jour Model. i analiz inform. sistem
+\yr 2016
+\vol  23
+\issue 2
+\pages 137--152
+\finalinfo (in Russian).\nofrills]
+
+\RBibitem{Zim2011}
+\by Циммерман~К.\,-Х.
+\book Методы теории модулярных представлений в алгебраической теории кодирования
+\publaddr М.
+\publ МЦНМО
+\yr 2011
+\transl
+[\by Tsimmerman~K.\,-Kh.
+\book Metody teorii modulyarnykh predstavleniy v algebraicheskoy teorii kodirovaniya
+\publaddr M.
+\publ MTsNMO
+\yr 2011
+\finalinfo (in Russian).\nofrills]
+
+\RBibitem{DeKo2015}
+\by Деундяк~В.\,М., Косолапов~Ю.\,В.
+\paper Алгоритмы для мажоритарного декодирования групповых кодов
+\jour Модел. и анализ информ. систем.
+\yr 2015
+\vol 22
+\issue 4
+\pages 464--482
+\transl
+[\by Deundyak~V.\,M., Kosolapov~Yu.\,V.
+\paper Algoritmy dlja mazhoritarnogo dekodirovanija gruppovyh kodov
+\jour Model. i analiz inform. sistem
+\yr 2015
+\vol  22
+\issue 4
+\pages 464--482
+\finalinfo (in Russian).\nofrills]
+
+\RBibitem{Ker1969}
+\by Curtis~C.\,W., Reiner~I.
+\book Representation Theory of Finite Groups and Associative Algebras
+\publaddr New York
+\publ Intersclence Publishers
+\yr 1962
+
+\Bibitem{Len2001}
+\by Lenstra~A.\,K., Verheul~E.\,R.
+\paper Selecting Cryptographic Key Sizes
+\jour Journal of Cryptology
+\yr 2001
+\vol 14
+%\issue 2
+\pages 255--293
+
+\end{thebibliography}}
+\vskip 8pt
+   \smallskip\hrule width 6cm
+\medskip
+
+\end{document}
