@@ -285,9 +285,6 @@ P[ O_{1:T}] =
 
 3) наблюдения символов выходного алфавита внутри длительности полагаются условно независимыми.
 
-%Рассмотрим два события $A$ и $B$ и пусть $P[A, B]$ -- совместная вероятность этих двух событий. Под маргинальной вероятностью события $A$ будем понимать безусловную вероятность $P[A]$ события $A$, т.е., вероятность события $A$, независимого от того, наступает ли какое-то другое событие $B$ или нет. Если о $B$ можно думать как о некоторой случайной величине, принявшей данное значение, маргинальная вероятность $A$ может быть получена суммированием (или более широко интегрированием) совместных вероятностей по всем значениям этой случайной величины
-%$$P[A] = \sum\limits_{B\in \mathcal{B}} P[A,B].$$
-%Определение можно расширить на случай $n$ событий.
 \begin{lemma} \label{lemma:chapt3_GHSMM_Aux_L1} Для скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями вероятность наблюдения последовательности $O_{t+1:t+d}$ в обобщенном состоянии $(i,d)$, $b_{i,d}(O_{t+1:t+d})$, может быть вычислена следующим образом:
 \begin{enumerate}
   \item\label{eq:chapt3_GHSMM_Aux_L1_1} если $t+d>0$, а $t\leq T$, то $b_{i,d}(O_{t+1:t+d})=\prod\limits_{\theta=m}^k b_{i,d}(O_{t+\theta})$, где
@@ -373,7 +370,7 @@ a_{(i^\prime, d^\prime)(i,d)}, & t>0,
 \end{array}\right.
 \end{equation}
 Напомним, что для скрытой полумарковской модели с относительно независимыми длительностями и наблюдениями справедливы соотношения (\ref{eq:chapt1_GHSMM_Indep:inclus1}) и (\ref{eq:chapt1_GHSMM_Indep:inclus3}), а именно
-\begin{equation}\nonumber a_{(i,d)(j,d^\prime)}= a_{ij}\cdot p_j(d^\prime),\end{equation}
+\begin{equation}\nonumber a_{(i^\prime,d^\prime)(i,d)}= a_{{i^\prime} i}\cdot p_{i^\prime}(d^\prime),\end{equation}
 \begin{equation}
 \nonumber
  \pi_{(i,d)}= \pi_{i}\cdot p_i(d),
@@ -398,9 +395,10 @@ a_{i^\prime i} p_i(d), & t>0,
 a_{i^\prime i} p_i(d), & t>0,
 \end{array}\right.
 \end{equation}
-С учетом леммы \ref{lemma:chapt3_GHSMM_Aux_L1} выражение(\ref{eq:chapt3:l2:Prob_Recursion}) преобразуется к виду:
-\begin{equation}\label{eq:chapt3:l2:Prob_Recursion}
+С учетом леммы \ref{lemma:chapt3_GHSMM_Aux_L1} выражение (\ref{eq:chapt3:l2:Prob_Recursion}) преобразуется к виду:
+\begin{equation}
 \widetilde{P}[O_{1:t}]=\left\{\begin{array}{ll}
-1, &t\leq 0,\\\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d_1}]\overline{\alpha}_{t-d_1+d}(j,d)\prod\limits_{\tau=t-d_1+1}^{t-d_1+d} b_{i,d}(O_\tau),& t\in [1,T],\end{array}\right.
+1, &t\leq 0,\\\sum\limits_{j\in \mathcal{S}}\sum\limits_{d \in \mathcal{D}}\sum\limits_{d_1=1}^{d}\widetilde{P}[O_{1:t-d_1}]\overline{\alpha}_{t-d_1+d}(j,d)\prod\limits_{\tau=t-d_1+1}^{t-d_1+d} b_{j,d}(O_\tau),& t\in [1,T],\end{array}\right.
 \end{equation}
+Теорема доказана.
 \end{proof} 
