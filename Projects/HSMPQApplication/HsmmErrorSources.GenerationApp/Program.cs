@@ -63,7 +63,7 @@ namespace HsmmErrorSources.GenerationApp
                     else
                     {
                         WriteOutputToFile(outputPath, result.Value);
-                        Console.WriteLine("Generation has successfully completed. See result in " + outputPath);
+                        Console.WriteLine("Generation has been successfully completed. See result in " + outputPath);
                     }
 
                     Console.WriteLine("Do you want to continue? (y/n)");
