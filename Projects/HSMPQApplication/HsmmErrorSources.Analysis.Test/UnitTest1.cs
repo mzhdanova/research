@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HsmmErrorSources.Generation.Test
+namespace HsmmErrorSources.Analysis.Test
 {
     [TestClass]
     public class UnitTest1

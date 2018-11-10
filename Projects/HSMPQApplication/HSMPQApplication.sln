@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSMPQApplication", "HSMPQApplication\HSMPQApplication.csproj", "{7AD51CCB-C066-478F-8E19-EB66F323C05F}"
 EndProject
@@ -27,6 +27,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmmErrorSources.Analysis", "HsmmErrorSources.Analysis\HsmmErrorSources.Analysis.csproj", "{2C02DB82-E845-418E-8307-6AEFE1363DEF}"
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject2", "ModelingProject2\ModelingProject2.modelproj", "{17221928-287A-4018-9635-E04EAB892756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmmErrorSources.Analysis.Test", "HsmmErrorSources.Analysis.Test\HsmmErrorSources.Analysis.Test.csproj", "{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HsmmErrorSources.AnalysisApp", "HsmmErrorSources.AnalysisApp\HsmmErrorSources.AnalysisApp.csproj", "{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,9 +132,34 @@ Global
 		{17221928-287A-4018-9635-E04EAB892756}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{17221928-287A-4018-9635-E04EAB892756}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{17221928-287A-4018-9635-E04EAB892756}.Release|x86.ActiveCfg = Release|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EEB87C27-18FE-47B0-BDE4-35D5D551B53A}.Release|x86.ActiveCfg = Release|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Debug|x86.Build.0 = Debug|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Release|x86.ActiveCfg = Release|Any CPU
+		{304C58E9-74A3-4D37-9CD8-AE76FBFF16E2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F599394-2F60-429D-90CA-C86BF2FF2EDF}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = HSMPQApplication.vsmdi
