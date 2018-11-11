@@ -20,11 +20,37 @@ namespace HsmmErrorSources.Analysis.Test.Algorithms.Evaluation
             Assert.AreEqual(1, result);
         }
 
+        [TestMethod]
+        public void TestCalculate()
+        {
+            HsmFergusonModel model = createModel();
+            int[] sequenceArr = { 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0 };
+            List<int> sequence = new List<int>(sequenceArr);
+            HsmFergusonProbabilityCalculator calculator = new HsmFergusonProbabilityCalculator(model, sequence);
+            double result = calculator.Calculate();
+            Assert.AreEqual(1, result);
+        }
+
         private HsmFergusonModel createSimpleModel()
         {
             double[,] a = { { 0, 1 }, { 1, 0 } };
             double[] pi = { 1, 0 };
             double[,] f = { { 0, 1 }, { 0, 1 } };
+            double[,] b = { { 1, 0 }, { 0, 1 } };
+
+            HsmFergusonModel model = new HsmFergusonModel();
+            model.A = a;
+            model.B = b;
+            model.F = f;
+            model.Pi = pi;
+            return model;
+        }
+
+        private HsmFergusonModel createModel()
+        {
+            double[,] a = { { 0, 1 }, { 1, 0 } };
+            double[] pi = { 0, 1 };
+            double[,] f = { { 0, 0, 1 }, { 0, 0, 1 } };
             double[,] b = { { 1, 0 }, { 0, 1 } };
 
             HsmFergusonModel model = new HsmFergusonModel();
