@@ -1,0 +1,112 @@
+@Article{Lu2017,
+author="Lu, Xianggang
+and Yin, G.
+and Guo, Xianping",
+title="Infinite Horizon Controlled Diffusions with Randomly Varying and State-Dependent Discount Cost Rates",
+journal="Journal of Optimization Theory and Applications",
+year="2017",
+month="Feb",
+day="01",
+volume="172",
+number="2",
+pages="535--553",
+abstract="This work focuses on optimal controls of diffusions in an infinite horizon. It has several distinct features in contrast to the existing literature. The discount factor is allowed to be randomly varying and state dependent. The existence and uniqueness of the viscosity solution to the associated Hamilton--Jacobi--Bellman equation are established. The verification theorem is also obtained. Because closed-form solutions are virtually impossible to obtain in most cases, we develop numerical methods. Using the Markov chain approximation methods, numerical schemes are constructed; viscosity solution methods are used to prove the convergence of the algorithm. In addition, examples are given for demonstration purpose.",
+issn="1573-2878",
+doi="10.1007/s10957-016-0898-x",
+url="https://doi.org/10.1007/s10957-016-0898-x"
+}
+
+@Article{Callegaro2017,
+author="Callegaro, Giorgia
+and Campi, Luciano
+and Giusto, Valeria
+and Vargiolu, Tiziano",
+title="Utility indifference pricing and hedging for structured contracts in energy markets",
+journal="Mathematical Methods of Operations Research",
+year="2017",
+month="Apr",
+day="01",
+volume="85",
+number="2",
+pages="265--303",
+abstract="In this paper we study the pricing and hedging of structured products in energy markets, such as swing and virtual gas storage, using the exponential utility indifference pricing approach in a general incomplete multivariate market model driven by finitely many stochastic factors. The buyer of such contracts is allowed to trade in the forward market in order to hedge the risk of his position. We fully characterize the buyer's utility indifference price of a given product in terms of continuous viscosity solutions of suitable nonlinear PDEs. This gives a way to identify reasonable candidates for the optimal exercise strategy for the structured product as well as for the corresponding hedging strategy. Moreover, in a model with two correlated assets, one traded and one nontraded, we obtain a representation of the price as the value function of an auxiliary simpler optimization problem under a risk neutral probability, that can be viewed as a perturbation of the minimal entropy martingale measure. Finally, numerical results are provided.",
+issn="1432-5217",
+doi="10.1007/s00186-016-0569-6",
+url="https://doi.org/10.1007/s00186-016-0569-6"
+}
+
+@article{neilan_salgado_zhang_2017, 
+title={Numerical analysis of strongly nonlinear PDEs}, 
+volume={26}, DOI={10.1017/S0962492917000071},
+journal={Acta Numerica}, publisher={Cambridge University Press}, 
+author={Neilan, Michael and Salgado, Abner J. and Zhang, Wujun}, 
+year={2017}, pages={137–303}}
+
+@Inbook{Festa2017,
+author="Festa, Adriano
+and Guglielmi, Roberto
+and Hermosilla, Christopher
+and Picarelli, Athena
+and Sahu, Smita
+and Sassi, Achille
+and Silva, Francisco J.",
+editor="Tonon, Daniela
+and Aronna, Maria Soledad
+and Kalise, Dante",
+title="Hamilton--Jacobi--Bellman Equations",
+bookTitle="Optimal Control: Novel Directions and Applications",
+year="2017",
+publisher="Springer International Publishing",
+address="Cham",
+pages="127--261",
+abstract="In this chapter we present recent developments in the theory of Hamilton--Jacobi--Bellman (HJB) equations as well as applications. The intention of this chapter is to exhibit novel methods and techniques introduced few years ago in order to solve long-standing questions in nonlinear optimal control theory of Ordinary Differential Equations (ODEs).",
+isbn="978-3-319-60771-9",
+doi="10.1007/978-3-319-60771-9_2",
+url="https://doi.org/10.1007/978-3-319-60771-9_2"
+}
+
+@article{kossioris2017deterministic,
+  title={The Deterministic and Stochastic Shallow Lake Problem},
+  author={Kossioris, George T and Loulakis, Michail and Souganidis, Panagiotis E},
+  journal={arXiv preprint arXiv:1712.04210},
+  year={2017}
+}
+
+author = {Baradel, N. and Bouchard, B. and Dang, N.Â M.},
+title = {Optimal Trading with Online Parameter Revisions},
+journal = {Market Microstructure and Liquidity},
+volume = {02},
+number = {03n04},
+pages = {1750003},
+year = {2016},
+doi = {10.1142/S2382626617500034},
+
+URL = {http://www.worldscientific.com/doi/abs/10.1142/S2382626617500034},
+eprint = {http://www.worldscientific.com/doi/pdf/10.1142/S2382626617500034}
+}
+
+@article{li2016optimal,
+  title={Optimal pairs trading with time-varying volatility},
+  author={Li, Thomas Nanfeng and Tourin, Agnes},
+  journal={International Journal of Financial Engineering},
+  volume={3},
+  number={03},
+  pages={1650023},
+  year={2016},
+  publisher={World Scientific}
+}
+
+@article{shardin2016optimal,
+  title={Optimal control of an energy storage facility under a changing economic environment and partial information},
+  author={Shardin, Anton A and Sz{\"o}lgyenyi, Michaela},
+  journal={International Journal of Theoretical and Applied Finance},
+  volume={19},
+  number={04},
+  pages={1650026},
+  year={2016},
+  publisher={World Scientific}
+}
+
+
+
+

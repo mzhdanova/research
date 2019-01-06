@@ -1,0 +1,68 @@
+@article{li2016optimal,
+  title={Optimal pairs trading with time-varying volatility},
+  author={Li, Thomas Nanfeng and Tourin, Agn{\`e}s},
+  journal={International Journal of Financial Engineering},
+  volume={3},
+  number={03},
+  pages={1650023},
+  year={2016},
+  publisher={World Scientific}
+}
+
+@article{baradel2016optimal,
+  title={Optimal trading with online parameter revisions},
+  author={Baradel, Nicolas and Bouchard, Bruno and Dang, Ngoc Minh},
+  journal={Market microstructure and liquidity},
+  volume={2},
+  number={03n04},
+  pages={1750003},
+  year={2016},
+  publisher={World Scientific}
+}
+
+@article{callegaro2017utility,
+  title={Utility indifference pricing and hedging for structured contracts in energy markets},
+  author={Callegaro, Giorgia and Campi, Luciano and Giusto, Valeria and Vargiolu, Tiziano},
+  journal={Mathematical Methods of Operations Research},
+  volume={85},
+  number={2},
+  pages={265--303},
+  year={2017},
+  publisher={Springer}
+}
+
+@article{shardin2016optimal,
+  title={Optimal control of an energy storage facility under a changing economic environment and partial information},
+  author={Shardin, Anton A and Sz{\"o}lgyenyi, Michaela},
+  journal={International Journal of Theoretical and Applied Finance},
+  volume={19},
+  number={04},
+  pages={1650026},
+  year={2016},
+  publisher={World Scientific}
+}
+
+@incollection{festa2017hamilton,
+  title={Hamilton--Jacobi--Bellman Equations},
+  author={Festa, Adriano and Guglielmi, Roberto and Hermosilla, Christopher and Picarelli, Athena and Sahu, Smita and Sassi, Achille and Silva, Francisco J},
+  booktitle={Optimal Control: Novel Directions and Applications},
+  pages={127--261},
+  year={2017},
+  publisher={Springer}
+}
+
+@article{neilan2017numerical,
+  title={Numerical analysis of strongly nonlinear PDEs},
+  author={Neilan, Michael and Salgado, Abner J and Zhang, Wujun},
+  journal={Acta Numerica},
+  volume={26},
+  pages={137--303},
+  year={2017},
+  publisher={Cambridge University Press}
+}
+
+Kossioris, George T., Michail Loulakis, and Panagiotis E. Souganidis. 
+"The Deterministic and Stochastic Shallow Lake Problem." arXiv preprint arXiv:1712.04210 (2017).
+
+Baradel, Nicolas, Bruno Bouchard, and Ngoc Minh Dang. "Optimal trading with online parameter revisions." 
+Market microstructure and liquidity 2.03n04 (2016): 1750003.
