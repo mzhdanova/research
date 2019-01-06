@@ -9,18 +9,15 @@ using HsmmErrorSources.Models.Models;
 
 namespace HsmmErrorSources.Analysis.Algorithms.Selection
 {
-    public class HsmModelSelector : IModelSelector
+    public abstract class HsmModelSelector : IModelSelector
     {
-        private ISelectionCriterion SelectionCriterion;
-        private HsmProbabilityCalculatorFactory probabilityCalculatorFactory;
+        protected ISelectionCriterion selectionCriterion;
+        protected HsmProbabilityCalculatorFactory probabilityCalculatorFactory;
 
         public HsmModelSelector(ISelectionCriterion selectionCriterion) {
-            SelectionCriterion = selectionCriterion;
+            this.selectionCriterion = selectionCriterion;
             probabilityCalculatorFactory = new HsmProbabilityCalculatorFactory();
         }
-        public IHsmModel Select(List<int> sequence, List<IHsmModel> models)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract IHsmModel Select(List<int> sequence, List<IHsmModel> models);
     }
 }
