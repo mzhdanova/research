@@ -46,7 +46,7 @@ namespace HsmmErrorSources.Analysis.Algorithms.Evaluation
                     double sum = 0;
                     for (int i = 0; i < Model.N; i++)
                     {
-                        for (int d = 1; d < Model.F.GetLength(1); d++)
+                        for (int d = 1; d < Model.Dmax; d++)
                         {
                             for (int d1 = 1; d1 <= d; d1++)
                             {
@@ -74,7 +74,7 @@ namespace HsmmErrorSources.Analysis.Algorithms.Evaluation
             if (endIndex <= 0)
             {
                 Console.WriteLine("0_Alpha_" + endIndex + "(" + state + "," + duration + ")=" + Model.Pi[state] * Model.F[state, duration - 1]);
-                return Model.Pi[state] * Model.F[state, duration - 1];
+                return Model.Pi[state] * Model.F[state, duration];
             }
             else
             {
@@ -89,9 +89,9 @@ namespace HsmmErrorSources.Analysis.Algorithms.Evaluation
                     double sum = 0;
                     for (int i = 0; i < Model.N; i++)
                     {
-                        for (int d = 1; d <= Model.F.GetLength(1); d++)
+                        for (int d = 1; d < Model.Dmax; d++)
                         {
-                            double prod = Model.A[i, state] * Model.F[state, duration - 1];
+                            double prod = Model.A[i, state] * Model.F[state, duration];
 
                             if (!DoubleUtils.EqualsZero(prod))
                                 prod *= CalculateForwardVariable(endIndex - duration, i, d);
