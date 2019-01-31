@@ -40,13 +40,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\Evaluation\AbstractHsmmProbabilityCalculator.cs" />
+    <Compile Include="Algorithms\Evaluation\EvaluationManager.cs" />
+    <Compile Include="Algorithms\Evaluation\EvaluationResult.cs" />
     <Compile Include="Algorithms\Evaluation\HsmFergusonProbabilityCalculator.cs" />
     <Compile Include="Algorithms\Evaluation\HsmProbabilityCalculatorFactory.cs" />
     <Compile Include="Algorithms\Evaluation\HsmQpProbabilityCalculator.cs" />
     <Compile Include="Algorithms\Evaluation\IProbabilityCalculator.cs" />
+    <Compile Include="Algorithms\Selection\HsmModelSelectorFactory.cs" />
+    <Compile Include="Algorithms\Selection\ModelSelectorType.cs" />
+    <Compile Include="Algorithms\Selection\SegmentHsmModelSelector.cs" />
+    <Compile Include="Algorithms\Selection\SelectionManager.cs" />
+    <Compile Include="Algorithms\Selection\SelectionResult.cs" />
     <Compile Include="Algorithms\Selection\HsmModelSelector.cs" />
     <Compile Include="Algorithms\Selection\IModelSelector.cs" />
+    <Compile Include="Algorithms\Selection\SimpleHsmModelSelector.cs" />
+    <Compile Include="Criteria\SelectionCriterionFactory.cs" />
     <Compile Include="Criteria\ISelectionCriterion.cs" />
+    <Compile Include="Criteria\LogMaxMutualInformationSelectionCriterion.cs" />
+    <Compile Include="Criteria\MaximumLikelihoodSelectionCriterion.cs" />
+    <Compile Include="Criteria\MaximumMutialInformationSelectionCriterion.cs" />
+    <Compile Include="Criteria\SelectionCriterionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

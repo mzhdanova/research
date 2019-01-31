@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HsmmErrorSources.Analysis.Algorithms.Evaluation;
 using HsmmErrorSources.Analysis.Criteria;
 using HsmmErrorSources.Models.Models;
@@ -15,14 +13,16 @@ namespace HsmmErrorSources.Analysis.Algorithms.Selection
         public SegmentHsmModelSelector(ISelectionCriterion selectionCriterion, int segmentSize) : base(selectionCriterion){
             this.segmentSize = segmentSize;
         }
-        public override IHsmModel Select(List<int> sequence, List<IHsmModel> models)
+        public override IHsmModelHolder Select(List<int> sequence, List<IHsmModelHolder> models)
         {
             IEnumerable<List<int>> segments = splitList(sequence, segmentSize);
-            IDictionary<IHsmModel, double> probabilitiesByModels = models.ToDictionary(m => m, m => {
-                List<double> probabilities = segments.ToList(s => {
-                IProbabilityCalculator probabilityCalculator = probabilityCalculatorFactory.CreateProbabilityCalculator(m, sequence);
-                return probabilityCalculator.Calculate();
-                })
+            IDictionary<IHsmModelHolder, double> probabilitiesByModels = models.ToDictionary(m => m, m => {
+                List<double> probabilities = segments.Select(s =>
+                {
+                    IProbabilityCalculator probabilityCalculator = probabilityCalculatorFactory.CreateProbabilityCalculator(m.Model, s);
+                    return probabilityCalculator.Calculate();
+                }).ToList();
+                return probabilities.Average();
             });
             return selectionCriterion.Apply(probabilitiesByModels);
         }

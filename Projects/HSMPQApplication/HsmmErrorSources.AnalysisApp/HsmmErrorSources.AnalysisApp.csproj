@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HsmmErrorSources.Analysis\HsmmErrorSources.Analysis.csproj">
+      <Project>{2C02DB82-E845-418E-8307-6AEFE1363DEF}</Project>
+      <Name>HsmmErrorSources.Analysis</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

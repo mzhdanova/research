@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HsmmErrorSources.Analysis.Algorithms.Evaluation;
 using HsmmErrorSources.Analysis.Criteria;
 using HsmmErrorSources.Models.Models;
@@ -18,6 +14,6 @@ namespace HsmmErrorSources.Analysis.Algorithms.Selection
             this.selectionCriterion = selectionCriterion;
             probabilityCalculatorFactory = new HsmProbabilityCalculatorFactory();
         }
-        public abstract IHsmModel Select(List<int> sequence, List<IHsmModel> models);
+        public abstract IHsmModelHolder Select(List<int> sequence, List<IHsmModelHolder> models);
     }
 }

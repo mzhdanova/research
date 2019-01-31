@@ -58,7 +58,7 @@ namespace HsmmErrorSources.GenerationApp
                     GenerationResult result = manager.Generate(jsonModel, sequenceLength);
                     if (result.HasErrors())
                     {
-                        Console.WriteLine("Generation failed due to the following errors:" + result.Errors);
+                        Console.WriteLine("Generation failed due to the following errors:" + String.Join(", ", result.Errors.ToArray()));
                     }
                     else
                     {

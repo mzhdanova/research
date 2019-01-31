@@ -11,7 +11,7 @@ namespace HsmmErrorSources.Analysis.Algorithms.Criteria
 {
     public class MaximumLikelihoodSelectionCriterion : ISelectionCriterion
     {
-        public IHsmModel Apply(IDictionary<IHsmModel, double> probabilitiesByModels)
+        public IHsmModelHolder Apply(IDictionary<IHsmModelHolder, double> probabilitiesByModels)
         {
             return probabilitiesByModels.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }

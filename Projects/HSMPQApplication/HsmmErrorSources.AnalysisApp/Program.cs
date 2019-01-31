@@ -1,8 +1,10 @@
-﻿using System;
+﻿using HsmmErrorSources.Analysis.Algorithms.Evaluation;
+using HsmmErrorSources.Analysis.Algorithms.Selection;
+using HsmmErrorSources.Analysis.Criteria;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,65 +22,24 @@ namespace HsmmErrorSources.AnalysisApp
                 " 0 - evaluation problem solving; \r\n" +
                 " 1 - inverse problem solving;");
             int applicationMode = Convert.ToInt32(Console.ReadLine());
-            if (applicationMode==0) {
-
-            } else if (applicationMode == 1){
-
-            } else {
-                Console.WriteLine("Selected application mode is not supported");
-            }
-
             Task.Factory.StartNew(() =>
             {
-                bool ifExit = false;
-                while (!ifExit)
+                if (applicationMode == 0)
                 {
-                    Console.WriteLine(
-                        "Please, specify generation parameters");
-                    string jsonModel = null;
-
-                    while (jsonModel == null)
-                    {
-                        Console.WriteLine(
-                            "Specify path to model file:");
-                        string pathToFile = Console.ReadLine();
-                        jsonModel = ParseModelFile(pathToFile);
-                    }
-
-                    Console.WriteLine(
-                        "Specify desired sequence length:");
-                    int sequenceLength = Convert.ToInt32(Console.ReadLine());
-
-                    string outputPath = null;
-
-                    while (outputPath == null)
-                    {
-                        Console.WriteLine("Specify output file path:");
-                        outputPath = ParseOutputPath(Console.ReadLine());
-                    }
-
-                    Console.WriteLine("Starting generation");
-                    GenerationManager manager = new GenerationManager(prngMode);
-                    GenerationResult result = manager.Generate(jsonModel, sequenceLength);
-                    if (result.HasErrors())
-                    {
-                        Console.WriteLine("Generation failed due to the following errors:" + result.Errors);
-                    }
-                    else
-                    {
-                        WriteOutputToFile(outputPath, result.Value);
-                        Console.WriteLine("Generation has been successfully completed. See result in " + outputPath);
-                    }
-
-                    Console.WriteLine("Do you want to continue? (y/n)");
-                    ifExit = !PromptParseUtils.ParseBoolean(Console.ReadLine());
+                    RunInEvaluationMode();
                 }
-                Console.WriteLine("Press Ctrl+C to exit...");
+                else if (applicationMode == 1)
+                {
+                    RunInSelectionMode();
+                }
+                else
+                {
+                    Console.WriteLine("Selected application mode is not supported");
+                }
             });
-
-            Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
-            Closing.WaitOne();
-        }
+                Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
+                Closing.WaitOne();
+            }
 
         protected static void OnExit(object sender, ConsoleCancelEventArgs args)
         {
@@ -86,23 +47,91 @@ namespace HsmmErrorSources.AnalysisApp
             Closing.Set();
         }
 
-        private static void RunInEvaluationMode(){
-                        Task.Factory.StartNew(() =>
+        private static void RunInEvaluationMode()
+        {
+            bool ifExit = false;
+            while (!ifExit)
             {
+                Console.WriteLine(
+                    "Please, specify analysis parameters");
+                string jsonModel = null;
+
+                while (jsonModel == null)
+                {
+                    Console.WriteLine(
+                        "Specify path to model file:");
+                    string pathToFile = Console.ReadLine();
+                    jsonModel = ParseModelFile(pathToFile);
+                }
+
+                List<int> sequence = null;
+
+                while (sequence == null)
+                {
+                    Console.WriteLine(
+                        "Specify path to sequence file:");
+                    string pathToFile = Console.ReadLine();
+                    sequence = ParseSequenceFile(pathToFile);
+                }
+
+                Console.WriteLine("Starting evaluation");
+                EvaluationManager manager = new EvaluationManager();
+                EvaluationResult result = manager.Evaluate(jsonModel, sequence);
+                if (result.HasErrors())
+                {
+                    Console.WriteLine("Evaluation failed due to the following errors:" + String.Join(", ", result.Errors.ToArray()));
+                }
+                else
+                {
+                    Console.WriteLine("Probability that the sequence has been generated by the model is " + result.Value);
+                }
+
+                Console.WriteLine("Do you want to continue? (y/n)");
+                ifExit = !ParseBoolean(Console.ReadLine());
+            }
+            Console.WriteLine("Press Ctrl+C to exit...");
+                }
+
+        private static void RunInSelectionMode()
+        {
                 bool ifExit = false;
                 while (!ifExit)
                 {
                     Console.WriteLine(
                         "Please, specify analysis parameters");
-                    string jsonModel = null;
+                    Console.WriteLine(
+                        "Please, specify type of model selection criterion as a number from the list:\r\n" +
+                        " 0 - Maximum likelihood; \r\n" +
+                        " 1 - Maximum mutial information; \r\n" +
+                        " 2 - Logarithm maximum mutial information");
 
-                    while (jsonModel == null)
+                    SelectionCriterionType selectionCriterionType = ParseSelectionCriterionType(Console.ReadLine());
+
+                    Console.WriteLine(
+                        "Please, specify model selector type as a number from the list:\r\n" +
+                        " 0 - Simple; \r\n" +
+                        " 1 - Segment");
+
+                    ModelSelectorType modelSelectorType = ParseModelSelectorType(Console.ReadLine());
+
+                    int segmentSize = 100;
+                    if (modelSelectorType == ModelSelectorType.Segment)
                     {
                         Console.WriteLine(
-                            "Specify path to model file:");
-                        string pathToFile = Console.ReadLine();
-                        jsonModel = ParseModelFile(pathToFile);
+                            "Enter segment size");
+                        segmentSize = int.Parse(Console.ReadLine());
                     }
+
+                    string pathToModelsFolder = null;
+                    while (pathToModelsFolder == null)
+                    {
+                        Console.WriteLine(
+                            "Specify path to models directory:");
+                        pathToModelsFolder = Console.ReadLine();
+                    }
+
+                    string[] files = Directory.GetFiles(pathToModelsFolder, "*.json", SearchOption.AllDirectories);
+                    Dictionary<string, string> jsonModelsToNames = files.ToDictionary(f => f, f => ParseModelFile(f));
 
                     Console.WriteLine(
                         "Specify path to sequence file:");
@@ -111,37 +140,32 @@ namespace HsmmErrorSources.AnalysisApp
                     while (sequence == null)
                     {
                         Console.WriteLine(
-                            "Specify path to model file:");
+                            "Specify path to sequence file:");
                         string pathToFile = Console.ReadLine();
-                        sequence = ParseModelFile(pathToFile);
+                        sequence = ParseSequenceFile(pathToFile);
                     }
 
-                    string outputPath = null;
-
-                    while (outputPath == null)
-                    {
-                        Console.WriteLine("Specify output file path:");
-                        outputPath = ParseOutputPath(Console.ReadLine());
-                    }
-
-                    Console.WriteLine("Starting generation");
-                    GenerationManager manager = new GenerationManager(prngMode);
-                    GenerationResult result = manager.Generate(jsonModel, sequenceLength);
+                    Console.WriteLine("Starting selection");
+                    SelectionManager manager = new SelectionManager(segmentSize);
+                    SelectionResult result = manager.Select(jsonModelsToNames, sequence);
                     if (result.HasErrors())
                     {
-                        Console.WriteLine("Generation failed due to the following errors:" + result.Errors);
+                        Console.WriteLine("Selection failed due to the following errors:" + result.Errors);
                     }
                     else
                     {
-                        WriteOutputToFile(outputPath, result.Value);
-                        Console.WriteLine("Generation has been successfully completed. See result in " + outputPath);
+                        Console.WriteLine("The model selected according to the chosen criterion is " + result.Value);
                     }
 
                     Console.WriteLine("Do you want to continue? (y/n)");
-                    ifExit = !PromptParseUtils.ParseBoolean(Console.ReadLine());
+                    ifExit = !ParseBoolean(Console.ReadLine());
                 }
                 Console.WriteLine("Press Ctrl+C to exit...");
-            });
+        }
+
+        public static bool ParseBoolean(string input)
+        {
+            return input.ToLower() == "y";
         }
 
         private static string ParseModelFile(string path)
@@ -164,7 +188,61 @@ namespace HsmmErrorSources.AnalysisApp
             }
 
             string content = File.ReadAllText(path);
-            content.Split()
+            return content.ToCharArray()
+                .Select(c => int.Parse(c.ToString()))
+                .ToList();
+        }
+
+        private static ModelSelectorType ParseModelSelectorType(string input)
+        {
+            int typeCode = 0;
+            try
+            {
+                typeCode = Convert.ToInt32(input);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Failed to parse model selector type, the Simple one is used by default");
+            }
+            switch (typeCode)
+            {
+                case 1:
+                    {
+                        return ModelSelectorType.Segment;
+                    }
+                default:
+                    {
+                        return ModelSelectorType.Simple;
+                    }
+            }
+        }
+
+        private static SelectionCriterionType ParseSelectionCriterionType(string input)
+        {
+            int typeCode = 0;
+            try
+            {
+                typeCode = Convert.ToInt32(input);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Failed to parse selection criteria type, the Maximum Likelihood one is used by default");
+            }
+            switch (typeCode)
+            {
+                case 1:
+                    {
+                        return SelectionCriterionType.MaximumMutialInformation;
+                    }
+                case 2:
+                    {
+                        return SelectionCriterionType.LogMaximumMutialInformation;
+                    }
+                default:
+                    {
+                        return SelectionCriterionType.MaximumLikelihood;
+                    }
+            }
         }
 
         private static string ParseOutputPath(string path)

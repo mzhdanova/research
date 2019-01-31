@@ -47,8 +47,10 @@
   <ItemGroup>
     <Compile Include="Models\AbstractHsmModel.cs" />
     <Compile Include="Models\HsmFergusonModel.cs" />
+    <Compile Include="Models\HsmModelHolder.cs" />
     <Compile Include="Models\HsmQpModel.cs" />
     <Compile Include="Models\IHsmModel.cs" />
+    <Compile Include="Models\IHsmModelHolder.cs" />
     <Compile Include="Models\JsonModelFactory.cs" />
     <Compile Include="Models\ModelType.cs" />
     <Compile Include="Models\Qp\QpUtils.cs" />
